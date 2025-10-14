@@ -9,7 +9,7 @@ This project was created with Django and is configured for PostgreSQL. Connect t
    ```bash
    pip install -r requirements.txt
    ```
-3. Configure your PostgreSQL database in `art_by_ck/settings.py`.
+3. Configure your PostgreSQL database in `config/settings.py`.
 4. Run migrations:
    ```bash
    python manage.py migrate
@@ -33,10 +33,17 @@ This project was created with Django and is configured for PostgreSQL. Connect t
   git push -u origin main
   ```
 
+## Local Development
+
+- Setup a `.env` file for environment variables (see `.env.example`)
+
 ## Deployment
 
 - Update `ALLOWED_HOSTS` and database settings for production.
 - Use environment variables for sensitive data.
+- When deploying to heroku, only the production database url is needed.
+- Add config vars to heroku:
+![image](/docs/readme/images/heroku-config.png)
 
 ---
 

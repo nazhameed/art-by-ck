@@ -22,3 +22,12 @@ local_settings.py
 
 # VS Code
 .vscode/
+
+# Personal notes, not part of the source code
+/_notes/
+
+# Environment variables
+# Ignore all .env files except .env.example
+.env
+.env.*
+!.env.example
