@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Art by CK{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <h2>Welcome to Art by CK</h2>
+    <p>Test page</p>
+    <figure class="hero-figure">
+      <img src="{% static 'images/test.jpg' %}" alt="Sample artwork" class="hero-image" />
+      <figcaption>Preview of upcoming artwork.</figcaption>
+    </figure>
+  </section>
+{% endblock %}

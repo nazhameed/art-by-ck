@@ -1,0 +1,59 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f8f7f4;
+  color: #1f1f1f;
+}
+
+.site-header,
+.site-footer {
+  background: #1f1f1f;
+  color: #f8f7f4;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.site-header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-content {
+  margin: 4rem auto;
+  max-width: 720px;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  margin: 0 auto;
+  max-width: 32ch;
+}
+
+.hero-figure {
+  margin: 2.5rem auto 0;
+}
+
+.hero-image {
+  width: min(100%, 520px);
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5rem 3rem -1.5rem rgba(0, 0, 0, 0.45);
+}
+
+.hero-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #565656;
+}
