@@ -13,6 +13,7 @@ venv/
 ENV/
 .venv/
 .env
+.direnv
 
 
 # Django stuff:
