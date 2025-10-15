@@ -4,91 +4,9 @@
 {% block title %}Home | Art by CK{% endblock %}
 
 {% block content %}
-  <div class="home-page">
-    <section class="hero-section position-relative text-white overflow-hidden">
-      <div class="hero-media">
-        <img
-          src="{% static 'images/test.jpg' %}"
-          alt='"Blue" painting from the Const Collection by Cecilia K.'
-          class="hero-background"
-        />
-        <div class="hero-gradient"></div>
-      </div>
-      <div class="container position-relative py-5">
-        <div class="row align-items-center gy-5">
-          <div class="col-lg-6">
-            <div class="brand-lockup d-flex align-items-center gap-3 mb-4">
-              <div class="logo-mark rounded-circle overflow-hidden d-flex align-items-center justify-content-center">
-                <img src="{% static 'images/favicon.png' %}" alt="Art by CK logo" class="logo-img" style="width: 48px; height: 48px;" />
-              </div>
-              <div>
-                <span class="accent-pill text-uppercase fw-semibold small">Const Collection</span>
-                <h1 class="hero-title display-5 fw-bold mb-0">Art by Cecilia K.</h1>
-              </div>
-            </div>
-            <p class="hero-tagline lead mb-4 fw-semibold text-uppercase">
-              I am a mother artist
-            </p>
-            <div class="d-flex flex-column flex-md-row gap-3">
-              <a class="btn btn-lg btn-accent px-4" href="#creative-prototype-title">Preview the concept</a>
-              <a class="btn btn-lg btn-outline-light px-4" href="{% url 'contact' %}">Plan a collaboration</a>
-            </div>
-          </div>
-          <div class="col-lg-5 offset-lg-1">
-            <div class="hero-card shadow-lg bg-white text-dark p-4 p-md-5 rounded-4">
-              <p class="text-uppercase fw-semibold text-muted small mb-2">Prototype Focus</p>
-              <h2 class="h3 fw-bold mb-3">Stories of lineage, light, and motherhood</h2>
-              <p class="mb-0">
-                Explore layered canvases that fuse ancestral narratives with contemporary Pop Art energy.
-                Each piece reveals a new dimension as you move around it.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {% include "home/creative_preview.html" %}
-
-    <section class="py-5">
-      <div class="container">
-        <div class="row gy-4 align-items-center">
-          <div class="col-lg-5">
-            <h2 class="section-heading fw-bold">Prototype Palette</h2>
-            <p class="lead">
-              Bold fuchsias meet warm golds to frame each artwork without overpowering it&mdash;a nod to Pop Art vibrancy with space for collectors to linger.
-            </p>
-          </div>
-          <div class="col-lg-7">
-            <div class="row g-3">
-              <div class="col-6 col-md-3">
-                <div class="swatch-card text-center p-3 rounded-4 shadow-sm">
-                  <div class="swatch-chip" style="background-color: #ff4fa2;"></div>
-                  <p class="small mt-2 mb-0 text-uppercase">Cecilia Pink</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="swatch-card text-center p-3 rounded-4 shadow-sm">
-                  <div class="swatch-chip" style="background-color: #ffc857;"></div>
-                  <p class="small mt-2 mb-0 text-uppercase">Gallery Gold</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="swatch-card text-center p-3 rounded-4 shadow-sm">
-                  <div class="swatch-chip" style="background-color: #111111;"></div>
-                  <p class="small mt-2 mb-0 text-uppercase">Night Ink</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="swatch-card text-center p-3 rounded-4 shadow-sm">
-                  <div class="swatch-chip" style="background-color: #f8f7f4; border: 1px solid rgba(0,0,0,0.1);"></div>
-                  <p class="small mt-2 mb-0 text-uppercase">Gallery Light</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+<img
+  src="{% static 'images/test.jpg' %}"
+  alt='"Blue" painting from the Const Collection by Cecilia K.'
+  class="gallery-card img-fluid"
+/>
 {% endblock %}
