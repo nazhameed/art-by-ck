@@ -30,6 +30,7 @@ urlpatterns = [
 if settings.DEBUG:
     import debug_toolbar  # type: ignore
     urlpatterns += [
+        path('__reload__/', include('django_browser_reload.urls')),
         path('__debug__/', include(debug_toolbar.urls)),
     ]
     if getattr(settings, "MEDIA_ROOT", None):
