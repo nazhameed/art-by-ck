@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.cedarville-cursive-regular {
+  font-family: "Cedarville Cursive", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
 :root {
   color-scheme: light;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Montserrat", sans-serif;
   --ck-background: #f8f7f4;
   --ck-ink: #121212;
   --ck-muted: #6c6c6c;
@@ -8,6 +21,8 @@
   --ck-accent-dark: #d93d85;
   --ck-highlight: #ffc857;
   --ck-surface: #ffffff;
+
+  --bs-font-sans-serif: "Montserrat", Arial, sans-serif;
 }
 
 body {
@@ -113,6 +128,103 @@ body {
   overflow: hidden;
 }
 
+.creative-prototype {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 79, 162, 0.08), rgba(255, 200, 87, 0.12) 55%, rgba(17, 17, 17, 0.08));
+  padding-block: clamp(3.5rem, 10vw, 6rem);
+  overflow: hidden;
+}
+
+.creative-prototype::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 79, 162, 0.2) 0, rgba(255, 79, 162, 0) 45%),
+    radial-gradient(circle at 80% 10%, rgba(255, 200, 87, 0.25) 0, rgba(255, 200, 87, 0) 40%),
+    radial-gradient(circle at 50% 90%, rgba(17, 17, 17, 0.12) 0, rgba(17, 17, 17, 0) 50%);
+  opacity: 0.65;
+  z-index: 0;
+}
+
+.creative-prototype .container {
+  position: relative;
+  z-index: 1;
+}
+
+.creative-prototype .accent-pill {
+  background: rgba(17, 17, 17, 0.85);
+  color: var(--ck-highlight);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  letter-spacing: 0.22rem;
+}
+
+.creative-quote {
+  position: relative;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--ck-ink);
+  text-transform: none;
+  letter-spacing: 0.08rem;
+  line-height: 1.2;
+  text-shadow: 0.1em 0.1em 0 rgba(255, 200, 87, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.creative-quote::before {
+  content: "\201C";
+  position: absolute;
+  left: -0.6em;
+  top: -0.2em;
+  font-size: 1.8em;
+  color: rgba(255, 79, 162, 0.35);
+}
+
+.creative-prototype .lead {
+  max-width: 46ch;
+}
+
+.creative-gallery {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.creative-gallery figure {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 1rem;
+  border-radius: 1.75rem;
+  box-shadow: 0 1.25rem 2.5rem -2rem rgba(17, 17, 17, 0.45);
+  transition: transform 0.35s ease;
+}
+
+.creative-gallery figure:hover {
+  transform: translateY(-6px);
+}
+
+.creative-image {
+  width: 100%;
+  border-radius: 1.25rem;
+  box-shadow: 0 1rem 2.75rem -1.5rem rgba(17, 17, 17, 0.55);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.creative-gallery figure:hover .creative-image,
+.creative-gallery figure:focus-within .creative-image {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 1.8rem 3.5rem -1.4rem rgba(214, 178, 64, 0.65);
+  filter: saturate(1.08);
+}
+
+.creative-gallery figcaption {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.65);
+}
+
 .hero-section {
   min-height: clamp(32rem, 85vh, 44rem);
   display: flex;
@@ -157,6 +269,14 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.logo-initials {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.25rem;
+  color: var(--ck-highlight);
 }
 
 .accent-pill {
@@ -242,7 +362,7 @@ body {
 
 .art-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 1.5rem 3rem -1.8rem rgba(14, 14, 18, 0.65);
+  box-shadow: 0 1.5rem 3rem -1.6rem rgba(214, 178, 64, 0.6);
 }
 
 .social-link {
@@ -304,6 +424,24 @@ body {
   border-radius: 999px;
   font-weight: 600;
   padding-block: 0.85rem;
+}
+
+.swatch-card {
+  background: var(--ck-surface);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.swatch-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2.2rem -1.3rem rgba(214, 178, 64, 0.45);
+}
+
+.swatch-chip {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 1.5rem;
+  box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.08);
 }
 
 @media (max-width: 991.98px) {
