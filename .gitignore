@@ -13,8 +13,6 @@ venv/
 ENV/
 .venv/
 .env
-.direnv
-
 
 # Django stuff:
 *.log
