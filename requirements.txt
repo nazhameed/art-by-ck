@@ -19,3 +19,4 @@ six==1.17.0
 sqlparse==0.5.3
 urllib3==2.5.0
 whitenoise==6.11.0
+crispy-bootstrap5==2024.10
