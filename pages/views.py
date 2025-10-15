@@ -13,4 +13,7 @@ class ImmersiveView(TemplateView):
 class ContactView(TemplateView):
     template_name = "contact.html"
 
+class AvailableArtView(TemplateView):
+    template_name = "available_art.html"
+
 # Create your views here.
