@@ -1,49 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Home | Art by CK{% endblock %}
 
 {% block content %}
-  <section class="hero">
-    <h2>Welcome to Art by CK</h2>
-    <p>Test page</p>
-    <figure class="hero-figure">
-      <img src="{% static 'images/test.jpg' %}" alt="Sample artwork" class="hero-image" />
-      <figcaption>Preview of upcoming artwork.</figcaption>
-    </figure>
-  </section>
-  <section>
-    <h1>ART BY CECILIA K.</h1>
-    <p>Stories of lineage, light, and motherhood.</p>
-    <button type="button">ENTER THE GALLERY</button>
-  </section>
-  <section>
-    <h2>ABOUT CECILIA</h2>
-    <p>I am an artist born in Zimbabwe and now living in Southern Sweden,
-Through my paintings, I explore themes of identity, motherhood, and spiritual DNA.</p>
-  </section>
-  <section>
-    <h2>GALLERY</h2>
-    <div class="gallery-images">
-      <img src="{% static 'images/test.jpg' %}" alt="Artwork 1" />
-    </div>
-  </section>
-  <section>
-    <h2>IMMERSIVE EXPERIENCES</h2>
-    <p>Step into the work, I create beautiful. Immersive exhibitions that allow viewers to engage with the art in a transformative way.</p>
-  </section>
-  <section>
-    <h2>CONTACT</h2>
-    <form method="post">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-      <br>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <br>
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
-      <br>
-      <button type="submit">Submit</button>
-    </form>
-  </section>
+<img
+  src="{% static 'images/test.jpg' %}"
+  alt='"Blue" painting from the Const Collection by Cecilia K.'
+  class="gallery-card img-fluid"
+/>
 {% endblock %}

@@ -1,59 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
-  color-scheme: light dark;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color-scheme: light;
+  --ck-background: #f8f7f4;
+  --ck-ink: #121212;
+  --ck-muted: #6c6c6c;
+  --ck-accent: #ff4fa2;
+  --ck-accent-dark: #d93d85;
+  --ck-highlight: #ffc857;
+  --ck-highlight-dark: #e6b04d;
+
+  --bs-body-font-family: "Montserrat", Arial, sans-serif;
+  --bs-body-bg: var(--ck-background);
+  --bs-body-color: var(--ck-ink);
+  --bs-link-color: var(--ck-accent);
+  --bs-link-hover-color: var(--ck-accent-dark);
+  --bs-primary: var(--ck-accent);
+  --bs-primary-rgb: 255, 79, 162;
+  --bs-warning: var(--ck-highlight);
+  --bs-warning-rgb: 255, 200, 87;
+  --bs-navbar-color: rgba(255, 255, 255, 0.7);
+  --bs-navbar-hover-color: #ffffff;
+  --bs-navbar-brand-color: var(--ck-highlight);
+  --bs-navbar-brand-hover-color: var(--ck-accent);
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: #f8f7f4;
-  color: #1f1f1f;
+  font-family: var(--bs-body-font-family);
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
 }
 
-.site-header,
-.site-footer {
-  background: #1f1f1f;
-  color: #f8f7f4;
-  padding: 1rem 2rem;
-  text-align: center;
+.cedarville-cursive-regular {
+  font-family: "Cedarville Cursive", cursive;
 }
 
-.site-header a {
-  color: inherit;
-  text-decoration: none;
+.letter-spacing-sm {
+  letter-spacing: 0.14rem;
 }
 
-.site-content {
-  margin: 4rem auto;
-  max-width: 720px;
-  padding: 0 1.5rem;
-  text-align: center;
+.ck-navbar {
+  background: #0b0b0f;
+  padding-block: 1.1rem;
+  border-bottom: 4px solid var(--ck-highlight);
 }
 
-.hero h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1rem;
+.ck-navbar .navbar-brand {
+  letter-spacing: 0.2rem;
 }
 
-.hero p {
-  font-size: 1.125rem;
-  margin: 0 auto;
-  max-width: 32ch;
+.ck-navbar .nav-link {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.16rem;
+  position: relative;
+  transition: color 0.25s ease;
 }
 
-.hero-figure {
-  margin: 2.5rem auto 0;
+.ck-navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0rem;
+  width: 100%;
+  height: 0.18rem;
+  background: transparent;
+  border-radius: 999px;
+  transition: background 0.25s ease;
 }
 
-.hero-image {
-  width: min(100%, 520px);
-  height: auto;
-  border-radius: 0.75rem;
-  box-shadow: 0 1.5rem 3rem -1.5rem rgba(0, 0, 0, 0.45);
+.ck-navbar .nav-link:hover::after,
+.ck-navbar .nav-link:focus-visible::after {
+  background: var(--ck-highlight-dark);
 }
 
-.hero-figure figcaption {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: #565656;
+.ck-navbar .nav-link.active::after {
+  background: var(--ck-highlight);
 }
+
+.ck-navbar .navbar-toggler {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+}
+
+.ck-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem var(--ck-highlight);
+}
+
+.ck-navbar .navbar-toggler-icon {
+  color: white;
+}
+
+main:has(> .gallery-card) {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.gallery-card {
+  display: block;
+  max-width: min(80vw, 640px);
+  border: 0.5rem solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.6);
+  transition:
+    border-color 0.3s ease,
+    border-radius 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.gallery-card:hover,
+.gallery-card:focus-visible {
+  border-color: #ffc757a6;
+  border-radius: 2rem;
+  box-shadow: -3px 5px 20px 3px rgb(198 95 208);
+  transform: scale(1.01);
+}
+
