@@ -117,7 +117,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-database_url = os.environ.get("DEVELOPMENT_DB") if DEBUG else os.environ.get("DATABASE_URL")
+database_url = os.environ.get("DEVELOPMENT_DB") if DEBUG else os.environ.get("PRODUCTION_DB")
 
 if not database_url:
     raise ImproperlyConfigured("Set the DEVELOPMENT_DB environment variable with your database URL.")
