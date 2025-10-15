@@ -89,8 +89,14 @@ MIDDLEWARE = [
 ]
 
 if DEBUG:
-    INSTALLED_APPS.append('debug_toolbar')
-    MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
+    INSTALLED_APPS += [
+        'debug_toolbar',
+        'django_browser_reload',
+    ]
+    MIDDLEWARE += [
+        "django_browser_reload.middleware.BrowserReloadMiddleware",
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
+    ]
 
 ROOT_URLCONF = 'config.urls'
 
