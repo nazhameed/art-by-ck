@@ -4,5 +4,23 @@
 <div class="container py-5">
   <h1 class="mb-4">Journal</h1>
   <p class="lead">Read the latest thoughts, stories, and updates from the artist.</p>
+  <div class="row">
+    {% for entry in journal_entries %}
+      <div class="col-md-8 offset-md-2 mb-5">
+        <div class="card h-100">
+          {% if entry.image %}
+            <img src="{{ entry.image.url }}" class="card-img-top" alt="{{ entry.title }}">
+          {% endif %}
+          <div class="card-body">
+            <h3 class="card-title">{{ entry.title }}</h3>
+            <p class="card-text">{{ entry.content|linebreaks }}</p>
+            <p class="text-muted small">Posted on {{ entry.created_at|date:"F j, Y" }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No journal entries yet.</p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

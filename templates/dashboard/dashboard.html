@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Artist Dashboard</h2>
+  <p class="text-center">Welcome! Here you can manage your artworks and site content.</p>
+  <div class="text-center mb-4">
+    <a href="{% url 'gallery_add' %}" class="btn btn-primary">Add Gallery Image</a>
+    <a href="{% url 'available_art_add' %}" class="btn btn-success ms-2">Add Available Art</a>
+    <a href="{% url 'journal_add' %}" class="btn btn-info ms-2">Add Journal Entry</a>
+    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-danger ms-2">Logout</button>
+    </form>
+  </div>
+  <hr>
+  <h4>Gallery Images</h4>
+  <div class="row">
+    {% for image in images %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ image.title }}</h5>
+            <p class="card-text">{{ image.description }}</p>
+            <a href="{% url 'gallery_edit' image.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'gallery_delete' image.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No images in the gallery yet.</p>
+    {% endfor %}
+  </div>
+  <hr>
+  <h4>Available Art</h4>
+  <div class="row">
+    {% for art in available_arts %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ art.image.url }}" class="card-img-top" alt="{{ art.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ art.title }}</h5>
+            <p class="card-text">{{ art.description }}</p>
+            <p class="card-text"><strong>Price:</strong> {{ art.price }}</p>
+            <p class="card-text"><strong>Available:</strong> {{ art.is_available|yesno:"Yes,No" }}</p>
+            <a href="{% url 'available_art_edit' art.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'available_art_delete' art.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No available art yet.</p>
+    {% endfor %}
+  </div>
+  <hr>
+  <h4>Journal Entries</h4>
+  <div class="row">
+    {% for entry in journal_entries %}
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          {% if entry.image %}
+            <img src="{{ entry.image.url }}" class="card-img-top" alt="{{ entry.title }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ entry.title }}</h5>
+            <p class="card-text">{{ entry.content|truncatewords:40 }}</p>
+            <a href="{% url 'journal_edit' entry.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'journal_delete' entry.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No journal entries yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

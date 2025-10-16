@@ -3,6 +3,23 @@
 {% block title %}Gallery | Art by CK{% endblock %}
 
 {% block content %}
+<section class="container mt-5">
+  <h1>Gallery</h1>
+  <div class="row">
+    {% for image in images %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ image.title }}</h5>
+            <p class="card-text">{{ image.description }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No images in the gallery yet.</p>
+    {% endfor %}
+  </div>
 <section>
   <div class="container-fluid px-4 px-xl-5 text-center">
     <h1 class="lead text-muted mb-4 cedarville-cursive-regular display-5">I am a mother artist.</h1>
