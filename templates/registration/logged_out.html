@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Logged Out | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 400px;">
+  <h2 class="mb-4 text-center">Logged Out</h2>
+  <p class="text-center">You have been successfully logged out.</p>
+  <div class="text-center mt-4">
+    <a href="/accounts/login/" class="btn btn-dark">Log in again</a>
+    <a href="/" class="btn btn-outline-secondary ms-2">Return to site</a>
+  </div>
+</div>
+{% endblock %}

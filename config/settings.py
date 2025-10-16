@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'contactform',
     'pages',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -233,3 +234,8 @@ LOGGING = {
         "django.request": {"level": "ERROR"},
     },
 }
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/ck-admin-panel/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Artist Dashboard</h2>
+  <p class="text-center">Welcome! Here you can manage your artworks and site content.</p>
+  <!-- Add dashboard controls and links here -->
+  <div class="text-center">
+    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-danger">Logout</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
