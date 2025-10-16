@@ -48,13 +48,6 @@
             >
               <li class="nav-item">
                 <a
-                  class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
-                  href="{% url 'home' %}"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
                   class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
                   href="{% url 'about' %}"
                   >About</a
@@ -69,23 +62,16 @@
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link {% if request.resolver_match.url_name == 'immersive' %}active{% endif %}"
-                  href="{% url 'immersive' %}"
-                  >Immersive</a
+                class="nav-link {% if request.resolver_match.url_name == 'available_art' %}active{% endif %}"
+                href="{% url 'available_art' %}"
+                >Available Art</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
-                  href="{% url 'contact' %}"
-                  >Contact</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.resolver_match.url_name == 'available_art' %}active{% endif %}"
-                  href="{% url 'available_art' %}"
-                  >Available Art</a
+                class="nav-link {% if request.resolver_match.url_name == 'immersive' %}active{% endif %}"
+                href="{% url 'immersive' %}"
+                >Immersive</a
                 >
               </li>
               <li class="nav-item">
@@ -93,6 +79,13 @@
                   class="nav-link {% if request.resolver_match.url_name == 'journal' %}active{% endif %}"
                   href="{% url 'journal' %}"
                   >Journal</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
+                  href="{% url 'contact' %}"
+                  >Contact</a
                 >
               </li>
             </ul>
