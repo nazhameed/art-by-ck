@@ -1,8 +1,28 @@
 {% extends "base.html" %}
 {% block title %}Available Art | Art by CK{% endblock %}
 {% block content %}
-<div class="container py-5">
-  <h1 class="mb-4">Available Art</h1>
-  <p class="lead">Browse original artworks currently available for purchase.</p>
+<section>
+  <div class="container-fluid px-4 px-xl-5 py-5 text-center">
+    <h1 class="display-4 fw-semibold text-uppercase letter-spacing-sm mb-3">
+      Available Art
+    </h1>
+    <p class="lead text-muted mb-0">Browse original artworks currently available for purchase.</p>
+  </div>
+</section>
+
+<div class="container-fluid gallery-grid-wrapper pb-5 px-4 px-xl-5">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 gallery-grid">
+    <div class="col">
+      <article class="gallery-card" tabindex="0">
+        <figure class="ratio ratio-4x3">
+          <img src="{% static 'images/noma.jpg' %}" alt="Noma" loading="lazy" />
+        </figure>
+        <div class="gallery-card-body">
+          <h3 class="gallery-card-title mb-0">Noma</h3>
+          <p class="gallery-card-meta mb-0">2022</p>
+        </div>
+      </article>
+    </div>
+  </div>
 </div>
 {% endblock %}
