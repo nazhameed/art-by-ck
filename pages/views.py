@@ -13,8 +13,8 @@ class GalleryView(TemplateView):
         context['images'] = GalleryImage.objects.all().order_by('-created_at')
         return context
 
-class ImmersiveView(TemplateView):
-    template_name = "immersive.html"
+class ExhibitionView(TemplateView):
+    template_name = "exhibition.html"
 
 class ContactView(TemplateView):
     template_name = "contact.html"

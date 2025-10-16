@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from pages.views import ExhibitionView
 
 urlpatterns = [
     path('', views.artist_dashboard, name='artist_dashboard'),
@@ -12,4 +13,5 @@ urlpatterns = [
     path('journal/add/', views.journal_add, name='journal_add'),
     path('journal/<int:pk>/edit/', views.journal_edit, name='journal_edit'),
     path('journal/<int:pk>/delete/', views.journal_delete, name='journal_delete'),
+    path('exhibition/', ExhibitionView.as_view(), name='exhibition'),
 ]
