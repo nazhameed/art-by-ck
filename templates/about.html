@@ -5,23 +5,16 @@
 {% block content %}
 <section class="container mt-5">
   <h1>About Cecilia</h1>
-  <img src="{% static 'images/cecilia_k_contact.jpg' %}" alt="Cecilia K portrait" class="img-fluid mb-4" style="max-width: 320px; border-radius: 8px;" />
-  <h2 class="mt-4">Artist Bio.</h2>
-  <p>I am an artist born and raised in Zimbabwe, now living in Southern Sweden.<br>
-  As a painter but foremost as a mother, I explore the layered experiences of selfhood, motherhood, daughterhood, and matrescence through my large-scale acrylic works.</p>
-  <p>My art seeks to enrich the dialogue of a new female revolution, one that anchors itself in the spiritual DNA connecting grandmothers, mothers, and daughters across time — past, present, and future.<br>
-  Through my paintings, I trace the invisible threads that bind us, exploring womanhood as both memory and prophecy.</p>
-
-  <h2 class="mt-5">My Approach</h2>
-  <p>My paintings are a sacred act - one of both resistance and restoration.<br>
-  They arise from my response to the subtle, yet profound harm I witness in how social media shapes the inner lives of our daughters.</p>
-  <p>In a world defined by curated images and fleeting digital impressions, I turn to painting as a way to slow down time, recenter presence, and reclaim untold stories.</p>
-  <p>Through my art, I construct symbolic filters, not the digital kind, but spiritual veils that both reveal and protect.<br>
-  These filters offer a deeper seeing: a layered truth shaped by love, ancestral memory, intuition, and the unseen forces that guide us.</p>
-  <p>My work is a call for change — a gentle yet unyielding demand for a new way of being.<br>
-  In this fragmented world, our daughters grow up surrounded by false mirrors.<br>
-  It is time for truth-telling, for the reclamation of the feminine through love.</p>
-
+  {% if about and about.image %}
+    <img src="{{ about.image.url }}" alt="Cecilia K portrait" class="img-fluid mb-4" style="max-width: 320px; border-radius: 8px;" />
+  {% endif %}
+  <div class="mt-4">
+    {% if about and about.text %}
+      <div class="about-text">{{ about.text|linebreaks }}</div>
+    {% else %}
+      <p>No about info available yet.</p>
+    {% endif %}
+  </div>
   <p class="mt-5 fw-bold">Explore my reflections, stories, and artworks &rarr;
     <a href="{% url 'journal' %}">
       <button type="button">Visit My Journal</button>

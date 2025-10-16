@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Manage Gallery | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Manage Gallery Images</h2>
+  <div class="text-center mb-4">
+    <a href="{% url 'gallery_add' %}" class="btn btn-primary">Add Gallery Image</a>
+    <a href="{% url 'artist_dashboard' %}" class="btn btn-outline-secondary ms-2">Back to Dashboard</a>
+  </div>
+  <hr>
+  <div class="row">
+    {% for image in images %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ image.title }}</h5>
+            <p class="card-text">{{ image.description }}</p>
+            <a href="{% url 'gallery_edit' image.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'gallery_delete' image.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No images in the gallery yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

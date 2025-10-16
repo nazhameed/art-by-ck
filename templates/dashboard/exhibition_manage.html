@@ -1,11 +1,13 @@
 {% extends "base.html" %}
-
-{% block title %}Exhibition | Art by CK{% endblock %}
-
+{% block title %}Manage Exhibitions | Art by CK{% endblock %}
 {% block content %}
 <div class="container py-5">
-  <h2 class="mb-4 text-center">Exhibitions</h2>
-  <p>Step into the work, I create beautiful exhibitions that allow viewers to engage with the art in a transformative way.</p>
+  <h2 class="mb-4 text-center">Manage Exhibitions</h2>
+  <div class="text-center mb-4">
+    <a href="{% url 'exhibition_add' %}" class="btn btn-warning">Add Exhibition</a>
+    <a href="{% url 'artist_dashboard' %}" class="btn btn-outline-secondary ms-2">Back to Dashboard</a>
+  </div>
+  <hr>
   <div class="row">
     {% for exhibition in exhibitions %}
       <div class="col-md-4 mb-4">
@@ -38,6 +40,8 @@
             <p class="card-text">{{ exhibition.description }}</p>
             <p class="card-text"><strong>Date:</strong> {{ exhibition.date }}</p>
             <p class="card-text"><strong>Location:</strong> {{ exhibition.location }}</p>
+            <a href="{% url 'exhibition_edit' exhibition.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'exhibition_delete' exhibition.pk %}" class="btn btn-sm btn-danger">Delete</a>
           </div>
         </div>
       </div>
@@ -47,3 +51,5 @@
   </div>
 </div>
 {% endblock %}
+python manage.py makemigrations dashboard
+python manage.py migrate
