@@ -4,5 +4,21 @@
 <div class="container py-5">
   <h1 class="mb-4">Available Art</h1>
   <p class="lead">Browse original artworks currently available for purchase.</p>
+  <div class="row">
+    {% for art in available_arts %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ art.image.url }}" class="card-img-top" alt="{{ art.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ art.title }}</h5>
+            <p class="card-text">{{ art.description }}</p>
+            {% if art.price %}<p class="card-text"><strong>Price:</strong> {{ art.price }}</p>{% endif %}
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No available art at the moment.</p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
