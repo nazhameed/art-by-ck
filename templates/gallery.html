@@ -1,24 +1,70 @@
 {% extends "base.html" %}
 
 {% block title %}Gallery | Art by CK{% endblock %}
+{% block body_class %}gallery-background{% endblock %}
 
 {% block content %}
 <section class="container mt-5">
-  <h1>Gallery</h1>
-  <div class="row">
-    {% for image in images %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ image.title }}</h5>
-            <p class="card-text">{{ image.description }}</p>
-          </div>
-        </div>
+  <div class="row justify-content-center text-center">
+    <div class="col-lg-8">
+      {% comment %} <h1 class="display-5 fw-semibold mb-3">Gallery</h1> {% endcomment %}
+    </div>
+  </div>
+  <div class="row justify-content-center my-4">
+    <div class="col-lg-8 d-flex flex-column flex-md-row align-items-center justify-content-center gap-3 gallery-controls">
+      <span class="text-uppercase small fw-semibold letter-spacing-sm">Columns</span>
+      <div class="btn-group" role="group" aria-label="Choose gallery column count">
+        <input type="radio" class="btn-check" name="gallery-columns" id="gallery-columns-3" value="3" autocomplete="off">
+        <label class="btn btn-outline-dark" for="gallery-columns-3">3</label>
+
+        <input type="radio" class="btn-check" name="gallery-columns" id="gallery-columns-4" value="4" autocomplete="off" checked>
+        <label class="btn btn-outline-dark" for="gallery-columns-4">4</label>
+
+        <input type="radio" class="btn-check" name="gallery-columns" id="gallery-columns-5" value="5" autocomplete="off">
+        <label class="btn btn-outline-dark" for="gallery-columns-5">5</label>
       </div>
-    {% empty %}
-      <p class="text-center">No images in the gallery yet.</p>
-    {% endfor %}
+    </div>
   </div>
 </section>
+<section class="container-fluid px-4 px-xl-5 text-center">
+  <h2 class="lead mb-4 cedarville-cursive-regular display-5 rounded-1 d-inline-block px-3 py-2 gallery-quote">I am a mother artist.</h2>
+</section>
+{% include "inserts/gallery-grid.html" %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const grid = document.querySelector('.gallery-grid[data-masonry]');
+    const columnInputs = document.querySelectorAll('input[name="gallery-columns"]');
+
+    if (!grid || !columnInputs.length) {
+      return;
+    }
+
+    const applyColumns = (cols) => {
+      grid.dataset.cols = cols;
+      const masonryInstance = window.Masonry && window.Masonry.data ? window.Masonry.data(grid) : null;
+      if (masonryInstance) {
+        masonryInstance.layout();
+      }
+    };
+
+    columnInputs.forEach((input) => {
+      input.addEventListener('change', () => {
+        if (input.checked) {
+          applyColumns(input.value);
+        }
+      });
+    });
+
+    const initialize = () => {
+      const checked = document.querySelector('input[name="gallery-columns"]:checked');
+      applyColumns(checked ? checked.value : 3);
+    };
+
+    if (document.readyState === 'complete') {
+      initialize();
+    } else {
+      window.addEventListener('load', initialize, { once: true });
+    }
+  });
+</script>
 {% endblock %}

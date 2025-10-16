@@ -9,6 +9,7 @@
   --ck-accent-dark: #d93d85;
   --ck-highlight: #ffc857;
   --ck-highlight-dark: #e6b04d;
+  --ck-highlight-rgb: 255, 200, 87;
 
   --bs-body-font-family: "Montserrat", Arial, sans-serif;
   --bs-body-bg: var(--ck-background);
@@ -92,30 +93,168 @@ body {
   color: white;
 }
 
-main:has(> .gallery-card) {
-  display: grid;
-  place-items: center;
-  padding: 2rem;
+.gallery-grid {
+  --gallery-card-border: 0.1rem;
+  --gallery-card-radius: 0.2rem;
+  --gallery-card-border-color: rgb(207 35 168 / 15%);
+  --gallery-card-hover-border-color: rgba(0, 0, 0, 0.26);
+  --gallery-card-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.2);
+  --gallery-card-hover-shadow: 0 1.25rem 2.5rem -2.5rem rgba(0, 0, 0, 0.45);
+  --gallery-grid-gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-inline: auto;
+  max-width: min(1600px, 98vw);
+  --bs-gutter-x: var(--gallery-grid-gap);
+  --bs-gutter-y: var(--gallery-grid-gap);
+}
+
+.gallery-grid-item {
+  display: flex;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.gallery-quote {
+  color: rgb(207 14 182);
+  background-color: rgb(219 228 241);
+  text-shadow: -2px -1px #99ecff;
+}
+
+@media (max-width: 767.98px) {
+  /* Hide column toggles when layout collapses to a single column */
+  .gallery-controls {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .gallery-grid[data-cols="3"] .gallery-grid-item {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+
+  .gallery-grid[data-cols="4"] .gallery-grid-item {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .gallery-grid[data-cols="5"] .gallery-grid-item {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+.gallery-grid-item .gallery-card {
+  width: 100%;
 }
 
 .gallery-card {
-  display: block;
-  max-width: min(80vw, 640px);
-  border: 0.5rem solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
-  box-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  border: var(--gallery-card-border) solid var(--gallery-card-border-color);
+  border-radius: var(--gallery-card-radius);
+  box-shadow:
+    var(--gallery-card-shadow),
+    0 0 0 0 rgba(var(--ck-highlight-rgb, 255, 200, 87), 0);
+  position: relative;
   transition:
     border-color 0.3s ease,
     border-radius 0.3s ease,
     box-shadow 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.4s ease;
 }
 
 .gallery-card:hover,
 .gallery-card:focus-visible {
-  border-color: #ffc757a6;
-  border-radius: 2rem;
-  box-shadow: -3px 5px 20px 3px rgb(198 95 208);
-  transform: scale(1.01);
+  border-color: var(--gallery-card-hover-border-color);
+  border-radius: calc(var(--gallery-card-radius) + 0.1rem);
+  box-shadow:
+    var(--gallery-card-hover-shadow),
+    0 0 28px 4px rgba(var(--ck-highlight-rgb, 255, 200, 87), 0.45),
+    0 0 16px 2px rgba(var(--ck-highlight-rgb, 255, 200, 87), 0.35) inset;
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.gallery-card figure {
+  margin: 0;
+  border-bottom: none;
+  overflow: hidden;
+  border-radius: calc(var(--gallery-card-radius) - var(--gallery-card-border));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.gallery-card:hover img,
+.gallery-card:focus-visible img {
+  transform: scale(1.03);
+}
+
+.gallery-card-body {
+  padding: 1rem 0.75rem 1.25rem;
+  text-align: center;
+}
+
+.gallery-card-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  font-weight: 500;
+}
+
+/* Blur backdrop for gallery page */
+body.gallery-background {
+  position: relative;
+  background-color: #050505;
+}
+
+body.gallery-background::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../images/001_73a7851e045fcb414e226334091591c5.jpg") center / cover no-repeat;
+  filter: blur(6px) hue-rotate(83deg);
+  z-index: -2;
+  pointer-events: none;
+}
+
+body.gallery-background::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(238, 238, 238, 0.85);
+  z-index: -1;
+  pointer-events: none;
+}
+
+body.gallery-background header,
+body.gallery-background main,
+body.gallery-background footer {
+  position: relative;
+  z-index: 0;
+}
+
+.gallery-card-meta {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: var(--ck-muted);
+}
+
+.gallery-card-description {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.75);
 }
 
