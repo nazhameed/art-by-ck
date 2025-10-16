@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Add/Edit Exhibition | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">{{ action }} Exhibition</h2>
+  <form method="post" enctype="multipart/form-data" class="mb-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-warning">Save</button>
+    <a href="{% url 'dashboard_exhibition' %}" class="btn btn-outline-secondary ms-2">Back to Exhibitions</a>
+  </form>
+</div>
+{% endblock %}

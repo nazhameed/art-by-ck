@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Exhibition | Art by CK{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Exhibitions</h2>
+  <p>Step into the work, I create beautiful exhibitions that allow viewers to engage with the art in a transformative way.</p>
+  <div class="row">
+    {% for exhibition in exhibitions %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          {% if exhibition.image %}
+            <img src="{{ exhibition.image.url }}" class="card-img-top" alt="{{ exhibition.title }}">
+          {% endif %}
+          {% if exhibition.video %}
+            <video controls class="w-100 mb-2" style="max-height:300px;">
+              {% with url=exhibition.video.url|default:exhibition.video.build_url %}
+                {% if url %}
+                  {% if url|slice:"-4:" == ".mp4" %}
+                    <source src="{{ url }}" type="video/mp4">
+                  {% elif url|slice:"-4:" == ".mov" %}
+                    <source src="{{ url }}" type="video/quicktime">
+                  {% elif url|slice:"-5:" == ".webm" %}
+                    <source src="{{ url }}" type="video/webm">
+                  {% elif url|slice:"-4:" == ".ogg" %}
+                    <source src="{{ url }}" type="video/ogg">
+                  {% else %}
+                    <source src="{{ url }}" type="video/mp4">
+                  {% endif %}
+                {% endif %}
+              {% endwith %}
+              Your browser does not support the video tag.
+            </video>
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ exhibition.title }}</h5>
+            <p class="card-text">{{ exhibition.description }}</p>
+            <p class="card-text"><strong>Date:</strong> {{ exhibition.date }}</p>
+            <p class="card-text"><strong>Location:</strong> {{ exhibition.location }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No exhibitions yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

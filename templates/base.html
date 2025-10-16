@@ -47,6 +47,13 @@
             <ul
               class="navbar-nav flex-wrap justify-content-center text-center gap-lg-3"
             >
+              <li class="nav-item" {% if request.resolver_match.url_name == 'home' %}style="display:none;"{% endif %}>
+                <a
+                  class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                  href="{% url 'home' %}"
+                  >Home</a
+                >
+              </li>
               <li class="nav-item">
                 <a
                   class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
@@ -70,13 +77,12 @@
               </li>
               <li class="nav-item">
                 <a
-                class="nav-link {% if request.resolver_match.url_name == 'immersive' %}active{% endif %}"
-                href="{% url 'immersive' %}"
-                >Immersive</a
+                  class="nav-link {% if request.resolver_match.url_name == 'exhibition' %}active{% endif %}"
+                  href="{% url 'exhibition' %}"
+                  >Exhibitions</a
                 >
               </li>
-              <li class="nav-item">
-                <a
+              <a
                   class="nav-link {% if request.resolver_match.url_name == 'journal' %}active{% endif %}"
                   href="{% url 'journal' %}"
                   >Journal</a

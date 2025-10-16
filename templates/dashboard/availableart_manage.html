@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Manage Available Art | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Manage Available Art</h2>
+  <div class="text-center mb-4">
+    <a href="{% url 'available_art_add' %}" class="btn btn-success">Add Available Art</a>
+    <a href="{% url 'artist_dashboard' %}" class="btn btn-outline-secondary ms-2">Back to Dashboard</a>
+  </div>
+  <hr>
+  <div class="row">
+    {% for art in available_arts %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ art.image.url }}" class="card-img-top" alt="{{ art.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ art.title }}</h5>
+            <p class="card-text">{{ art.description }}</p>
+            <p class="card-text"><strong>Price:</strong> {{ art.price }}</p>
+            <p class="card-text"><strong>Available:</strong> {{ art.is_available|yesno:"Yes,No" }}</p>
+            <a href="{% url 'available_art_edit' art.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'available_art_delete' art.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No available art yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

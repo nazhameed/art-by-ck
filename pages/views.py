@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from dashboard.models import GalleryImage, AvailableArt, JournalEntry
+from dashboard.models import GalleryImage, AvailableArt, JournalEntry, About, Exhibition
 
 class AboutView(TemplateView):
     template_name = "about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['about'] = About.objects.first()
+        return context
 
 class GalleryView(TemplateView):
     template_name = "gallery.html"
@@ -13,8 +18,13 @@ class GalleryView(TemplateView):
         context['images'] = GalleryImage.objects.all().order_by('-created_at')
         return context
 
-class ImmersiveView(TemplateView):
-    template_name = "immersive.html"
+class ExhibitionView(TemplateView):
+    template_name = "exhibition.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['exhibitions'] = Exhibition.objects.all().order_by('-date')
+        return context
 
 class ContactView(TemplateView):
     template_name = "contact.html"
