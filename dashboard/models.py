@@ -29,28 +29,3 @@ class JournalEntry(models.Model):
 
     def __str__(self):
         return self.title
-
-class ImmersiveHero(models.Model):
-    image = models.ImageField(upload_to='immersive/hero/')
-    caption = models.CharField(max_length=255, blank=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return f"Immersive Hero (updated {self.updated_at:%Y-%m-%d})"
-
-class ImmersiveMedia(models.Model):
-    MEDIA_TYPE_CHOICES = [
-        ('image', 'Image'),
-        ('video', 'Video'),
-    ]
-    hero = models.ForeignKey(ImmersiveHero, on_delete=models.CASCADE, related_name='media', null=True, blank=True)
-    media_type = models.CharField(max_length=5, choices=MEDIA_TYPE_CHOICES, default='image')
-    image = models.ImageField(upload_to='immersive/media/', blank=True, null=True)
-    video_url = models.URLField(blank=True, null=True)
-    title = models.CharField(max_length=200)
-    description = models.TextField(blank=True)
-    order = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.title

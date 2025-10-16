@@ -12,8 +12,4 @@ urlpatterns = [
     path('journal/add/', views.journal_add, name='journal_add'),
     path('journal/<int:pk>/edit/', views.journal_edit, name='journal_edit'),
     path('journal/<int:pk>/delete/', views.journal_delete, name='journal_delete'),
-    path('immersive/hero/', views.immersive_hero_edit, name='immersive_hero_edit'),
-    path('immersive/media/add/', views.immersive_media_add, name='immersive_media_add'),
-    path('immersive/media/<int:pk>/edit/', views.immersive_media_edit, name='immersive_media_edit'),
-    path('immersive/media/<int:pk>/delete/', views.immersive_media_delete, name='immersive_media_delete'),
 ]
