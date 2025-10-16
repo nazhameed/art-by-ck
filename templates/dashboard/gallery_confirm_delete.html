@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Delete Gallery Image | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 500px;">
+  <h2 class="mb-4 text-center">Delete Gallery Image</h2>
+  <div class="alert alert-danger text-center">
+    Are you sure you want to delete <strong>{{ image.title }}</strong>?
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger w-100">Yes, Delete</button>
+    <a href="{% url 'artist_dashboard' %}" class="btn btn-secondary w-100 mt-2">Cancel</a>
+  </form>
+</div>
+{% endblock %}
