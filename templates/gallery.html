@@ -1,22 +1,23 @@
 {% extends "base.html" %}
 
 {% block title %}Gallery | Art by CK{% endblock %}
+{% block body_class %}gallery-background{% endblock %}
 
 {% block content %}
 <section class="container mt-5">
   <div class="row justify-content-center text-center">
     <div class="col-lg-8">
-      <h1 class="display-5 fw-semibold mb-3">Gallery</h1>
+      {% comment %} <h1 class="display-5 fw-semibold mb-3">Gallery</h1> {% endcomment %}
     </div>
   </div>
   <div class="row justify-content-center my-4">
     <div class="col-lg-8 d-flex flex-column flex-md-row align-items-center justify-content-center gap-3 gallery-controls">
       <span class="text-uppercase small fw-semibold letter-spacing-sm">Columns</span>
       <div class="btn-group" role="group" aria-label="Choose gallery column count">
-        <input type="radio" class="btn-check" name="gallery-columns" id="gallery-columns-3" value="3" autocomplete="off" checked>
+        <input type="radio" class="btn-check" name="gallery-columns" id="gallery-columns-3" value="3" autocomplete="off">
         <label class="btn btn-outline-dark" for="gallery-columns-3">3</label>
 
-        <input type="radio" class="btn-check" name="gallery-columns" id="gallery-columns-4" value="4" autocomplete="off">
+        <input type="radio" class="btn-check" name="gallery-columns" id="gallery-columns-4" value="4" autocomplete="off" checked>
         <label class="btn btn-outline-dark" for="gallery-columns-4">4</label>
 
         <input type="radio" class="btn-check" name="gallery-columns" id="gallery-columns-5" value="5" autocomplete="off">
@@ -26,7 +27,7 @@
   </div>
 </section>
 <section class="container-fluid px-4 px-xl-5 text-center">
-  <h2 class="lead text-muted mb-4 cedarville-cursive-regular display-5">I am a mother artist.</h2>
+  <h2 class="lead mb-4 cedarville-cursive-regular display-5 rounded-1 d-inline-block px-3 py-2 gallery-quote">I am a mother artist.</h2>
 </section>
 {% include "inserts/gallery-grid.html" %}
 <script>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <script src="https://kit.fontawesome.com/ddb0718bd5.js" crossorigin="anonymous"></script>
   </head>
-  <body class="d-flex flex-column min-vh-100">
+  <body class="d-flex flex-column min-vh-100 {% block body_class %}{% endblock %}">
     <header class="bg-black text-light">
       <nav class="navbar navbar-expand-lg ck-navbar navbar-dark">
         <div class="container flex-column">

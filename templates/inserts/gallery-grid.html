@@ -1,6 +1,6 @@
 <div class="container-fluid gallery-grid-wrapper py-4 px-4 px-xl-5">
   {% if images %}
-    <div class="row g-4 gallery-grid" data-cols="3" data-masonry='{"percentPosition": true }'>
+    <div class="row g-4 gallery-grid" data-cols="4" data-masonry='{"percentPosition": true }'>
       {% for image in images %}
         <div class="col gallery-grid-item">
           <article class="gallery-card" tabindex="0">
@@ -13,9 +13,9 @@
             </figure>
             <div class="gallery-card-body">
               <h3 class="gallery-card-title mb-0">{{ image.title }}</h3>
-              {% if image.created_at %}
+              {% comment %} {% if image.created_at %}
                 <p class="gallery-card-meta mb-0">{{ image.created_at|date:"Y" }}</p>
-              {% endif %}
+              {% endif %} {% endcomment %}
               {% if image.description %}
                 <p class="gallery-card-description mt-3 mb-0">{{ image.description }}</p>
               {% endif %}
