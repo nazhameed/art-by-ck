@@ -82,6 +82,12 @@
                   >Exhibitions</a
                 >
               </li>
+              <a
+                  class="nav-link {% if request.resolver_match.url_name == 'journal' %}active{% endif %}"
+                  href="{% url 'journal' %}"
+                  >Journal</a
+                >
+              </li>
               <li class="nav-item">
                 <a
                   class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
