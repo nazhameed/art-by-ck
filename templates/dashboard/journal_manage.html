@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Manage Journal | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Manage Journal Entries</h2>
+  <div class="text-center mb-4">
+    <a href="{% url 'journal_add' %}" class="btn btn-info">Add Journal Entry</a>
+    <a href="{% url 'artist_dashboard' %}" class="btn btn-outline-secondary ms-2">Back to Dashboard</a>
+  </div>
+  <hr>
+  <div class="row">
+    {% for entry in journal_entries %}
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          {% if entry.image %}
+            <img src="{{ entry.image.url }}" class="card-img-top" alt="{{ entry.title }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ entry.title }}</h5>
+            <p class="card-text">{{ entry.content|truncatewords:40 }}</p>
+            <a href="{% url 'journal_edit' entry.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'journal_delete' entry.pk %}" class="btn btn-sm btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No journal entries yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

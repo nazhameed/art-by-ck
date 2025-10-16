@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Delete Exhibition | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Delete Exhibition</h2>
+  <div class="alert alert-danger">Are you sure you want to delete <strong>{{ exhibition.title }}</strong>?</div>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'dashboard_exhibition' %}" class="btn btn-outline-secondary ms-2">Cancel</a>
+  </form>
+</div>
+{% endblock %}
