@@ -152,7 +152,7 @@ main:has(.gallery-grid) {
 
 .gallery-card img {
   width: 100%;
-  height: clamp(320px, 32vw, 460px);
+  height: auto;
   object-fit: cover;
   transition: transform 0.45s ease;
 }
@@ -180,5 +180,12 @@ main:has(.gallery-grid) {
   letter-spacing: 0.14rem;
   text-transform: uppercase;
   color: var(--ck-muted);
+}
+
+.gallery-card-description {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.75);
 }
 
