@@ -1,8 +1,8 @@
 <div class="container-fluid gallery-grid-wrapper py-4 px-4 px-xl-5">
   {% if images %}
-    <div class="row g-4 gallery-grid">
+    <div class="row g-4 gallery-grid" data-cols="3" data-masonry='{"percentPosition": true }'>
       {% for image in images %}
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col gallery-grid-item">
           <article class="gallery-card" tabindex="0">
             <figure>
               <img

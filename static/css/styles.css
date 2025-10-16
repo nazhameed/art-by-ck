@@ -93,10 +93,6 @@ body {
   color: white;
 }
 
-main:has(.gallery-grid) {
-  padding-block: clamp(2rem, 4vw, 3.5rem);
-}
-
 .gallery-grid {
   --gallery-card-border: 0.1rem;
   --gallery-card-radius: 0.2rem;
@@ -104,10 +100,38 @@ main:has(.gallery-grid) {
   --gallery-card-hover-border-color: rgba(0, 0, 0, 0.26);
   --gallery-card-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.2);
   --gallery-card-hover-shadow: 0 1.25rem 2.5rem -2.5rem rgba(0, 0, 0, 0.45);
+  --gallery-grid-gap: clamp(1.5rem, 3vw, 2.5rem);
   margin-inline: auto;
   max-width: min(1600px, 98vw);
-  --bs-gutter-x: clamp(1.75rem, 4vw, 3rem);
-  --bs-gutter-y: clamp(1.75rem, 4vw, 3rem);
+  --bs-gutter-x: var(--gallery-grid-gap);
+  --bs-gutter-y: var(--gallery-grid-gap);
+}
+
+.gallery-grid-item {
+  display: flex;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid[data-cols="3"] .gallery-grid-item {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+
+  .gallery-grid[data-cols="4"] .gallery-grid-item {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .gallery-grid[data-cols="5"] .gallery-grid-item {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+.gallery-grid-item .gallery-card {
+  width: 100%;
 }
 
 .gallery-card {
@@ -153,7 +177,7 @@ main:has(.gallery-grid) {
 .gallery-card img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  display: block;
   transition: transform 0.45s ease;
 }
 
