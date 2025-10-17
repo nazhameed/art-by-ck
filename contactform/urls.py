@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ContactFormView, contact_form_ajax
+from .views import ContactFormView
 
 app_name = 'contactform'
 
