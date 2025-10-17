@@ -305,6 +305,26 @@ body.gallery-background footer {
 }
 
 /* ==========================================================================
+   Journal Page
+   ========================================================================== */
+.journal-header {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.75rem 2rem;
+  background-color: #fad6e6de;
+  border-radius: 1.25rem;
+}
+
+.journal-card {
+  background-color: #fad6e6de;
+  border-radius: 1.25rem;
+}
+
+.journal-card h3 {
+  color: var(--ck-ink);
+}
+
+/* ==========================================================================
    Dashboard Admin Forms
    ========================================================================== */
 .dashboard-form-container {

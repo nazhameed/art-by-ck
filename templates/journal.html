@@ -2,13 +2,15 @@
 {% block title %}Journal | Art by CK{% endblock %}
 {% block content %}
 <div class="container py-5">
-  <h1 class="mb-4">Journal</h1>
-  <p class="lead">Read the latest thoughts, stories, and updates from the artist.</p>
+  <div class="journal-header text-center mb-5">
+    <h1 class="mb-3 cedarville-cursive-regular display-3">journal</h1>
+    <p class="lead mb-0">Read my latest thoughts, stories, and updates</p>
+  </div>
   {% for entry in journal_entries %}
     {% with is_even=forloop.counter|divisibleby:2 %}
       <article class="row g-0 align-items-stretch mb-5">
         <div class="col-12 {% if entry.image %}col-md-6{% endif %} {% if entry.image and is_even %}order-md-2{% endif %}">
-          <div class="h-100 bg-white shadow-sm d-flex flex-column justify-content-center p-4 p-md-5">
+          <div class="journal-card h-100 shadow-sm d-flex flex-column justify-content-center p-4 p-md-5">
             <h3 class="mb-3">{{ entry.title }}</h3>
             <div class="mb-3">{{ entry.content|linebreaks }}</div>
             <p class="text-muted small mb-0">Posted on {{ entry.created_at|date:"F j, Y" }}</p>
