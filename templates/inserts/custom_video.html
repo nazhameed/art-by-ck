@@ -48,6 +48,7 @@
 
           const hoverTargets = [video, container].filter(Boolean);
           let pointerInside = false;
+          let spaceDown = false;
 
           hoverTargets.forEach((target) => {
             target.addEventListener("mouseenter", () => {
@@ -92,16 +93,36 @@
             video._customVideoMouseDown = true;
           }
 
+          const isSpaceEvent = (event) =>
+            event.code === "Space" || event.key === " ";
+
+          const hasKeyboardControl = () =>
+            pointerInside || document.activeElement === video;
+
           const handleKeyDown = (event) => {
-            if (!pointerInside) return;
-            if (event.code === "Space" || event.key === " ") {
+            if (!isSpaceEvent(event) || !hasKeyboardControl()) return;
+            if (spaceDown) {
               event.preventDefault();
-              togglePlayback();
-              showAndAutoHideControls();
+              return;
             }
+
+            spaceDown = true;
+            event.preventDefault();
+            togglePlayback();
+            showAndAutoHideControls();
           };
 
           document.addEventListener("keydown", handleKeyDown);
+          const handleKeyUp = (event) => {
+            if (!isSpaceEvent(event)) return;
+            spaceDown = false;
+            if (hasKeyboardControl()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          };
+
+          document.addEventListener("keyup", handleKeyUp);
 
           if (!hlsSrc) return;
 
