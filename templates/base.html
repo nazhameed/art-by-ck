@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    {% block extra_styles %}{% endblock %}
   </head>
   <body class="d-flex flex-column min-vh-100 {% block body_class %}{% endblock %}">
     <header class="bg-black text-light">
