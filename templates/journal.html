@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Journal | Art by CK{% endblock %}
+{% block body_class %}journal-background{% endblock %}
 {% block content %}
 <div class="container py-5">
-  <h1 class="mb-4">Journal</h1>
-  <p class="lead">Read the latest thoughts, stories, and updates from the artist.</p>
+  <div class="gallery-quote cedarville-cursive-regular mb-4">
+    In a world driven by noise and distraction, storytelling becomes a form of resistance
+  </div>
   <div class="row">
     {% for entry in journal_entries %}
       <div class="col-md-8 offset-md-2 mb-5">
