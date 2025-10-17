@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* ==========================================================================
+   Theme Variables
+   ========================================================================== */
 :root {
   color-scheme: light;
   --ck-background: #f8f7f4;
@@ -26,12 +29,18 @@
   --bs-navbar-brand-hover-color: var(--ck-accent);
 }
 
+/* ==========================================================================
+   Base Elements
+   ========================================================================== */
 body {
   font-family: var(--bs-body-font-family);
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
 }
 
+/* ==========================================================================
+   Typography Utilities
+   ========================================================================== */
 .cedarville-cursive-regular {
   font-family: "Cedarville Cursive", cursive;
 }
@@ -40,6 +49,9 @@ body {
   letter-spacing: 0.14rem;
 }
 
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
 .ck-navbar {
   background: #0b0b0f;
   padding-block: 1.1rem;
@@ -93,6 +105,18 @@ body {
   color: white;
 }
 
+/* ==========================================================================
+   Gallery Page Styles
+   ========================================================================== */
+
+/* Gallery heading callout */
+.gallery-quote {
+  color: rgb(215 141 0) !important;
+  background-color: rgb(219 228 241) !important;
+  text-shadow: -2px -1px #dddddd;
+}
+
+/* Gallery masonry grid */
 .gallery-grid {
   --gallery-card-border: 0.1rem;
   --gallery-card-radius: 0.2rem;
@@ -113,19 +137,6 @@ body {
   max-width: 100%;
 }
 
-.gallery-quote {
-  color: rgb(207 14 182);
-  background-color: rgb(219 228 241);
-  text-shadow: -2px -1px #99ecff;
-}
-
-@media (max-width: 767.98px) {
-  /* Hide column toggles when layout collapses to a single column */
-  .gallery-controls {
-    display: none !important;
-  }
-}
-
 @media (min-width: 768px) {
   .gallery-grid[data-cols="3"] .gallery-grid-item {
     flex: 0 0 calc(100% / 3);
@@ -143,6 +154,7 @@ body {
   }
 }
 
+/* Gallery cards */
 .gallery-grid-item .gallery-card {
   width: 100%;
 }
@@ -211,7 +223,22 @@ body {
   font-weight: 500;
 }
 
-/* Blur backdrop for gallery page */
+.gallery-card-meta {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: var(--ck-muted);
+}
+
+.gallery-card-description {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* Gallery background blur */
 body.gallery-background {
   position: relative;
   background-color: #050505;
@@ -243,18 +270,98 @@ body.gallery-background footer {
   z-index: 0;
 }
 
-.gallery-card-meta {
-  margin-top: 0.35rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.14rem;
+@media (max-width: 767.98px) {
+  /* Hide column toggles when layout collapses to a single column */
+  .gallery-controls {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Dashboard Admin Forms
+   ========================================================================== */
+.dashboard-form-container {
+  max-width: 720px;
+}
+
+.dashboard-form {
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 0.9rem;
+  padding: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  box-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-form label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.dashboard-form input:not([type="checkbox"]):not([type="radio"]),
+.dashboard-form select,
+.dashboard-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 0.6rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-form input:not([type="checkbox"]):not([type="radio"]):focus,
+.dashboard-form select:focus,
+.dashboard-form textarea:focus {
+  border-color: rgba(255, 79, 162, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 79, 162, 0.15);
+  outline: 0;
+}
+
+.dashboard-form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.dashboard-form .helptext,
+.dashboard-form .form-text {
+  display: block;
+  font-size: 0.85rem;
   color: var(--ck-muted);
 }
 
-.gallery-card-description {
-  margin-top: 1rem;
+.dashboard-form .errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   font-size: 0.9rem;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.75);
+  color: #d63232;
+}
+
+.dashboard-form .invalid-feedback {
+  font-size: 0.9rem;
+}
+
+.dashboard-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.dashboard-form-actions .btn {
+  padding: 0.65rem 1.6rem;
+  border-radius: 0.6rem;
+}
+
+@media (max-width: 575.98px) {
+  .dashboard-form-actions {
+    flex-direction: column;
+  }
+
+  .dashboard-form-actions .btn {
+    width: 100%;
+  }
 }
 
