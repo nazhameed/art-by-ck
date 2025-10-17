@@ -14,7 +14,6 @@ class ContactSubmission(models.Model):
         ('general', 'General Inquiry'),
         ('purchase', 'Purchase Interest'),
         ('exhibition', 'Exhibition Inquiry'),
-        ('commission', 'Commission Request'),
         ('other', 'Other'),
     ]
     
