@@ -239,22 +239,14 @@ LOGIN_REDIRECT_URL = '/ck-admin-panel/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 
-# Email Configuration - Send Real Emails
-# Using MailerSend for reliable email delivery (free tier: 12,000 emails/month)
-if os.environ.get('MAILERSEND_SMTP_USERNAME') and os.environ.get('MAILERSEND_SMTP_PASSWORD'):
-    # MailerSend SMTP (excellent deliverability and analytics)
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.mailersend.net'
-    EMAIL_PORT = 587
-    EMAIL_HOST_USER = os.environ.get('MAILERSEND_SMTP_USERNAME')
-    EMAIL_HOST_PASSWORD = os.environ.get('MAILERSEND_SMTP_PASSWORD')
-    EMAIL_USE_TLS = True
-else:
-    # Fallback: Save emails as files (for testing without email service)
-    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-    EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
-    print("⚠️  No email service configured. Emails will be saved as files.")
-    print("   To send real emails, add MailerSend credentials to your .env file")
+# Email Configuration
+# MailerSend SMTP configuration (requires MAILERSEND_SMTP_USERNAME and MAILERSEND_SMTP_PASSWORD in environment)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailersend.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('MAILERSEND_SMTP_USERNAME')
+EMAIL_HOST_PASSWORD = os.environ.get('MAILERSEND_SMTP_PASSWORD')
+EMAIL_USE_TLS = True
 
 # Default email settings
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@artbyck.com')
