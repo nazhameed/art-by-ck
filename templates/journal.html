@@ -3,9 +3,8 @@
 {% block body_class %}journal-background{% endblock %}
 {% block content %}
 <div class="container py-5">
-  <div class="journal-header text-center mb-5">
-    <h1 class="mb-3 cedarville-cursive-regular display-3">journal</h1>
-    <p class="lead mb-0">Read my latest thoughts, stories, and updates</p>
+  <div class="gallery-quote cedarville-cursive-regular mb-4">
+    In a world driven by noise and distraction, storytelling becomes a form of resistance
   </div>
   {% for entry in journal_entries %}
     {% with is_even=forloop.counter|divisibleby:2 %}
