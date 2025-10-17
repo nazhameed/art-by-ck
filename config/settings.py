@@ -133,7 +133,7 @@ if not database_url:
     raise ImproperlyConfigured("Set either PRODUCTION_DB or DEVELOPMENT_DB environment variable with your database URL.")
 
 DATABASES = {
-    'default': dj_database_url.parse(database_url, conn_max_age=0),
+    'default': dj_database_url.parse(database_url, conn_max_age=600),
 }
 
 
