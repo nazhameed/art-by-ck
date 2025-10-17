@@ -35,22 +35,44 @@
     const grid = document.querySelector('.gallery-grid[data-masonry]');
     const columnInputs = document.querySelectorAll('input[name="gallery-columns"]');
 
-    if (!grid || !columnInputs.length) {
+    if (!grid) {
       return;
     }
 
+    const getMasonryInstance = () =>
+      window.Masonry && window.Masonry.data ? window.Masonry.data(grid) : null;
+
+    const relayout = () => {
+      const instance = getMasonryInstance();
+      if (instance) {
+        instance.layout();
+      }
+    };
+
+    const watchImages = () => {
+      if (window.imagesLoaded) {
+        window.imagesLoaded(grid, relayout);
+      } else {
+        grid.querySelectorAll('img').forEach((img) => {
+          if (img.complete) {
+            return;
+          }
+          img.addEventListener('load', relayout, { once: true });
+          img.addEventListener('error', relayout, { once: true });
+        });
+      }
+    };
+
     const applyColumns = (cols) => {
       grid.dataset.cols = cols;
-      const masonryInstance = window.Masonry && window.Masonry.data ? window.Masonry.data(grid) : null;
-      if (masonryInstance) {
-        masonryInstance.layout();
-      }
+      relayout();
     };
 
     columnInputs.forEach((input) => {
       input.addEventListener('change', () => {
         if (input.checked) {
           applyColumns(input.value);
+          watchImages();
         }
       });
     });
@@ -58,6 +80,7 @@
     const initialize = () => {
       const checked = document.querySelector('input[name="gallery-columns"]:checked');
       applyColumns(checked ? checked.value : 3);
+      watchImages();
     };
 
     if (document.readyState === 'complete') {
