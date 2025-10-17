@@ -1,4 +1,5 @@
 from django import forms
+from django.core.files.uploadedfile import UploadedFile
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Column, Field, Layout, Row
 from crispy_bootstrap5.bootstrap5 import Switch
@@ -94,17 +95,22 @@ class ExhibitionForm(DashboardCrispyMixin, forms.ModelForm):
             "date": forms.DateInput(attrs={"type": "date", "class": "form-control"}),
             "location": forms.TextInput(attrs={"class": "form-control"}),
             "image": forms.ClearableFileInput(attrs={"class": "form-control"}),
-            "video": forms.ClearableFileInput(attrs={"class": "form-control"}),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._init_helper()
+        self.fields["video"].widget = forms.FileInput(
+            attrs={"class": "form-control"}
+        )
+        self.fields["video"].help_text = (
+            "Uploading a new video replaces the current Cloudinary video."
+        )
 
     def save(self, commit=True):
         instance = super().save(commit=False)
         video_file = self.cleaned_data.get("video")
-        if video_file:
+        if isinstance(video_file, UploadedFile):
             result = cloudinary_upload(video_file, resource_type="video")
             instance.video = result["public_id"]
         if commit:
