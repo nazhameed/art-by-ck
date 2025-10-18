@@ -313,6 +313,11 @@ body {
   margin-bottom: 2.5rem;
   text-align: center;
   font-family: "Cedarville Cursive", cursive;
+  text-shadow: 0 0 5px #ffffff, 0 0 5px #ff003b, 0 0 12px #cdcdcd, 0 0 3px #ededed;
+}
+
+.custom-text-shadow {
+  text-shadow: 0 0 5px #ffffff, 0 0 5px #ff003b, 0 0 12px #cdcdcd, 0 0 3px #ededed;
 }
 
 /* Gallery masonry grid */
