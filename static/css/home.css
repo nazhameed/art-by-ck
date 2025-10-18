@@ -39,7 +39,9 @@
 .home-hero-script {
   font-size: clamp(3rem, 6vw, 5rem);
   color: var(--ck-highlight);
-  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 8px 32px rgba(0, 0, 0, 0.7);
   margin: 0 0 2rem 0;
   font-weight: 400;
 }
@@ -51,9 +53,9 @@
 
 .hero-arrow i {
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.95);
   animation: heroArrowBounce 2s ease-in-out infinite;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
 }
 
 @keyframes heroArrowBounce {
@@ -170,7 +172,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.4);
   pointer-events: none;
   z-index: -1;
 }
@@ -409,7 +411,8 @@
   text-transform: uppercase;
   letter-spacing: 0.16rem;
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .home-hero-stats .stat-item .value {
@@ -446,14 +449,16 @@
   letter-spacing: 0.18rem;
   font-size: 0.9rem;
   color: var(--ck-muted);
+  font-weight: 600;
 }
 
 .home-story blockquote {
-  border-left: 0.3rem solid rgba(var(--bs-primary-rgb), 0.55);
+  border-left: 0.3rem solid rgba(var(--bs-primary-rgb), 0.8);
   padding-left: 1.2rem;
   font-size: 1.1rem;
   line-height: 1.7;
-  color: #2b2b2b;
+  color: #1a1a1a;
+  font-weight: 500;
 }
 
 .artist-image-container {
@@ -588,6 +593,7 @@
   margin-bottom: 0.5rem;
   display: block;
   font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .home-preview-body h3 {
@@ -597,13 +603,15 @@
   margin: 0 0 1rem 0;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .home-preview-body p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 1rem;
   line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .home-preview-link {
@@ -617,6 +625,8 @@
   align-items: center;
   gap: 0.6rem;
   transition: color 0.3s ease;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .home-preview-link::after {
@@ -656,7 +666,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   pointer-events: none;
 }
 
@@ -721,10 +731,11 @@
 }
 
 .service-description {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-contact {
