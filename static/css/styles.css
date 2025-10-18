@@ -210,8 +210,15 @@ body {
    ========================================================================== */
 .ck-navbar {
   background: #0b0b0f;
-  padding-block: 1.1rem;
+  --bs-navbar-padding-y: 0;
   border-bottom: 4px solid var(--ck-accent);
+  min-height: 6rem;
+}
+
+.ck-navbar .container-fluid {
+  min-height: 6rem;
+  display: flex;
+  align-items: center;
 }
 
 .ck-navbar .navbar-brand {
@@ -220,7 +227,8 @@ body {
   transition: color 0.25s ease;
   align-items: center;
   display: flex;
-  height: 44px;
+  height: 100%;
+  padding: 0;
 }
 
 .ck-navbar .navbar-brand:hover,
@@ -284,14 +292,9 @@ body {
 
 /* Logo style for navbar */
 .navbar-logo {
-  height: 44px;
+  height: 100%;
   width: auto;
-  margin-right: 1rem;
   display: block;
-}
-
-.ck-navbar {
-  min-height: 44px;
 }
 
 /* ==========================================================================
