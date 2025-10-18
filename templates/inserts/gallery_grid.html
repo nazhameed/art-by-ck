@@ -1,0 +1,43 @@
+{% load cloudinary %}
+<div class="container-fluid gallery-grid-wrapper py-4 px-4 px-xl-5">
+  {% if images %}
+    <div class="row g-4 gallery-grid" data-cols="4" data-masonry='{"percentPosition": true }'>
+      {% for image in images %}
+        <div class="col gallery-grid-item">
+          <article class="gallery-card" tabindex="0">
+            <figure>
+              {% if image.image %}
+                {% with image_name=image.image.name %}
+                  <img
+                    src="{% cloudinary_url image_name width=800 crop='limit' quality='auto' fetch_format='auto' dpr='auto' %}"
+                    srcset="{% cloudinary_url image_name width=320 crop='limit' quality='auto' fetch_format='auto' dpr='auto' %} 320w,
+                            {% cloudinary_url image_name width=480 crop='limit' quality='auto' fetch_format='auto' dpr='auto' %} 480w,
+                            {% cloudinary_url image_name width=640 crop='limit' quality='auto' fetch_format='auto' dpr='auto' %} 640w,
+                            {% cloudinary_url image_name width=800 crop='limit' quality='auto' fetch_format='auto' dpr='auto' %} 800w,
+                            {% cloudinary_url image_name width=1024 crop='limit' quality='auto' fetch_format='auto' dpr='auto' %} 1024w"
+                    sizes="(max-width: 575px) 90vw, (max-width: 991px) 45vw, (max-width: 1399px) 30vw, 22vw"
+                    alt="{{ image.title }}"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                {% endwith %}
+              {% endif %}
+            </figure>
+            <div class="gallery-card-body">
+              <h3 class="gallery-card-title mb-0">{{ image.title }}</h3>
+              {% comment %} {% if image.created_at %}
+                <p class="gallery-card-meta mb-0">{{ image.created_at|date:"Y" }}</p>
+              {% endif %} {% endcomment %}
+              {% if image.description %}
+                <p class="gallery-card-description mt-3 mb-0">{{ image.description }}</p>
+              {% endif %}
+            </div>
+          </article>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-center text-muted lead mb-0">No images in the gallery yet.</p>
+  {% endif %}
+</div>
+

@@ -4,7 +4,24 @@
 <div class="container py-5">
   <h2 class="mb-4 text-center">Artist Dashboard</h2>
   <p class="text-center">Welcome! Here you can manage your artworks and site content.</p>
-  <!-- Add dashboard controls and links here -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-3 mb-3">
+      <a href="{% url 'dashboard_gallery' %}" class="btn btn-primary w-100">Manage Gallery</a>
+    </div>
+    <div class="col-md-3 mb-3">
+      <a href="{% url 'dashboard_availableart' %}" class="btn btn-success w-100">Manage Available Art</a>
+    </div>
+    <div class="col-md-3 mb-3">
+      <a href="{% url 'dashboard_journal' %}" class="btn btn-info w-100">Manage Journal</a>
+    </div>
+    <div class="col-md-3 mb-3">
+      <a href="{% url 'dashboard_exhibition' %}" class="btn btn-warning w-100">Manage Exhibition</a>
+    </div>
+    <div class="col-md-3 mb-3">
+      <a href="{% url 'dashboard_about' %}" class="btn btn-secondary w-100">Manage About</a>
+    </div>
+  </div>
+  <hr>
   <div class="text-center">
     <form action="{% url 'logout' %}" method="post" style="display:inline;">
       {% csrf_token %}

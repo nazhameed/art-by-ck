@@ -1,0 +1,5 @@
+- Add year of creation to image model
+- Update gallery to show year of creation
+- Add enhanced video player with streaming support for faster load times
+- Fix hamburger menu position issue on mobile
+- Enhance styling for all of the admin panel forms

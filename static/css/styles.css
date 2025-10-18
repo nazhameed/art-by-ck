@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* ==========================================================================
+   Theme Variables
+   ========================================================================== */
 :root {
   color-scheme: light;
   --ck-background: #f8f7f4;
   --ck-ink: #121212;
   --ck-muted: #6c6c6c;
-  --ck-accent: #2d7d7d;
-  --ck-accent-dark: #1f5656;
-  --ck-highlight: #ffc857;
-  --ck-highlight-dark: #e6b04d;
+  --ck-accent: #FF2D7A; /* vivid magenta */
+  --ck-accent-dark: #6c6c6c; /* neutral grey */
+  --ck-blush: #f7c6d9; /* soft blush pink */
+  --ck-pop: #00e0c6;   /* pop art teal */
 
   --bs-body-font-family: "Montserrat", Arial, sans-serif;
   --bs-body-bg: var(--ck-background);
@@ -16,21 +19,25 @@
   --bs-link-color: var(--ck-accent);
   --bs-link-hover-color: var(--ck-accent-dark);
   --bs-primary: var(--ck-accent);
-  --bs-primary-rgb: 45, 125, 125;
-  --bs-warning: var(--ck-highlight);
-  --bs-warning-rgb: 255, 200, 87;
+  --bs-primary-rgb: 255, 45, 122;
   --bs-navbar-color: rgba(255, 255, 255, 0.7);
   --bs-navbar-hover-color: #ffffff;
-  --bs-navbar-brand-color: var(--ck-highlight);
-  --bs-navbar-brand-hover-color: var(--ck-accent);
+  --bs-navbar-brand-color: var(--ck-accent);
+  --bs-navbar-brand-hover-color: var(--ck-accent-dark);
 }
 
+/* ==========================================================================
+   Base Elements
+   ========================================================================== */
 body {
   font-family: var(--bs-body-font-family);
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
 }
 
+/* ==========================================================================
+   Typography Utilities
+   ========================================================================== */
 .cedarville-cursive-regular {
   font-family: "Cedarville Cursive", cursive;
 }
@@ -39,14 +46,24 @@ body {
   letter-spacing: 0.14rem;
 }
 
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
 .ck-navbar {
   background: #0b0b0f;
   padding-block: 1.1rem;
-  border-bottom: 4px solid var(--ck-highlight);
+  border-bottom: 4px solid var(--ck-accent);
 }
 
 .ck-navbar .navbar-brand {
   letter-spacing: 0.2rem;
+  color: var(--ck-accent);
+  transition: color 0.25s ease;
+}
+
+.ck-navbar .navbar-brand:hover,
+.ck-navbar .navbar-brand:focus {
+  color: var(--ck-accent-dark) !important;
 }
 
 .ck-navbar .nav-link {
@@ -55,6 +72,12 @@ body {
   letter-spacing: 0.16rem;
   position: relative;
   transition: color 0.25s ease;
+  color: var(--ck-accent);
+}
+
+.ck-navbar .nav-link:hover,
+.ck-navbar .nav-link:focus-visible {
+  color: var(--ck-accent-dark);
 }
 
 .ck-navbar .nav-link::after {
@@ -71,11 +94,16 @@ body {
 
 .ck-navbar .nav-link:hover::after,
 .ck-navbar .nav-link:focus-visible::after {
-  background: var(--ck-highlight-dark);
+  background: var(--ck-accent-dark);
+}
+
+.ck-navbar .nav-link.active,
+.ck-navbar .nav-link.active:focus {
+  color: var(--ck-accent-dark);
 }
 
 .ck-navbar .nav-link.active::after {
-  background: var(--ck-highlight);
+  background: var(--ck-accent);
 }
 
 .ck-navbar .navbar-toggler {
@@ -92,31 +120,422 @@ body {
   color: white;
 }
 
-main:has(> .gallery-card) {
-  display: grid;
-  place-items: center;
-  padding: 2rem;
+/* ==========================================================================
+   Gallery Page Styles
+   ========================================================================== */
+
+/* Gallery heading callout */
+.gallery-quote {
+  color: #121212 !important;
+  background: none !important;
+  border-left: none;
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: 0.03em;
+  padding: 0.5em 0 0.6em 0;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-family: "Cedarville Cursive", cursive;
+}
+
+/* Gallery masonry grid */
+.gallery-grid {
+  --gallery-card-border: 0.1rem;
+  --gallery-card-radius: 0.2rem;
+  --gallery-card-border-color: rgb(207 35 168 / 15%);
+  --gallery-card-hover-border-color: rgba(0, 0, 0, 0.26);
+  --gallery-card-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.2);
+  --gallery-card-hover-shadow: 0 1.25rem 2.5rem -2.5rem rgba(0, 0, 0, 0.45);
+  --gallery-grid-gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-inline: auto;
+  max-width: min(1600px, 98vw);
+  --bs-gutter-x: var(--gallery-grid-gap);
+  --bs-gutter-y: var(--gallery-grid-gap);
+}
+
+.gallery-grid-item {
+  display: flex;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid[data-cols="3"] .gallery-grid-item {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+
+  .gallery-grid[data-cols="4"] .gallery-grid-item {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .gallery-grid[data-cols="5"] .gallery-grid-item {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+/* Gallery cards */
+.gallery-grid-item .gallery-card {
+  width: 100%;
 }
 
 .gallery-card {
-  display: block;
-  max-width: min(80vw, 640px);
-  border: 0.5rem solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
-  box-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.82); /* more opaque */
+  border: 2px solid #e3e3e3; /* neutral border */
+  border-radius: 0.45rem;
+  box-shadow:
+    0 2.5rem 4rem -2rem rgba(0, 0, 0, 0.12),
+    0 0 0 0 #e3e3e3;
+  position: relative;
   transition:
     border-color 0.3s ease,
     border-radius 0.3s ease,
     box-shadow 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.4s ease;
 }
 
 .gallery-card:hover,
 .gallery-card:focus-visible {
-  border-color: #ffc757a6;
-  border-radius: 2rem;
-  box-shadow: -3px 5px 20px 3px rgb(198 95 208);
-  transform: scale(1.01);
+  border-color: var(--ck-accent);
+  box-shadow:
+    0 2.5rem 4rem -2rem rgba(0, 0, 0, 0.28),
+    0 0 32px 8px var(--ck-accent),
+    0 0 24px 6px var(--ck-accent-dark) inset;
+  background: rgba(255,255,255,0.98);
+}
+
+.gallery-card figure {
+  margin: 0;
+  border-bottom: none;
+  overflow: hidden;
+  border-radius: calc(var(--gallery-card-radius) - var(--gallery-card-border));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.gallery-card:hover img,
+.gallery-card:focus-visible img {
+  transform: scale(1.03);
+}
+
+.gallery-card-body {
+  padding: 1rem 0.75rem 1.25rem;
+  text-align: center;
+}
+
+.gallery-card-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  font-weight: 500;
+}
+
+.gallery-card-meta {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: var(--ck-muted);
+}
+
+.gallery-card-description {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* Gallery background blur - unified selectors for header, main, footer */
+body.gallery-background,
+body.about-background,
+body.available-art-background,
+body.exhibition-background,
+body.journal-background {
+  position: relative;
+  background-color: #3a3b44;
+}
+
+body.gallery-background::before,
+body.about-background::before,
+body.available-art-background::before,
+body.exhibition-background::before,
+body.journal-background::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("/static/images/001_73a7851e045fcb414e226334091591c5.jpg") center / cover no-repeat;
+  filter: blur(16px) grayscale(1) brightness(1.13) contrast(0.92);
+  z-index: -2;
+  pointer-events: none;
+}
+
+body.gallery-background::after,
+body.about-background::after,
+body.available-art-background::after,
+body.exhibition-background::after,
+body.journal-background::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(120, 130, 150, 0.54);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Simplified: unified selector for header, main, footer z-index */
+body.gallery-background header,
+body.gallery-background main,
+body.gallery-background footer,
+body.about-background header,
+body.about-background main,
+body.about-background footer,
+body.available-art-background header,
+body.available-art-background main,
+body.available-art-background footer,
+body.exhibition-background header,
+body.exhibition-background main,
+body.exhibition-background footer,
+body.journal-background header,
+body.journal-background main,
+body.journal-background footer {
+  position: relative;
+  z-index: 0;
+}
+
+@media (max-width: 767.98px) {
+  /* Hide column toggles when layout collapses to a single column */
+  .gallery-controls {
+    display: none !important;
+  }
+}
+
+/* Hide gallery page buttons and columns text */
+.gallery-controls .btn,
+.gallery-controls span {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Journal Page
+   ========================================================================== */
+.journal-header {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.75rem 2rem;
+  background-color: #fad6e6de;
+  border-radius: 1.25rem;
+}
+
+.journal-card {
+  background-color: #fad6e6de;
+  border-radius: 1.25rem;
+}
+
+.journal-card h3 {
+  color: var(--ck-ink);
+}
+
+/* ==========================================================================
+   Dashboard Admin Forms
+   ========================================================================== */
+.dashboard-form-container {
+  max-width: 720px;
+}
+
+.dashboard-form {
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 0.9rem;
+  padding: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  box-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-form label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dashboard-form input:not([type="checkbox"]):not([type="radio"]),
+.dashboard-form select,
+.dashboard-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 0.6rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-form input:not([type="checkbox"]):not([type="radio"]):focus,
+.dashboard-form select:focus,
+.dashboard-form textarea:focus {
+  border-color: rgba(255, 79, 162, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 79, 162, 0.15);
+  outline: 0;
+}
+
+.dashboard-form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.dashboard-form .helptext,
+.dashboard-form .form-text {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ck-muted);
+}
+
+.dashboard-form .errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #d63232;
+}
+
+.dashboard-form .invalid-feedback {
+  font-size: 0.9rem;
+}
+
+.dashboard-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.dashboard-form-actions .btn {
+  padding: 0.65rem 1.6rem;
+  border-radius: 0.6rem;
+}
+
+@media (max-width: 575.98px) {
+  .dashboard-form-actions {
+    flex-direction: column;
+  }
+
+  .dashboard-form-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Optional: Add a pop accent to buttons */
+.btn-primary {
+  background: linear-gradient(90deg, var(--ck-accent) 0%, var(--ck-accent-dark) 100%);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: background 0.2s;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(90deg, var(--ck-accent-dark) 0%, var(--ck-accent) 100%);
+}
+
+/* Pop art underline for links */
+a {
+  text-decoration: underline;
+  text-decoration-color: var(--ck-accent-dark);
+  transition: text-decoration-color 0.2s;
+}
+a:hover,
+a:focus {
+  text-decoration-color: var(--ck-accent);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+  background: #0b0b0f;
+  color: #6c6c6c;
+  border-top: 4px solid var(--ck-accent);
+  padding: 2.2rem 0 1.2rem 0;
+  text-align: center;
+}
+
+footer a {
+  color: #6c6c6c;
+  transition: color 0.2s;
+}
+
+footer a:hover,
+footer a:focus {
+  color: var(--ck-accent);
+}
+
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 1.1rem;
+  list-style: none;
+  padding: 0;
+}
+
+footer .social-icons a {
+  color: #6c6c6c;
+  font-size: 4rem;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+footer .social-icons a > i,
+footer .social-icons a > span {
+  font-size: 4rem;
+}
+
+footer .social-icons a:hover,
+footer .social-icons a:focus {
+  color: var(--ck-accent);
+}
+
+/* ==========================================================================
+   About Page Styles
+   ========================================================================== */
+.row.align-items-center {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col-md-4, .col-md-8 {
+  display: flex;
+  align-items: stretch;
+}
+.about-text-bio {
+  /* Card style removed for a cleaner look. You can delete this rule if not used elsewhere. */
+}
+
+.about-text {
+  font-size: 1.18rem;
+  line-height: 1.7;
+  color: #23242a;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: rgba(255,255,255,0.85);
+  border-radius: 0.8rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 16px -4px rgba(0,0,0,0.08);
 }
 
 /* Contact Page Enhancements */

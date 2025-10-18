@@ -133,7 +133,7 @@ if not database_url:
     raise ImproperlyConfigured("Set either PRODUCTION_DB or DEVELOPMENT_DB environment variable with your database URL.")
 
 DATABASES = {
-    'default': dj_database_url.parse(database_url, conn_max_age=0),
+    'default': dj_database_url.parse(database_url, conn_max_age=600),
 }
 
 
@@ -193,26 +193,18 @@ STORAGES = {
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-if ENVIRONMENT == "development":
-    MEDIA_URL = "/media/"
-    MEDIA_ROOT = BASE_DIR / "media"
-    STORAGES["default"] = {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    }
-else:
-    if "cloudinary" not in INSTALLED_APPS:
+if "cloudinary" not in INSTALLED_APPS:
         INSTALLED_APPS += [
             "cloudinary",
             "cloudinary_storage",
         ]
+        if not os.environ.get("CLOUDINARY_URL"):
+            raise ImproperlyConfigured("Set the CLOUDINARY_URL environment variable for media storage.")
 
-    if not os.environ.get("CLOUDINARY_URL"):
-        raise ImproperlyConfigured("Set the CLOUDINARY_URL environment variable for media storage.")
-
-    MEDIA_URL = os.environ.get("MEDIA_URL", "/media/")
-    STORAGES["default"] = {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    }
+        MEDIA_URL = os.environ.get("MEDIA_URL", "/media/")
+        STORAGES["default"] = {
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

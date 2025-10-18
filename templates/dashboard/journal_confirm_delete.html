@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Delete Journal Entry | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 600px;">
+  <h2 class="mb-4 text-center">Delete Journal Entry</h2>
+  <div class="alert alert-danger text-center">
+    Are you sure you want to delete <strong>{{ entry.title }}</strong>?
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger w-100">Yes, Delete</button>
+    <a href="{% url 'artist_dashboard' %}" class="btn btn-secondary w-100 mt-2">Cancel</a>
+  </form>
+</div>
+{% endblock %}

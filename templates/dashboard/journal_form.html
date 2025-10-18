@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}{{ action }} Journal Entry | Art by CK{% endblock %}
+{% block content %}
+<div class="container py-5 dashboard-form-container">
+  <h2 class="mb-4 text-center">{{ action }} Journal Entry</h2>
+  <form method="post" enctype="multipart/form-data" class="dashboard-form">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="dashboard-form-actions">
+      <button type="submit" class="btn btn-success">{{ action }}</button>
+      <a href="{% url 'artist_dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,161 @@
+{% with output_mode=mode|default:'markup' %}
+  {% if output_mode == 'script' %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"
+      integrity="sha384-WiN87+4C3r2/vt/40KMwPyUxayoO6mklS1LMsJQgwBnI2uRFjYHIENbb1OoPdRJt"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        if (window.__customVideoInit) return;
+        window.__customVideoInit = true;
+
+        const videos = document.querySelectorAll(".js-exhibition-video");
+
+        videos.forEach((video) => {
+          const hlsSrc = video.dataset.hls;
+          const container = video.closest(".video-hover-controls");
+
+          const setControlsVisible = (visible) => {
+            if (visible) {
+              video.setAttribute("controls", "controls");
+              video.controls = true;
+            } else {
+              video.removeAttribute("controls");
+              video.controls = false;
+            }
+          };
+
+          setControlsVisible(false);
+
+          const showAndAutoHideControls = () => {
+            setControlsVisible(true);
+            clearTimeout(video._controlsTimeout);
+            video._controlsTimeout = setTimeout(() => {
+              if (!video.matches(":hover") && !container?.matches(":hover")) {
+                setControlsVisible(false);
+              }
+            }, 2000);
+          };
+
+          const hideControls = () => {
+            clearTimeout(video._controlsTimeout);
+            if (!video.matches(":hover") && !container?.matches(":hover")) {
+              setControlsVisible(false);
+            }
+          };
+
+          const hoverTargets = [video, container].filter(Boolean);
+          let pointerInside = false;
+          let spaceDown = false;
+
+          hoverTargets.forEach((target) => {
+            target.addEventListener("mouseenter", () => {
+              pointerInside = true;
+              showAndAutoHideControls();
+            });
+            target.addEventListener("mousemove", showAndAutoHideControls);
+            target.addEventListener("mouseleave", () => {
+              pointerInside = false;
+              hideControls();
+            });
+          });
+
+          video.addEventListener("focus", () => {
+            pointerInside = true;
+            showAndAutoHideControls();
+          });
+          video.addEventListener("blur", () => {
+            pointerInside = false;
+            hideControls();
+          });
+          video.addEventListener("play", showAndAutoHideControls);
+          video.addEventListener("pause", showAndAutoHideControls);
+
+          const togglePlayback = () => {
+            if (video.paused) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          };
+
+          if (!video._customVideoMouseDown) {
+            video.addEventListener("mousedown", (event) => {
+              if (event.button !== 0) return;
+              event.preventDefault();
+              pointerInside = true;
+              togglePlayback();
+              showAndAutoHideControls();
+            });
+            video.addEventListener("click", (event) => event.preventDefault());
+            video._customVideoMouseDown = true;
+          }
+
+          const isSpaceEvent = (event) =>
+            event.code === "Space" || event.key === " ";
+
+          const hasKeyboardControl = () =>
+            pointerInside || document.activeElement === video;
+
+          const handleKeyDown = (event) => {
+            if (!isSpaceEvent(event) || !hasKeyboardControl()) return;
+            if (spaceDown) {
+              event.preventDefault();
+              return;
+            }
+
+            spaceDown = true;
+            event.preventDefault();
+            togglePlayback();
+            showAndAutoHideControls();
+          };
+
+          document.addEventListener("keydown", handleKeyDown);
+          const handleKeyUp = (event) => {
+            if (!isSpaceEvent(event)) return;
+            spaceDown = false;
+            if (hasKeyboardControl()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          };
+
+          document.addEventListener("keyup", handleKeyUp);
+
+          if (!hlsSrc) return;
+
+          if (video.canPlayType("application/vnd.apple.mpegurl")) {
+            video.src = hlsSrc;
+          } else if (window.Hls && window.Hls.isSupported()) {
+            const hls = new window.Hls({
+              maxLoadingDelay: 3,
+              startFragPrefetch: false,
+              maxBufferLength: 12,
+            });
+
+            hls.loadSource(hlsSrc);
+            hls.attachMedia(video);
+            video.addEventListener("ended", () => hls.stopLoad(), { once: true });
+          }
+        });
+      });
+    </script>
+  {% else %}
+    <div class="ratio ratio-16x9 mb-2 video-hover-controls">
+      <video
+        class="js-exhibition-video w-100 rounded"
+        playsinline
+        preload="metadata"
+        poster="{{ poster }}"
+        controlsList="nodownload"
+        data-hls="{{ hls }}"
+        tabindex="0"
+      >
+        <source src="{{ mp4 }}" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  {% endif %}
+{% endwith %}
