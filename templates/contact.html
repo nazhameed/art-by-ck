@@ -1,27 +1,288 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Contact | Art by CK{% endblock %}
 {% block content %}
 <div class="container py-5">
-  <h1 class="mb-4">Contact</h1>
-  <p class="lead">Interested in a collaboration or have a question? Reach out below!</p>
-  <div class="row">
-    <div class="col-md-8 col-lg-6">
-      <form>
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Your name" required>
+  <!-- Header Section with Artist Image -->
+  <div class="text-center mb-5 py-4">
+    <h1 class="display-4 fw-bold mb-4 text-uppercase letter-spacing-sm text-dark position-relative d-inline-block">
+      Contact
+      <span class="position-absolute bottom-0 start-50 translate-middle-x" style="height: 4px; width: 60px; background: linear-gradient(90deg, #ff1493, #ff69b4); border-radius: 2px;"></span>
+    </h1>
+    <div class="position-relative d-inline-block">
+      <img src="{% static 'images/cecilia_k_contact.jpg' %}" 
+           alt="Cecilia K - Artist" 
+           class="img-fluid rounded-circle shadow-sm border border-3" 
+           style="max-width: 240px; width: 100%; object-fit: cover; aspect-ratio: 1/1; border-color: #ff69b4 !important;">
+    </div>
+  </div>
+  
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <!-- Messages handling via modal -->
+      {% if messages %}
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            <!-- Success modal will be triggered by JavaScript -->
+          {% elif message.tags == 'error' %}
+            <!-- Error modal will be triggered by JavaScript -->
+          {% else %}
+            <!-- Fallback alert for other message types -->
+            <div class="alert alert-info alert-dismissible fade show mb-4" role="alert">
+              <i class="fas fa-info-circle me-2"></i>
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      
+      <!-- Include the pop art contact form -->
+      {% include 'contactform/contactform.html' with form=contact_form %}
+      
+      <!-- Contact Information Section -->
+      <div class="row mt-5 mb-5 g-4">
+        <div class="col-md-6">
+          <div class="h-100 p-4 rounded-3 shadow-sm bg-white border border-2 border-light text-center position-relative" style="border-color: #ff69b4 !important;">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <div class="rounded-circle p-3 me-3" style="background: linear-gradient(135deg, #ff69b4, #ff1493);">
+                <i class="fas fa-palette fa-lg text-white"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-1 text-dark">Artist Contact</h5>
+                <small class="text-muted">Direct communication</small>
+              </div>
+            </div>
+            <div>
+              <h6 class="fw-semibold mb-3 fs-5 text-dark">Cecilia Kristoffersson</h6>
+              <div class="mb-3">
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                  <i class="fas fa-envelope me-2 text-muted"></i>
+                  <a href="mailto:cecilia.kristoffersson71@gmail.com" 
+                     class="text-decoration-none hover-underline text-dark small">
+                    cecilia.kristoffersson71@gmail.com
+                  </a>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                  <div class="me-2">
+                    <i class="fab fa-facebook me-1 text-muted" style="font-size: 0.9rem;"></i>
+                    <i class="fab fa-instagram text-muted" style="font-size: 0.9rem;"></i>
+                  </div>
+                  <span class="fw-medium text-dark small">Const Collection Art by Cecilia K.</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+        <div class="col-md-6">
+          <div class="h-100 p-4 rounded-3 shadow-sm bg-white border border-2 border-light text-center position-relative" style="border-color: #ff1493 !important;">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <div class="rounded-circle p-3 me-3" style="background: linear-gradient(135deg, #ff1493, #c21e56);">
+                <i class="fas fa-handshake fa-lg text-white"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-1 text-dark">Curator Contact</h5>
+                <small class="text-muted">Professional inquiries</small>
+              </div>
+            </div>
+            <div>
+              <h6 class="fw-semibold mb-3 fs-5 text-dark">Magnus Florin</h6>
+              <div class="mb-3">
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                  <i class="fas fa-envelope me-2 text-muted"></i>
+                  <a href="mailto:k.magnus.florin@gmail.com" 
+                     class="text-decoration-none hover-underline text-dark small">
+                    k.magnus.florin@gmail.com
+                  </a>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                  <i class="fas fa-phone me-2 text-muted"></i>
+                  <a href="tel:+46708734215" 
+                     class="text-decoration-none hover-underline text-dark small">
+                    (+46) 0708 73 42 15
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <textarea class="form-control" id="message" rows="5" placeholder="How can I help you?" required></textarea>
+      </div>
+      
+      <!-- QR Codes Section -->
+      <div class="row mt-5 mb-5">
+        <div class="col-12 text-center mb-4">
+          <h3 class="fw-bold mb-2 text-dark position-relative d-inline-block">
+            Quick Connect
+            <span class="position-absolute bottom-0 start-0 w-100" style="height: 3px; background: linear-gradient(90deg, #ff1493, transparent); border-radius: 2px;"></span>
+          </h3>
+          <p class="text-muted">Scan any QR code for instant access</p>
         </div>
-        <button type="submit" class="btn btn-primary">Send</button>
-      </form>
+        <div class="col-lg-12">
+          <div class="row g-3 g-md-4 justify-content-center">
+            <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">
+              <div class="text-center h-100 p-3 p-md-4 rounded-3 shadow-sm bg-white border border-1 hover-lift border-light qr-card">
+                <div class="mb-3">
+                  <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" 
+                       style="width: 50px; height: 50px; background: linear-gradient(135deg, #ff69b4, #ff1493);">
+                    <i class="fas fa-envelope text-white fs-5"></i>
+                  </div>
+                  <h6 class="fw-semibold text-dark">Direct Email</h6>
+                </div>
+                <img src="{% static 'images/qr_code.jpg' %}" 
+                     alt="QR Code for Contact" 
+                     class="rounded-3 shadow-sm mb-3 img-fluid" 
+                     width="180" height="180"
+                     style="object-fit: contain; max-width: 180px; max-height: 180px;">
+                <p class="text-muted small mb-0">Scan to email me directly</p>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">
+              <div class="text-center h-100 p-3 p-md-4 rounded-3 shadow-sm bg-white border border-1 hover-lift border-light qr-card">
+                <div class="mb-3">
+                  <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" 
+                       style="width: 50px; height: 50px; background: linear-gradient(135deg, #ff1493, #c21e56);">
+                    <i class="fab fa-youtube fs-5 text-white"></i>
+                  </div>
+                  <h6 class="fw-semibold text-dark">YouTube Channel</h6>
+                </div>
+                <img src="{% static 'images/youtube_code.png' %}" 
+                     alt="YouTube QR Code with Orange Background" 
+                     class="rounded-3 shadow-sm mb-3 img-fluid" 
+                     width="180" height="180"
+                     style="object-fit: contain; max-width: 180px; max-height: 180px;">
+                <p class="text-muted small mb-0">Watch my creative process</p>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">
+              <div class="text-center h-100 p-3 p-md-4 rounded-3 shadow-sm bg-white border border-1 hover-lift border-light qr-card">
+                <div class="mb-3">
+                  <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" 
+                       style="width: 50px; height: 50px; background: linear-gradient(135deg, #c21e56, #ff1493);">
+                    <i class="fab fa-instagram fs-5 text-white"></i>
+                  </div>
+                  <h6 class="fw-semibold text-dark">Instagram</h6>
+                </div>
+                <img src="{% static 'images/instagram.png' %}" 
+                     alt="Instagram QR Code" 
+                     class="rounded-3 shadow-sm mb-3 img-fluid" 
+                     width="180" height="180"
+                     style="object-fit: contain; max-width: 180px; max-height: 180px;">
+                <p class="text-muted small mb-0">Follow Const Collection Art</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Featured Collection Section -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="text-center">
+              <img src="{% static 'images/const_collection.jpg' %}" 
+                   alt="Const Collection" 
+                   class="img-fluid rounded-2 shadow-sm" 
+                   style="max-width: 400px;">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- Include Contact Form Modals -->
+{% include 'contactform/modals.html' %}
+
+<!-- Data attributes for JavaScript to read message state -->
+<div id="message-data" 
+     {% if messages %}
+       {% for message in messages %}
+         {% if message.tags == 'success' %}
+           data-show-success="true"
+         {% elif message.tags == 'error' %}
+           data-show-error="true"
+         {% endif %}
+       {% endfor %}
+     {% endif %}
+     style="display: none;">
+</div>
+
+<!-- CSS to prevent modal background jerking -->
+<style>
+/* Prevent body shift when modal opens */
+.modal-open {
+    padding-right: 0 !important;
+}
+
+/* Ensure no horizontal scrollbar issues */
+body {
+    overflow-x: hidden;
+}
+
+/* Fix modal backdrop to prevent shifting */
+.modal {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Smooth modal transitions */
+.artistic-modal .modal-dialog {
+    transition: transform 0.3s ease-out, opacity 0.15s linear;
+}
+
+/* Prevent content jump on modal open/close */
+.container, .row, .col-lg-8 {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+</style>
+
+<!-- JavaScript to trigger modals based on Django messages -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Prevent background scrollbar shift on modal open
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalBodyPaddingRight = document.body.style.paddingRight;
+    
+    // Function to prevent body shift
+    function preventBodyShift() {
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = '0px';
+    }
+    
+    // Function to restore body
+    function restoreBody() {
+        document.body.style.overflow = originalBodyOverflow;
+        document.body.style.paddingRight = originalBodyPaddingRight;
+    }
+    
+    var messageData = document.getElementById('message-data');
+    
+    if (messageData.getAttribute('data-show-success') === 'true') {
+        var successModal = new bootstrap.Modal(document.getElementById('contactSuccessModal'), {
+            backdrop: 'static',
+            keyboard: true
+        });
+        
+        // Add event listeners to prevent jerking
+        document.getElementById('contactSuccessModal').addEventListener('show.bs.modal', preventBodyShift);
+        document.getElementById('contactSuccessModal').addEventListener('hidden.bs.modal', restoreBody);
+        
+        successModal.show();
+    }
+    
+    if (messageData.getAttribute('data-show-error') === 'true') {
+        var errorModal = new bootstrap.Modal(document.getElementById('contactErrorModal'), {
+            backdrop: 'static',
+            keyboard: true
+        });
+        
+        // Add event listeners to prevent jerking
+        document.getElementById('contactErrorModal').addEventListener('show.bs.modal', preventBodyShift);
+        document.getElementById('contactErrorModal').addEventListener('hidden.bs.modal', restoreBody);
+        
+        errorModal.show();
+    }
+});
+</script>
 {% endblock %}
