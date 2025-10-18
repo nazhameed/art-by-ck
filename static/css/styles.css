@@ -36,6 +36,73 @@ body {
 }
 
 /* ==========================================================================
+   Elegant Footer
+   ========================================================================== */
+.elegant-footer {
+  background: linear-gradient(135deg, rgba(254, 249, 243, 0.95), rgba(255, 255, 255, 0.9));
+  border-top: 1px solid rgba(var(--ck-accent), 0.1);
+  margin-top: 4rem;
+}
+
+.footer-brand .footer-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  color: var(--ck-ink);
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.footer-social a {
+  color: var(--ck-muted);
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-social a:hover {
+  color: var(--ck-accent);
+  transform: translateY(-2px);
+}
+
+.footer-credits .footer-text {
+  font-size: 0.8rem;
+  color: var(--ck-muted);
+  font-style: italic;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(var(--ck-muted), 0.2);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.footer-copyright {
+  font-size: 0.75rem;
+  color: var(--ck-muted);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767.98px) {
+  .footer-social {
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .footer-brand,
+  .footer-credits {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ==========================================================================
    Typography Utilities
    ========================================================================== */
 .cedarville-cursive-regular {

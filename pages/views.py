@@ -6,8 +6,13 @@ from contactform.emails import send_contact_notification_email, send_confirmatio
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from dashboard.models import GalleryImage, AvailableArt, JournalEntry, About, Exhibition
+from contactform.forms import ContactSubmissionForm
 from cloudinary import CloudinaryVideo
 from cloudinary.utils import cloudinary_url
+
+
+class HomeView(TemplateView):
+    template_name = "home.html"
 
 
 class AboutView(TemplateView):
@@ -116,6 +121,11 @@ class ContactView(View):
             'contact_form': form
         }
         return render(request, self.template_name, context)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contact_form'] = ContactSubmissionForm()
+        return context
 
 
 class AvailableArtView(TemplateView):
