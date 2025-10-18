@@ -9,39 +9,36 @@
 
 {% block content %}
 <section class="home-hero">
-  <div class="container-xxl py-5">
-    <div class="row justify-content-center text-center text-lg-start">
-      <div class="col-12 col-lg-10">
-        <div class="row g-5 align-items-start home-hero-grid">
-          <div class="col-lg-6 home-hero-col home-hero-col-title">
-            <h1 class="display-3 fw-semibold">
+  <div class="container-xxl">
+    <div class="home-hero-content">
+      <p class="home-hero-script cedarville-cursive-regular">
+        I am a mother artist.
+      </p>
+      <div class="hero-arrow">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clean content section below hero -->
+<section class="home-intro py-5">
+  <div class="container-xxl">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-4 fw-semibold mb-4">
               Art as a quiet revolution for mothers, daughters, and the worlds between.
             </h1>
           </div>
-          <div class="col-lg-6 home-hero-col home-hero-col-body">
-            <p class="lead">
-              Large scale acrylic works that invite slow looking, luminous evenings, and a return to embodied truth.
-              Each canvas is a sanctuary for ancestral memory and the untold stories of girlhood.
-            </p>
-            <p class="home-hero-script cedarville-cursive-regular fs-1 mt-3 mb-4">
-              I am a mother artist.
-            </p>
-            <div class="home-hero-buttons d-flex flex-wrap gap-3">
-              <a class="btn home-hero-primary btn-lg" href="{% url 'gallery' %}">Enter the Gallery</a>
-              <a class="btn btn-outline-light btn-lg home-hero-secondary" href="{% url 'available_art' %}">View Available Art</a>
-            </div>
-            <div class="home-hero-stats">
-              <div class="stat-item">
-                <span class="label">Paintings</span>
-                <span class="value">24</span>
-              </div>
-              <div class="stat-item">
-                <span class="label">Slow looking sessions</span>
-                <span class="value">18</span>
-              </div>
-              <div class="stat-item">
-                <span class="label">Roots</span>
-                <span class="value">ZW &amp; SE</span>
+          <div class="col-lg-6">
+            <div class="gallery-cta-highlight">
+              <div class="home-hero-buttons d-flex flex-wrap gap-3 mb-4">
+                <a class="btn home-hero-primary btn-lg" href="{% url 'gallery' %}">Enter the Gallery</a>
+                <a class="btn home-hero-shop btn-lg" href="{% url 'available_art' %}">
+                  Available Works
+                </a>
               </div>
             </div>
           </div>
@@ -51,7 +48,7 @@
   </div>
 </section>
 
-<section class="home-story py-5 py-lg-5">
+<section class="home-story">
   <div class="container-xxl">
     <div class="row align-items-center g-5">
       <div class="col-lg-6">
@@ -61,53 +58,47 @@
         </h2>
         <p class="fs-5 text-muted">
           I was raised amid the bougainvillea bloom of Edenfield in Bulawayo, Zimbabwe. Those colours echo
-          through my studio in Southern Sweden where I paint to protect slow time, deep presence, and the sacred
-          work of mothers guiding the next generation.
+          through my studio in Southern Sweden where I paint to protect slow time and deep presence.
         </p>
-        <blockquote class="mt-4">
-          When the world feels loud with distortion, I return to the canvas. Layer by layer, I build spiritual filters that both reveal and protect the feminine stories gifted to us by our ancestors.
+        <blockquote class="mt-4 mb-4">
+          When the world feels loud with distortion, I return to the canvas. Layer by layer, I build spiritual filters that reveal feminine stories.
         </blockquote>
-        <p class="fs-6 text-muted mt-4">
-          Edenfield is not a place of exile. It is a field of colour where women remain the constant centre,
-          where light ripples across pigment and invites you to linger until dusk.
-        </p>
         <div class="mt-4">
           <a class="btn btn-outline-dark px-4" href="{% url 'about' %}">Meet Cecilia</a>
         </div>
       </div>
       <div class="col-lg-5 offset-lg-1">
-        <figure class="mb-0">
-          <img
-            src="{% static 'images/cecilia_k_contact.jpg' %}"
-            alt="Portrait of Cecilia K in studio"
-            class="img-fluid"
-            loading="lazy"
-          />
-        </figure>
+        <div class="artist-image-container">
+          <figure class="artist-figure mb-0">
+            <img
+              src="{% static 'images/cecilia_k_contact.jpg' %}"
+              alt="Portrait of Cecilia K in studio"
+              class="artist-image"
+              loading="lazy"
+            />
+          </figure>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="home-previews py-5 py-lg-5">
+<section class="home-previews">
   <div class="container-xxl position-relative">
     <div class="row justify-content-between align-items-end mb-5">
       <div class="col-lg-8">
         <span class="home-section-title text-light">Explore the portfolio</span>
         <h2 class="display-5 fw-semibold mt-3">Move through Edenfield</h2>
-        <p class="lead text-white-50 mt-3 mb-0">
+        <p class="lead text-white-10 mt-3 mb-0">
           From immersive exhibitions to journaled reflections, each path offers another way into the work.
         </p>
-      </div>
-      <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-        <a class="btn btn-outline-light px-4" href="{% url 'contact' %}">Book a viewing</a>
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
       <div class="col">
         <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-4x3">
-            <img src="{% static 'images/let_sleeping_girls_lie.jpg' %}" alt="Let Sleeping Girls Lie painting detail" loading="lazy">
+          <div class="home-preview-media ratio ratio-1x1">
+            <img src="{% static 'images/let_sleeping_girls_lie.jpg' %}" alt="Let Sleeping Girls Lie painting" loading="lazy">
           </div>
           <div class="home-preview-body">
             <span class="eyebrow">Gallery</span>
@@ -119,8 +110,8 @@
       </div>
       <div class="col">
         <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-4x3">
-            <img src="{% static 'images/untold_story.jpg' %}" alt="Untold Story painting detail" loading="lazy">
+          <div class="home-preview-media ratio ratio-1x1">
+            <img src="{% static 'images/untold_story.jpg' %}" alt="Untold Story painting" loading="lazy">
           </div>
           <div class="home-preview-body">
             <span class="eyebrow">Available art</span>
@@ -132,7 +123,7 @@
       </div>
       <div class="col">
         <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-4x3">
+          <div class="home-preview-media ratio ratio-1x1">
             <img src="{% static 'images/the_garden_gate.jpg' %}" alt="Garden Gate exhibition installation" loading="lazy">
           </div>
           <div class="home-preview-body">
@@ -145,8 +136,8 @@
       </div>
       <div class="col">
         <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-4x3">
-            <img src="{% static 'images/sofies_well.jpg' %}" alt="Sofie's Well painting detail" loading="lazy">
+          <div class="home-preview-media ratio ratio-1x1">
+            <img src="{% static 'images/sofies_well.jpg' %}" alt="Sofie's Well painting" loading="lazy">
           </div>
           <div class="home-preview-body">
             <span class="eyebrow">Journal</span>
@@ -158,7 +149,7 @@
       </div>
       <div class="col">
         <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-4x3">
+          <div class="home-preview-media ratio ratio-1x1">
             <img src="{% static 'images/alone.jpg' %}" alt="Cecilia with an artwork" loading="lazy">
           </div>
           <div class="home-preview-body">
@@ -171,13 +162,13 @@
       </div>
       <div class="col">
         <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-4x3">
-            <img src="{% static 'images/the_birth_of_venus.jpg' %}" alt="The Birth of Venus painting detail" loading="lazy">
+          <div class="home-preview-media ratio ratio-1x1">
+            <img src="{% static 'images/the_birth_of_venus.jpg' %}" alt="The Birth of Venus painting" loading="lazy">
           </div>
           <div class="home-preview-body">
             <span class="eyebrow">Contact</span>
             <h3>Curate a conversation</h3>
-            <p>Plan an exhibition, commission, or artist talk tailored to your space and audience.</p>
+            <p>Plan an exhibition or artist talk tailored to your space and audience.</p>
             <a class="home-preview-link" href="{% url 'contact' %}">Get in touch</a>
           </div>
         </article>
@@ -187,22 +178,91 @@
 </section>
 
 <section class="container-xxl py-5 py-lg-5">
-  <div class="home-cta p-5 p-lg-5">
-    <div class="row align-items-center home-cta-content g-4">
-      <div class="col-lg-7">
-        <span class="home-section-title text-dark">Slow looking sessions</span>
-        <h2 class="display-5 fw-semibold mt-3">
-          Host an outdoor Evening Garden gathering and let colour transform your dusk.
-        </h2>
-        <p class="fs-5 mt-3 mb-0">
-          I create intimate, intentional experiences for families, schools, and cultural spaces where light,
-          landscape, and story align. Invite your community to step into Edenfield.
-        </p>
-      </div>
-      <div class="col-lg-4 offset-lg-1 text-lg-end">
-        <a class="btn btn-dark btn-lg" href="{% url 'contact' %}">Start a conversation</a>
+  <div class="home-contact-cta p-5 p-lg-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <div class="contact-intro mb-5">
+          <span class="home-section-title text-white">Get in touch</span>
+          <h2 class="display-5 fw-light mt-3 text-white mb-4">
+            Start a conversation about art and exhibitions
+          </h2>
+          <p class="lead text-white-85 mb-0 mx-auto" style="max-width: 600px;">
+            Whether you're interested in a specific piece, planning an exhibition, or exploring a private viewing.
+          </p>
+        </div>
+        
+        <div class="contact-services mb-5">
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class="fas fa-palette"></i>
+                </div>
+                <h6 class="service-title">Original Artwork</h6>
+                <p class="service-description">Discover pieces available for collection</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <h6 class="service-title">Private Viewings</h6>
+                <p class="service-description">Schedule intimate studio visits</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h6 class="service-title">Exhibition Planning</h6>
+                <p class="service-description">Curate meaningful installations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-action">
+          <a class="btn btn-contact btn-lg" href="{% url 'contact' %}">
+            Begin the conversation
+            <i class="fas fa-arrow-right ms-2"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Expandable text functionality
+  const readMoreBtns = document.querySelectorAll('.read-more-btn');
+  
+  readMoreBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const expandableText = this.closest('.expandable-text');
+      const preview = expandableText.querySelector('.text-preview');
+      const full = expandableText.querySelector('.text-full');
+      const icon = this.querySelector('i');
+      
+      if (full.style.display === 'none') {
+        preview.style.display = 'none';
+        full.style.display = 'block';
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        this.innerHTML = '<i class="fas fa-minus me-1"></i> Show Less';
+      } else {
+        preview.style.display = 'block';
+        full.style.display = 'none';
+        icon.classList.remove('fa-minus');
+        icon.classList.add('fa-plus');
+        this.innerHTML = '<i class="fas fa-plus me-1"></i> Learn More';
+      }
+    });
+  });
+});
+</script>
 {% endblock %}
