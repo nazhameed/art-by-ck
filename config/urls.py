@@ -20,9 +20,10 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 from django.views.generic import TemplateView
+from pages.views import HomeView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="home.html"), name='home'),
+    path('', HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('contact/', include('contactform.urls')),
