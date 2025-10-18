@@ -458,8 +458,8 @@ body.journal-background::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("/static/images/001_73a7851e045fcb414e226334091591c5.jpg") center / cover no-repeat;
-  filter: blur(16px) grayscale(1) brightness(1.13) contrast(0.92);
+  background: url("/static/images/new_bg.png") center / cover no-repeat;
+  filter: blur(4px) brightness(1.13) contrast(0.92);
   z-index: -2;
   pointer-events: none;
 }
@@ -472,7 +472,7 @@ body.journal-background::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(120, 130, 150, 0.54);
+  background: #c1acba8a;
   z-index: -1;
   pointer-events: none;
 }
