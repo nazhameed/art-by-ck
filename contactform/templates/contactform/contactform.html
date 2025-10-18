@@ -1,0 +1,45 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<!-- Bootstrap-First Artistic Contact Form Component -->
+<div class="artistic-contact rounded-4 p-4 position-relative overflow-hidden shadow-lg">
+    <div class="card border-0 bg-white bg-opacity-75 rounded-4 position-relative shadow">
+        <div class="card-header artistic-header text-white border-0 position-relative overflow-hidden">
+            <button 
+                class="btn btn-link text-white text-decoration-none p-3 w-100 text-start d-flex align-items-center justify-content-between contact-toggle-btn"
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#contactFormCollapse" 
+                aria-expanded="false" 
+                aria-controls="contactFormCollapse"
+                id="contactFormToggle">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-envelope me-3 fs-5 opacity-75"></i>
+                    <h3 class="card-title mb-0 fw-semibold fs-4 me-3">Contact Form</h3>
+                    <span class="badge bg-light text-dark px-2 py-1 fs-6 fw-normal pulse-badge" id="toggleLabel">Click to expand</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="toggle-icon-wrapper">
+                        <i class="fas fa-chevron-down transition-transform fs-5" id="toggleIcon"></i>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div class="collapse" id="contactFormCollapse">
+            <div class="card-body p-4">
+                
+                <!-- Bootstrap-First Contact Form -->
+                <form method="post" action="{% url 'contact' %}" id="contact-form" class="artistic-form">
+                    {% csrf_token %}
+                    {% crispy form %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Load Artistic Styles -->
+<link rel="stylesheet" href="{% static 'css/pop-art-forms.css' %}">
+
+<!-- Load Contact Form JavaScript (only for artwork fields toggle) -->
+<script src="{% static 'js/contact-form.js' %}" defer></script>
