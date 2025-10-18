@@ -5,8 +5,8 @@
   --ck-background: #f8f7f4;
   --ck-ink: #121212;
   --ck-muted: #6c6c6c;
-  --ck-accent: #ff4fa2;
-  --ck-accent-dark: #d93d85;
+  --ck-accent: #2d7d7d;
+  --ck-accent-dark: #1f5656;
   --ck-highlight: #ffc857;
   --ck-highlight-dark: #e6b04d;
 
@@ -16,7 +16,7 @@
   --bs-link-color: var(--ck-accent);
   --bs-link-hover-color: var(--ck-accent-dark);
   --bs-primary: var(--ck-accent);
-  --bs-primary-rgb: 255, 79, 162;
+  --bs-primary-rgb: 45, 125, 125;
   --bs-warning: var(--ck-highlight);
   --bs-warning-rgb: 255, 200, 87;
   --bs-navbar-color: rgba(255, 255, 255, 0.7);
@@ -117,5 +117,68 @@ main:has(> .gallery-card) {
   border-radius: 2rem;
   box-shadow: -3px 5px 20px 3px rgb(198 95 208);
   transform: scale(1.01);
+}
+
+/* Contact Page Enhancements */
+.transform-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transform-hover:hover {
+  transform: rotate(0deg) scale(1.05) !important;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3) !important;
+}
+
+.bg-gradient {
+  position: relative;
+}
+
+.bg-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Contact Page Refinements */
+.hover-underline:hover {
+  text-decoration: underline !important;
+}
+
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.15) !important;
+  border-color: rgba(45, 125, 125, 0.2) !important;
+}
+
+/* Enhanced gradients for contact cards */
+.bg-gradient {
+  position: relative;
+}
+
+.bg-gradient::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  border-radius: inherit;
+  z-index: -1;
 }
 
