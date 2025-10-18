@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from dashboard.models import GalleryImage, AvailableArt, JournalEntry, About, Exhibition
+from contactform.forms import ContactSubmissionForm
 from cloudinary import CloudinaryVideo
 from cloudinary.utils import cloudinary_url
+
+
+class HomeView(TemplateView):
+    template_name = "home.html"
 
 
 class AboutView(TemplateView):
@@ -63,6 +68,11 @@ class ExhibitionView(TemplateView):
 
 class ContactView(TemplateView):
     template_name = "contact.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contact_form'] = ContactSubmissionForm()
+        return context
 
 
 class AvailableArtView(TemplateView):
