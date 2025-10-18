@@ -1,0 +1,55 @@
+<!-- Bootstrap-First Success Modal -->
+<div class="modal fade artistic-modal" id="contactSuccessModal" tabindex="-1" aria-labelledby="contactSuccessModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content border-light rounded-4 overflow-hidden shadow-lg mx-3 mx-sm-0">
+            <div class="modal-header text-white position-relative p-3 p-sm-4">
+                <h5 class="modal-title fw-semibold fs-6 fs-sm-5" id="contactSuccessModalLabel">
+                    Message Sent Successfully
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center bg-white position-relative p-3 p-sm-4">
+                <div class="mb-3 mb-sm-4">
+                    <i class="fas fa-envelope-open-text fa-2x fa-sm-3x fa-md-4x mb-2 mb-sm-3"></i>
+                </div>
+                <h6 class="modal-message-title fw-semibold mb-2 mb-sm-3 text-dark-emphasis fs-6 fs-sm-5">Thank you for reaching out!</h6>
+                <p class="modal-message-text text-dark-emphasis opacity-75 lh-base small">
+                    Your message has been received and I'll get back to you soon.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center border-top border-light border-opacity-50 p-3 p-sm-4">
+                <button type="button" class="btn artistic-submit btn-sm btn-md-lg px-3 px-sm-4 py-2 py-sm-3 fw-semibold position-relative overflow-hidden shadow" data-bs-dismiss="modal">
+                    Perfect, thanks!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap-First Error Modal -->
+<div class="modal fade artistic-modal" id="contactErrorModal" tabindex="-1" aria-labelledby="contactErrorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content border-light rounded-4 overflow-hidden shadow-lg mx-3 mx-sm-0">
+            <div class="modal-header text-white p-3 p-sm-4" style="background: linear-gradient(135deg, var(--artist-warm-coral), #c86b50);">
+                <h5 class="modal-title fw-semibold fs-6 fs-sm-5" id="contactErrorModalLabel">
+                    <i class="fas fa-exclamation-circle me-2"></i> Let's Fix This
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center bg-white p-3 p-sm-4">
+                <div class="mb-3 mb-sm-4">
+                    <i class="fas fa-palette fa-2x fa-sm-3x fa-md-4x mb-2 mb-sm-3" style="color: var(--artist-warm-coral);"></i>
+                </div>
+                <h6 class="fw-semibold mb-2 mb-sm-3 text-dark-emphasis fs-6 fs-sm-5">Almost there!</h6>
+                <p class="error-message-text text-dark-emphasis opacity-75 lh-base small">
+                    Just a few small adjustments needed. Please check the form and try again.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center border-top border-light border-opacity-50 p-3 p-sm-4">
+                <button type="button" class="btn artistic-submit btn-sm btn-md-lg px-3 px-sm-4 py-2 py-sm-3 fw-semibold position-relative overflow-hidden shadow" data-bs-dismiss="modal">
+                    <i class="fas fa-edit me-1"></i> Let's Fix It
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -230,3 +230,19 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/ck-admin-panel/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+# Email Configuration
+# MailerSend SMTP configuration (requires MAILERSEND_SMTP_USERNAME and MAILERSEND_SMTP_PASSWORD in environment)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailersend.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('MAILERSEND_SMTP_USERNAME')
+EMAIL_HOST_PASSWORD = os.environ.get('MAILERSEND_SMTP_PASSWORD')
+EMAIL_USE_TLS = True
+
+# Default email settings
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@artbyck.com')
+
+# ⚠️  IMPORTANT: CHANGE THIS EMAIL ADDRESS BEFORE PRODUCTION DEPLOYMENT
+# Currently using Curtis's email for testing - MUST be changed to client's email in production
+CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'curtisnlogan@gmail.com')
