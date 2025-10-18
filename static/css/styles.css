@@ -59,6 +59,9 @@ body {
   letter-spacing: 0.2rem;
   color: var(--ck-accent);
   transition: color 0.25s ease;
+  align-items: center;
+  display: flex;
+  height: 44px;
 }
 
 .ck-navbar .navbar-brand:hover,
@@ -118,6 +121,18 @@ body {
 
 .ck-navbar .navbar-toggler-icon {
   color: white;
+}
+
+/* Logo style for navbar */
+.navbar-logo {
+  height: 44px;
+  width: auto;
+  margin-right: 1rem;
+  display: block;
+}
+
+.ck-navbar {
+  min-height: 44px;
 }
 
 /* ==========================================================================
@@ -522,10 +537,6 @@ footer .social-icons a:focus {
   display: flex;
   align-items: stretch;
 }
-.about-text-bio {
-  /* Card style removed for a cleaner look. You can delete this rule if not used elsewhere. */
-}
-
 .about-text {
   font-size: 1.18rem;
   line-height: 1.7;

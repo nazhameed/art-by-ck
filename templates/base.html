@@ -13,17 +13,16 @@
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/pink-fav.png' %}" />
   </head>
   <body class="d-flex flex-column min-vh-100 {% block body_class %}{% endblock %}">
     <header class="bg-black text-light">
       <nav class="navbar navbar-expand-lg ck-navbar navbar-dark">
         <div class="container flex-column">
           <!-- Brand on its own row -->
-          <a
-            class="navbar-brand fw-semibold text-uppercase letter-spacing-sm text-center"
-            href="{% url 'home' %}"
-          >
-            Const Collection | Art by CK
+          <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+            <img src="{% static 'images/pink-logo.png' %}" alt="Art by CK Logo" class="navbar-logo me-2" style="height:44px; object-fit:contain;" />
+            <span class="fw-semibold text-uppercase letter-spacing-sm mb-0" style="color: var(--ck-accent);">Const Collection | Art by CK</span>
           </a>
 
           <!-- Hamburger -->
@@ -131,7 +130,7 @@
         </a>
         <a
           href="https://www.youtube.com/@constcollectionartbycecilia.k"
-          target="_blank"
+         
           rel="noopener"
           aria-label="YouTube"
         >
