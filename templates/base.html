@@ -13,23 +13,19 @@
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/pink-fav.png' %}" />
     {% block extra_styles %}{% endblock %}
   </head>
   <body class="d-flex flex-column min-vh-100 {% block body_class %}{% endblock %}">
     <header class="bg-black text-light">
-      <nav class="navbar navbar-expand-lg ck-navbar navbar-dark">
-        <div class="container flex-column">
-          <!-- Brand on its own row -->
-          <a
-            class="navbar-brand fw-semibold text-uppercase letter-spacing-sm text-center"
-            href="{% url 'home' %}"
-          >
-            Const Collection | Art by CK
+      <nav class="navbar navbar-expand-lg navbar-dark ck-navbar py-2">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+            <img src="{% static 'images/pink-logo.png' %}" alt="Art by CK Logo" class="navbar-logo me-lg-2" />
+            <span class="fw-semibold text-uppercase letter-spacing-sm mb-0 d-none d-lg-inline" style="color: var(--ck-accent);">Const Collection | Art by CK</span>
           </a>
-
-          <!-- Hamburger -->
           <button
-            class="navbar-toggler"
+            class="navbar-toggler ms-auto"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#primaryNav"
@@ -39,15 +35,8 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-
-          <!-- Links row (collapsible) -->
-          <div
-            class="collapse navbar-collapse justify-content-center w-100 mt-3 mt-lg-2"
-            id="primaryNav"
-          >
-            <ul
-              class="navbar-nav flex-wrap justify-content-center text-center gap-lg-3"
-            >
+          <div class="collapse navbar-collapse" id="primaryNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3 text-center text-lg-start d-flex flex-wrap">
               <li class="nav-item" {% if request.resolver_match.url_name == 'home' %}style="display:none;"{% endif %}>
                 <a
                   class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
@@ -71,9 +60,9 @@
               </li>
               <li class="nav-item">
                 <a
-                class="nav-link {% if request.resolver_match.url_name == 'available_art' %}active{% endif %}"
-                href="{% url 'available_art' %}"
-                >Available Art</a
+                  class="nav-link {% if request.resolver_match.url_name == 'available_art' %}active{% endif %}"
+                  href="{% url 'available_art' %}"
+                  >Available Art</a
                 >
               </li>
               <li class="nav-item">
@@ -83,7 +72,8 @@
                   >Exhibitions</a
                 >
               </li>
-              <a
+              <li class="nav-item">
+                <a
                   class="nav-link {% if request.resolver_match.url_name == 'journal' %}active{% endif %}"
                   href="{% url 'journal' %}"
                   >Journal</a

@@ -210,14 +210,24 @@ body {
    ========================================================================== */
 .ck-navbar {
   background: #0b0b0f;
-  padding-block: 1.1rem;
+  --bs-navbar-padding-y: 0;
   border-bottom: 4px solid var(--ck-accent);
+  min-height: 6rem;
+}
+
+.ck-navbar .container-fluid {
+  display: flex;
+  align-items: center;
 }
 
 .ck-navbar .navbar-brand {
   letter-spacing: 0.2rem;
   color: var(--ck-accent);
   transition: color 0.25s ease;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  padding: 0;
 }
 
 .ck-navbar .navbar-brand:hover,
@@ -279,6 +289,13 @@ body {
   color: white;
 }
 
+/* Logo style for navbar */
+.navbar-logo {
+  height: 6rem;
+  width: auto;
+  display: block;
+}
+
 /* ==========================================================================
    Gallery Page Styles
    ========================================================================== */
@@ -296,6 +313,11 @@ body {
   margin-bottom: 2.5rem;
   text-align: center;
   font-family: "Cedarville Cursive", cursive;
+  text-shadow: 0 0 5px #ffffff, 0 0 5px #ff003b, 0 0 12px #cdcdcd, 0 0 3px #ededed;
+}
+
+.custom-text-shadow {
+  text-shadow: 0 0 5px #ffffff, 0 0 5px #ff003b, 0 0 12px #cdcdcd, 0 0 3px #ededed;
 }
 
 /* Gallery masonry grid */
@@ -436,8 +458,8 @@ body.journal-background::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("/static/images/001_73a7851e045fcb414e226334091591c5.jpg") center / cover no-repeat;
-  filter: blur(16px) grayscale(1) brightness(1.13) contrast(0.92);
+  background: url("/static/images/new_bg.png") center / cover no-repeat;
+  filter: blur(4px) brightness(1.13) contrast(0.92);
   z-index: -2;
   pointer-events: none;
 }
@@ -450,7 +472,7 @@ body.journal-background::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(120, 130, 150, 0.54);
+  background: #c1acba8a;
   z-index: -1;
   pointer-events: none;
 }
@@ -717,13 +739,7 @@ footer .social-icons a:focus {
   right: 0;
   bottom: 0;
   background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-  animation: shine 3s infinite;
   pointer-events: none;
-}
-
-@keyframes shine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
 }
 
 /* Contact Page Refinements */
