@@ -7,11 +7,23 @@
   color-scheme: light;
   --ck-background: #f8f7f4;
   --ck-ink: #121212;
-  --ck-muted: #6c6c6c;
+  --ck-muted: #555555;
   --ck-accent: #FF2D7A; /* vivid magenta */
+  --ck-accent-rgb: 255, 45, 122;
   --ck-accent-dark: #6c6c6c; /* neutral grey */
   --ck-blush: #f7c6d9; /* soft blush pink */
   --ck-pop: #00e0c6;   /* pop art teal */
+  
+  /* Missing variables for better contrast */
+  --ck-highlight: #FFD700; /* golden yellow for good contrast */
+  --ck-highlight-rgb: 255, 215, 0;
+  --ck-pop-blue: #1E90FF; /* dodger blue */
+  --ck-pop-orange: #FF6347; /* tomato */
+  --ck-pop-green: #32CD32; /* lime green */
+  
+  /* Text opacity utilities for better readability */
+  --ck-text-white-85: rgba(255, 255, 255, 0.95); /* Higher contrast instead of 0.85 */
+  --ck-text-white-10: rgba(255, 255, 255, 0.8); /* Much higher contrast instead of 0.1 */
 
   --bs-body-font-family: "Montserrat", Arial, sans-serif;
   --bs-body-bg: var(--ck-background);
@@ -88,6 +100,28 @@ body {
   color: var(--ck-muted);
   letter-spacing: 0.1rem;
   text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Accessibility and Contrast Utility Classes
+   ========================================================================== */
+.text-white-85 {
+  color: var(--ck-text-white-85) !important;
+}
+
+.text-white-10 {
+  color: var(--ck-text-white-10) !important;
+}
+
+/* Better contrast for text on dark backgrounds */
+.text-light-contrast {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Improved muted text with better contrast */
+.text-muted-contrast {
+  color: #666666 !important;
 }
 
 @media (max-width: 767.98px) {
@@ -589,9 +623,7 @@ footer .social-icons a:focus {
   display: flex;
   align-items: stretch;
 }
-.about-text-bio {
-  /* Card style removed for a cleaner look. You can delete this rule if not used elsewhere. */
-}
+/* .about-text-bio rule removed - was empty */
 
 .about-text {
   font-size: 1.18rem;
