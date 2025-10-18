@@ -160,14 +160,14 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../images/001_73a7851e045fcb414e226334091591c5.jpg") center/cover no-repeat;
-  animation: homeHeroDrift 24s ease-in-out infinite alternate;
+  background: url("../images/001_73a7851e045fcb414e226334091591c5.jpg") top/cover no-repeat;
+  animation: homeHeroDrift 12s ease-in-out infinite alternate;
   transform-origin: center;
   will-change: transform;
   pointer-events: none;
   z-index: -2;
   scale: 1.05;
-  filter: hue-rotate(163deg) brightness(0.5);
+  filter: brightness(0.5) hue-rotate(163deg);
   mix-blend-mode: hard-light;
 }
 
@@ -218,6 +218,21 @@
   }
 }
 
+@keyframes shine {
+  0% {
+    filter: hue-rotate(160deg) brightness(0.5);
+  }
+  45% {
+    filter: hue-rotate(180deg) brightness(0.5);
+  }
+  55% {
+    filter: hue-rotate(140deg) brightness(0.5);
+  }
+  100% {
+    filter: hue-rotate(160deg) brightness(0.5);
+  }
+}
+
 .home-hero-col {
   display: flex;
   flex-direction: column;
@@ -260,8 +275,8 @@
 }
 
 .home-hero-script {
-  color: var(--ck-highlight);
-  text-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  text-shadow: 0 6px 22px rgb(255 255 255 / 55%);
 }
 
 .gallery-cta-highlight {
