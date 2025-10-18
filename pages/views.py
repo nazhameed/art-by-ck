@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 from django.contrib import messages
 from contactform.forms import ContactSubmissionForm
+from contactform.emails import send_contact_notification_email, send_confirmation_email
 
 class AboutView(TemplateView):
     template_name = "about.html"
@@ -28,12 +29,25 @@ class ContactView(View):
         if form.is_valid():
             contact_submission = form.save()
             
+            # Send email notifications
+            notification_sent = send_contact_notification_email(contact_submission)
+            confirmation_sent = send_confirmation_email(contact_submission)
+            
+            # Create success message based on email sending status
+            if notification_sent:
+                success_message = (
+                    f"Thank you, {contact_submission.name}! Your message has been sent to Cecilia. "
+                    f"You should receive a confirmation email shortly, and she'll get back to you via "
+                    f"{contact_submission.get_preferred_contact_method_display().lower()} within 24-48 hours."
+                )
+            else:
+                success_message = (
+                    f"Thank you, {contact_submission.name}! Your message has been received and saved. "
+                    f"We'll get back to you via {contact_submission.get_preferred_contact_method_display().lower()} soon."
+                )
+            
             # Add success message
-            messages.success(
-                request, 
-                f"Thank you, {contact_submission.name}! Your message has been received. "
-                f"We'll get back to you via {contact_submission.get_preferred_contact_method_display().lower()} soon."
-            )
+            messages.success(request, success_message)
             
             # Redirect to the same page to prevent resubmission
             return redirect('contact')
