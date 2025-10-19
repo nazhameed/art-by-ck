@@ -51,9 +51,73 @@ body {
    Elegant Footer
    ========================================================================== */
 .elegant-footer {
-  background: linear-gradient(135deg, rgba(254, 249, 243, 0.95), rgba(255, 255, 255, 0.9));
-  border-top: 1px solid rgba(var(--ck-accent), 0.1);
+  background: linear-gradient(135deg, 
+    rgba(218, 165, 32, 0.08) 0%,     /* golden rod - African gold */
+    rgba(222, 184, 135, 0.06) 20%,   /* burlywood with pink undertones */
+    rgba(139, 69, 19, 0.06) 40%,    /* saddle brown - earth clay */
+    rgba(255, 140, 0, 0.05) 60%,    /* dark orange - African sunset */
+    rgba(219, 112, 147, 0.04) 80%,  /* pale violet red - subtle pink */
+    rgba(250, 235, 215, 0.95) 100%  /* antique white - warm base */
+  );
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, 
+    #DAA520,  /* golden rod */
+    #FF8C00,  /* dark orange */
+    #DB7093,  /* pale violet red - pink accent */
+    #8B4513,  /* saddle brown */
+    #CD853F   /* peru */
+  ) 1;
   margin-top: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.elegant-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(218, 165, 32, 0.4),   /* golden rod */
+    rgba(219, 112, 147, 0.35), /* pale violet red - pink */
+    rgba(255, 140, 0, 0.4),    /* dark orange */
+    rgba(139, 69, 19, 0.4),    /* saddle brown */
+    rgba(205, 133, 63, 0.4),   /* peru */
+    transparent
+  );
+  animation: shimmer 10s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); opacity: 0; }
+  50% { transform: translateX(100%); opacity: 1; }
+}
+
+/* African-inspired geometric pattern overlay */
+.elegant-footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(218, 165, 32, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 80% 80%, rgba(255, 140, 0, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 40% 60%, rgba(139, 69, 19, 0.02) 1px, transparent 1px),
+    radial-gradient(circle at 60% 30%, rgba(219, 112, 147, 0.025) 1.5px, transparent 1.5px);
+  background-size: 30px 30px, 25px 25px, 15px 15px, 20px 20px;
+  background-position: 0 0, 15px 15px, 8px 8px, 10px 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.elegant-footer .container {
+  position: relative;
+  z-index: 2;
 }
 
 .footer-brand {
@@ -68,9 +132,26 @@ body {
   font-weight: 600;
   letter-spacing: 0.25rem;
   text-transform: uppercase;
-  color: var(--ck-ink);
+  background: linear-gradient(135deg, 
+    #DAA520 0%,   /* golden rod - African gold */
+    #DB7093 25%,  /* pale violet red - pink accent */
+    #FF8C00 50%,  /* dark orange - sunset */
+    #8B4513 75%,  /* saddle brown - earth */
+    #CD853F 100%  /* peru - terracotta */
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #8B4513; /* Fallback - saddle brown */
   margin: 0;
   line-height: 1.2;
+  transition: all 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+}
+
+.footer-brand:hover .footer-title {
+  letter-spacing: 0.3rem;
+  transform: scale(1.02);
 }
 
 .footer-social {
@@ -82,9 +163,9 @@ body {
 }
 
 .footer-social a {
-  color: var(--ck-muted);
+  color: #8B4513; /* saddle brown */
   font-size: 1.2rem;
-  transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  transition: all 0.3s ease;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -92,12 +173,45 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  background: linear-gradient(135deg, 
+    rgba(218, 165, 32, 0.08),   /* golden rod */
+    rgba(219, 112, 147, 0.05),  /* pale violet red - subtle pink */
+    rgba(160, 82, 45, 0.06)     /* sienna */
+  );
+  border: 1px solid rgba(218, 165, 32, 0.2);
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
 }
 
 .footer-social a:hover {
-  color: var(--ck-accent);
-  transform: translateY(-2px);
-  background: rgba(var(--ck-accent-rgb), 0.1);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(218, 165, 32, 0.3);
+}
+
+.footer-social a:nth-child(1):hover {
+  color: #DAA520; /* golden rod - African gold */
+  background: linear-gradient(135deg, 
+    rgba(218, 165, 32, 0.2), 
+    rgba(219, 112, 147, 0.08),  /* subtle pink blend */
+    rgba(255, 140, 0, 0.15)
+  );
+}
+
+.footer-social a:nth-child(2):hover {
+  color: #DB7093; /* pale violet red - pink accent */
+  background: linear-gradient(135deg, 
+    rgba(219, 112, 147, 0.2),   /* pink primary */
+    rgba(255, 140, 0, 0.1),     /* orange accent */
+    rgba(205, 133, 63, 0.15)
+  );
+}
+
+.footer-social a:nth-child(3):hover {
+  color: #8B4513; /* saddle brown - earth clay */
+  background: linear-gradient(135deg, 
+    rgba(139, 69, 19, 0.2), 
+    rgba(219, 112, 147, 0.06),  /* pink undertone */
+    rgba(160, 82, 45, 0.15)
+  );
 }
 
 .footer-credits {
@@ -109,10 +223,25 @@ body {
 
 .footer-credits .footer-text {
   font-size: 0.8rem;
-  color: var(--ck-muted);
+  background: linear-gradient(135deg, 
+    #8B4513 0%,   /* saddle brown */
+    #DB7093 40%,  /* pale violet red - pink accent */
+    #DAA520 70%,  /* golden rod */
+    #CD853F 100%  /* peru */
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #8B4513; /* Fallback - saddle brown */
   font-style: italic;
   margin: 0;
   line-height: 1.2;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
+}
+
+.footer-credits:hover .footer-text {
+  transform: scale(1.02);
 }
 
 .min-height-footer {
