@@ -320,6 +320,29 @@ body {
   text-shadow: 0 0 5px #ffffff, 0 0 5px #ff003b, 0 0 12px #cdcdcd, 0 0 3px #ededed;
 }
 
+/* Available Art Page Text Readability */
+body.available-art-background .lead.cedarville-cursive-regular {
+  color: #121212 !important;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 auto 3rem auto;
+  max-width: 600px;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(var(--ck-accent-rgb), 0.3);
+  text-shadow: none;
+}
+
+body.available-art-background .lead.cedarville-cursive-regular:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
 /* Gallery masonry grid */
 .gallery-grid {
   --gallery-card-border: 0.1rem;
