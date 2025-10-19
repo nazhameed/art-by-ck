@@ -6,18 +6,24 @@
   <div class="gallery-quote cedarville-cursive-regular">
     My art is my Eden...
   </div>
-  <p class="lead cedarville-cursive-regular">Browse original artworks currently available for purchase.</p>
-  <div class="row">
+  <p class="lead available-art-subtitle">Discover original paintings seeking their forever homes — each piece a window into slow time and deep presence.</p>
+  <div class="row gx-2 gy-4">
     {% for art in available_arts %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 gallery-card">
-          <img src="{{ art.image.url }}" class="card-img-top" alt="{{ art.title }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ art.title }}</h5>
-            <p class="card-text">{{ art.description }}</p>
-            {% if art.price %}<p class="card-text"><strong>Price:</strong> {{ art.price }}</p>{% endif %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <article class="gallery-card available-art-card" tabindex="0">
+          <figure>
+            <img src="{{ art.image.url }}" alt="{{ art.title }}" loading="lazy" decoding="async">
+          </figure>
+          <div class="gallery-card-body">
+            <h3 class="gallery-card-title">{{ art.title }}</h3>
+            {% if art.description %}
+              <p class="gallery-card-description">{{ art.description }}</p>
+            {% endif %}
+            {% if art.price %}
+              <p class="gallery-card-meta"><strong>Price: ${{ art.price }}</strong></p>
+            {% endif %}
           </div>
-        </div>
+        </article>
       </div>
     {% empty %}
       <p class="text-center">No available art at the moment.</p>
