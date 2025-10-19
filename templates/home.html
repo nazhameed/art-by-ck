@@ -85,8 +85,8 @@
 
 <section class="home-previews">
   <div class="container-xxl position-relative">
-    <div class="row justify-content-between align-items-end mb-5">
-      <div class="col-lg-8">
+    <div class="row justify-content-between align-items-end mb-4">
+      <div class="col-lg-8 mx-auto text-center">
         <span class="home-section-title text-light-contrast">Explore the portfolio</span>
         <h2 class="display-5 fw-semibold mt-3 text-light-contrast">Move through Edenfield</h2>
         <p class="lead text-white-85 mt-3 mb-0">
@@ -94,74 +94,105 @@
         </p>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-2 g-4">
-      <div class="col">
-        <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-1x1">
-            <img src="{% static 'images/let_sleeping_girls_lie.jpg' %}" alt="Let Sleeping Girls Lie painting" loading="lazy">
+    <div class="carousel-wrapper position-relative" style="max-width: 1200px; margin: 0 auto;">
+      <button class="carousel-control-prev custom-carousel-arrow" type="button" data-bs-target="#edenfieldCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <div id="edenfieldCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner multi-carousel-inner">
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <article class="home-preview-card h-100">
+                  <div class="home-preview-media ratio ratio-1x1">
+                    <img src="{% static 'images/let_sleeping_girls_lie.jpg' %}" alt="Let Sleeping Girls Lie painting" loading="lazy">
+                  </div>
+                  <div class="home-preview-body">
+                    <span class="eyebrow">Gallery</span>
+                    <h3>Flow through the living archive</h3>
+                    <p>Experience luminous canvases arranged for slow looking and quiet revolution.</p>
+                    <a class="home-preview-link" href="{% url 'gallery' %}">Explore the gallery</a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <article class="home-preview-card h-100 active-card">
+                  <div class="home-preview-media ratio ratio-1x1">
+                    <img src="{% static 'images/untold_story.jpg' %}" alt="Untold Story painting" loading="lazy">
+                  </div>
+                  <div class="home-preview-body">
+                    <span class="eyebrow">Available art</span>
+                    <h3>Collect original works</h3>
+                    <p>Reserve a painting accompanied by a certificate of authenticity and personal viewing.</p>
+                    <a class="home-preview-link" href="{% url 'available_art' %}">View available art</a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <article class="home-preview-card h-100">
+                  <div class="home-preview-media ratio ratio-1x1">
+                    <img src="{% static 'images/the_garden_gate.jpg' %}" alt="Garden Gate exhibition installation" loading="lazy">
+                  </div>
+                  <div class="home-preview-body">
+                    <span class="eyebrow">Exhibitions</span>
+                    <h3>Enter the Evening Garden</h3>
+                    <p>Discover installations staged at twilight, designed to let colour, light, and story breathe.</p>
+                    <a class="home-preview-link" href="{% url 'exhibition' %}">See exhibitions</a>
+                  </div>
+                </article>
+              </div>
+            </div>
           </div>
-          <div class="home-preview-body">
-            <span class="eyebrow">Gallery</span>
-            <h3>Flow through the living archive</h3>
-            <p>Experience luminous canvases arranged for slow looking and quiet revolution.</p>
-            <a class="home-preview-link" href="{% url 'gallery' %}">Explore the gallery</a>
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <article class="home-preview-card h-100">
+                  <div class="home-preview-media ratio ratio-1x1">
+                    <img src="{% static 'images/the_garden_gate.jpg' %}" alt="Garden Gate exhibition installation" loading="lazy">
+                  </div>
+                  <div class="home-preview-body">
+                    <span class="eyebrow">Exhibitions</span>
+                    <h3>Enter the Evening Garden</h3>
+                    <p>Discover installations staged at twilight, designed to let colour, light, and story breathe.</p>
+                    <a class="home-preview-link" href="{% url 'exhibition' %}">See exhibitions</a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <article class="home-preview-card h-100 active-card">
+                  <div class="home-preview-media ratio ratio-1x1">
+                    <img src="{% static 'images/sofies_well.jpg' %}" alt="Sofie's Well painting" loading="lazy">
+                  </div>
+                  <div class="home-preview-body">
+                    <span class="eyebrow">Journal</span>
+                    <h3>Read the slow notes</h3>
+                    <p>Stay close to the process with reflections on motherhood, ritual, and making.</p>
+                    <a class="home-preview-link" href="{% url 'journal' %}">Open journal</a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-12 col-md-4 d-flex justify-content-center">
+                <article class="home-preview-card h-100">
+                  <div class="home-preview-media ratio ratio-1x1">
+                    <img src="{% static 'images/alone.jpg' %}" alt="Cecilia with an artwork" loading="lazy">
+                  </div>
+                  <div class="home-preview-body">
+                    <span class="eyebrow">About</span>
+                    <h3>Meet the artist</h3>
+                    <p>Journey from Bulawayo to Sweden and learn how Edenfield continues to bloom.</p>
+                    <a class="home-preview-link" href="{% url 'about' %}">Discover the story</a>
+                  </div>
+                </article>
+              </div>
+            </div>
           </div>
-        </article>
+        </div>
       </div>
-      <div class="col">
-        <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-1x1">
-            <img src="{% static 'images/untold_story.jpg' %}" alt="Untold Story painting" loading="lazy">
-          </div>
-          <div class="home-preview-body">
-            <span class="eyebrow">Available art</span>
-            <h3>Collect original works</h3>
-            <p>Reserve a painting accompanied by a certificate of authenticity and personal viewing.</p>
-            <a class="home-preview-link" href="{% url 'available_art' %}">View available art</a>
-          </div>
-        </article>
-      </div>
-      <div class="col">
-        <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-1x1">
-            <img src="{% static 'images/the_garden_gate.jpg' %}" alt="Garden Gate exhibition installation" loading="lazy">
-          </div>
-          <div class="home-preview-body">
-            <span class="eyebrow">Exhibitions</span>
-            <h3>Enter the Evening Garden</h3>
-            <p>Discover installations staged at twilight, designed to let colour, light, and story breathe.</p>
-            <a class="home-preview-link" href="{% url 'exhibition' %}">See exhibitions</a>
-          </div>
-        </article>
-      </div>
-      <div class="col">
-        <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-1x1">
-            <img src="{% static 'images/sofies_well.jpg' %}" alt="Sofie's Well painting" loading="lazy">
-          </div>
-          <div class="home-preview-body">
-            <span class="eyebrow">Journal</span>
-            <h3>Read the slow notes</h3>
-            <p>Stay close to the process with reflections on motherhood, ritual, and making.</p>
-            <a class="home-preview-link" href="{% url 'journal' %}">Open journal</a>
-          </div>
-        </article>
-      </div>
-    </div>
-    <div class="row justify-content-center mt-4">
-      <div class="col-md-6 col-lg-4">
-        <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-1x1">
-            <img src="{% static 'images/alone.jpg' %}" alt="Cecilia with an artwork" loading="lazy">
-          </div>
-          <div class="home-preview-body">
-            <span class="eyebrow">About</span>
-            <h3>Meet the artist</h3>
-            <p>Journey from Bulawayo to Sweden and learn how Edenfield continues to bloom.</p>
-            <a class="home-preview-link" href="{% url 'about' %}">Discover the story</a>
-          </div>
-        </article>
-      </div>
+      <button class="carousel-control-next custom-carousel-arrow" type="button" data-bs-target="#edenfieldCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </div>
 </section>
