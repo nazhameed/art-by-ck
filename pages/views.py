@@ -38,7 +38,13 @@ class ExhibitionView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        exhibitions = Exhibition.objects.all().order_by('-date')
+        exhibitions_qs = Exhibition.objects.all().order_by('-date')
+        exhibitions = list(exhibitions_qs)
+
+        def clean_title(value: str | None) -> str:
+            if not value:
+                return ""
+            return value.replace("[featured]", "").strip()
 
         # Generate video URLs with adaptive bitrate streaming (HLS)
         for exhibition in exhibitions:
@@ -67,7 +73,30 @@ class ExhibitionView(TemplateView):
                     fetch_format='auto'
                 )[0]
 
-        context['exhibitions'] = exhibitions
+            exhibition.display_title = clean_title(exhibition.title)
+
+        special_feature_title = "Evening Garden Exhibition 2025"
+        featured_exhibition = None
+        fallback_featured = None
+
+        for exhibition in exhibitions:
+            title_value = exhibition.title or ""
+            if "[featured]" in title_value:
+                featured_exhibition = exhibition
+                break
+            if fallback_featured is None and clean_title(title_value) == special_feature_title:
+                fallback_featured = exhibition
+
+        if featured_exhibition is None:
+            featured_exhibition = fallback_featured
+
+        if featured_exhibition:
+            remaining_exhibitions = [ex for ex in exhibitions if ex != featured_exhibition]
+        else:
+            remaining_exhibitions = exhibitions
+
+        context['exhibitions'] = remaining_exhibitions
+        context['featured_exhibition'] = featured_exhibition
         return context
 
 

@@ -1,36 +1,99 @@
 {% extends "base.html" %} {% load cloudinary %} {% block title %}Exhibition |
-Art by CK{% endblock %} {% block body_class %}exhibition-background{% endblock %} {% block content %}
+Art by CK{% endblock %} {% block body_class %}exhibition-background{% endblock %}
+{% block content %}
+{% if featured_exhibition %}
+<section class="featured-exhibition mb-5">
+  <div class="container-fluid px-0">
+    <div class="featured-media">
+      {% if featured_exhibition.video and featured_exhibition.video.public_id %}
+      <div class="w-100 d-flex flex-column justify-content-center">
+        {% include "inserts/custom_video.html" with poster=featured_exhibition.video_poster_url hls=featured_exhibition.video_hls_url mp4=featured_exhibition.video_mp4_url %}
+      </div>
+      {% elif featured_exhibition.image %}
+      <img
+        src="{{ featured_exhibition.image.url }}"
+        class="w-100"
+        style="max-height: 75vh; object-fit: cover;"
+        alt="{{ featured_exhibition.display_title|default:featured_exhibition.title }}"
+      />
+      {% endif %}
+    </div>
+    <div class="featured-details bg-dark text-white py-1 px-2 px-lg-3 text-center">
+      <span class="text-uppercase text-white-50 small fw-semibold mb-1 d-inline-block">Featured Exhibition</span>
+      <h3 class="fw-bold mb-1">{{ featured_exhibition.display_title|default:featured_exhibition.title }}</h3>
+      <p class="text-white-50 mb-1">
+        {{ featured_exhibition.description }}
+      </p>
+      <div class="d-flex flex-column flex-md-row justify-content-center gap-2 text-white mb-1">
+        <div>
+          <span class="d-block text-uppercase text-white-50 small fw-semibold mb-1">Date</span>
+          <span class="fs-6">{{ featured_exhibition.date|date:"F Y"|default:"TBA" }}</span>
+        </div>
+        <div>
+          <span class="d-block text-uppercase text-white-50 small fw-semibold mb-1">Location</span>
+          <span class="fs-6">{{ featured_exhibition.location }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
 <div class="container py-5">
   <div class="gallery-quote cedarville-cursive-regular mb-4">
     My work is a quiet revolution...
   </div>
+  {% if exhibitions %}
   <div class="row">
     {% for exhibition in exhibitions %}
     <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        {% if exhibition.image %}
-        <img
-          src="{{ exhibition.image.url }}"
-          class="card-img-top"
-          alt="{{ exhibition.title }}"
-        />
-        {% endif %} {% if exhibition.video and exhibition.video.public_id %}
-        {% include "inserts/custom_video.html" with poster=exhibition.video_poster_url hls=exhibition.video_hls_url mp4=exhibition.video_mp4_url %}
-        {% endif %}
-        <div class="card-body">
-          <h5 class="card-title">{{ exhibition.title }}</h5>
-          <p class="card-text">{{ exhibition.description }}</p>
-          <p class="card-text"><strong>Date:</strong> {{ exhibition.date }}</p>
-          <p class="card-text">
-            <strong>Location:</strong> {{ exhibition.location }}
-          </p>
+      <div class="card h-100 bg-dark text-white border-0 shadow-sm overflow-hidden w-100">
+        <div class="row g-0 h-100">
+          <div class="col-12 col-lg-5 d-flex">
+            {% if exhibition.video and exhibition.video.public_id %}
+            <div class="w-100 d-flex align-items-stretch bg-black flex-grow-1 ratio-fill">
+              {% include "inserts/custom_video.html" with poster=exhibition.video_poster_url hls=exhibition.video_hls_url mp4=exhibition.video_mp4_url %}
+            </div>
+            {% elif exhibition.image %}
+            <img
+              src="{{ exhibition.image.url }}"
+              class="w-100 h-100 flex-grow-1"
+              style="object-fit: cover; min-height: 220px;"
+              alt="{{ exhibition.display_title|default:exhibition.title }}"
+            />
+            {% else %}
+            <div class="w-100 h-100 bg-secondary-subtle d-flex align-items-center justify-content-center text-white-50 flex-grow-1" style="min-height: 220px;">
+              <span>No media available</span>
+            </div>
+            {% endif %}
+          </div>
+          <div class="col-12 col-lg-7 d-flex">
+            <div class="card-body d-flex flex-column justify-content-between h-100 w-100">
+              <div>
+                <h5 class="card-title text-white fw-semibold">
+                  {{ exhibition.display_title|default:exhibition.title }}
+                </h5>
+                <p class="card-text text-white-50 mb-4">{{ exhibition.description }}</p>
+              </div>
+              <div class="mt-auto">
+                <p class="card-text mb-2">
+                  <span class="text-uppercase text-white-50 small fw-semibold">Date</span><br />
+                  <span>{{ exhibition.date|date:"F Y"|default:"TBA" }}</span>
+                </p>
+                <p class="card-text mb-0">
+                  <span class="text-uppercase text-white-50 small fw-semibold">Location</span><br />
+                  <span>{{ exhibition.location }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    {% empty %}
-    <p class="text-center">No exhibitions yet.</p>
     {% endfor %}
   </div>
+  {% elif not featured_exhibition %}
+  <p class="text-center">No exhibitions yet.</p>
+  {% endif %}
 </div>
 {% endblock %} {% block extra_scripts %} {{ block.super }}
 {% include "inserts/custom_video.html" with mode='script' %}
