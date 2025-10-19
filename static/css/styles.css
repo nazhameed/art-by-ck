@@ -999,11 +999,20 @@ footer .social-icons a:focus {
   font-size: 0.9rem;
   transition: all 0.3s ease;
   cursor: pointer;
+  color: #121212 !important;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(var(--ck-accent-rgb), 0.3);
 }
 
 .read-more-btn:hover {
-  color: var(--ck-pop-blue) !important;
-  transform: translateY(-1px);
+  color: #121212 !important;
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.2);
+  border-color: var(--ck-accent);
 }
 
 .read-more-btn:focus {
