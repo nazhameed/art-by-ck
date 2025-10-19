@@ -757,6 +757,27 @@ footer .social-icons a:focus {
   border-color: rgba(45, 125, 125, 0.2) !important;
 }
 
+/* Exhibition page media helpers */
+.ratio-fill {
+  position: relative;
+}
+
+.ratio-fill .ratio {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+.ratio-fill .ratio::before {
+  display: none;
+}
+
+.ratio-fill .ratio > * {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 /* Enhanced gradients for contact cards */
 .bg-gradient {
   position: relative;
