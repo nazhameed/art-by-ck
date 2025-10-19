@@ -167,15 +167,15 @@
   pointer-events: none;
   z-index: -2;
   scale: 1.05;
-  filter: brightness(0.5) hue-rotate(163deg);
-  mix-blend-mode: hard-light;
+  filter: brightness(0.8) saturate(1.1);
+  mix-blend-mode: normal;
 }
 
 .home-hero::after {
   content: "";
   position: absolute;
   inset: 0;
-    pointer-events: none;
+  pointer-events: none;
   z-index: -1;
   background: linear-gradient(
     135deg,
@@ -619,6 +619,20 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
+/* Contact preview card styling to match contact page theme */
+.contact-preview .home-preview-body .eyebrow {
+  color: #FF2D7A;
+}
+
+.contact-preview .home-preview-link {
+  color: #FF2D7A;
+}
+
+.contact-preview:hover .home-preview-link,
+.contact-preview:focus-within .home-preview-link {
+  color: #ffffff;
+}
+
 .home-preview-body h3 {
   font-weight: 700;
   font-size: 1.8rem;
@@ -674,15 +688,15 @@
   position: relative;
   background: linear-gradient(
       135deg,
-      rgba(26, 26, 26, 0.95),
-      rgba(45, 45, 45, 0.9)
+      rgba(11, 11, 15, 0.85),
+      rgba(45, 45, 45, 0.8)
     ),
-    url("../images/sofies_well.jpg") center/cover no-repeat;
+    url("../images/the_three_graces.jpg") center/cover no-repeat;
   color: #ffffff;
   border-radius: 32px;
   overflow: hidden;
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 45, 122, 0.2);
 }
 
 .home-contact-cta::after {
@@ -732,17 +746,17 @@
   height: 80px;
   margin: 0 auto 1.5rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(var(--ck-highlight-rgb), 0.2), rgba(var(--ck-accent-rgb), 0.2));
+  background: linear-gradient(135deg, rgba(255, 45, 122, 0.2), rgba(var(--ck-highlight-rgb), 0.1));
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(var(--ck-highlight-rgb), 0.3);
+  border: 2px solid rgba(255, 45, 122, 0.3);
   backdrop-filter: blur(10px);
 }
 
 .service-icon i {
   font-size: 1.75rem;
-  color: var(--ck-highlight);
+  color: #FF2D7A;
 }
 
 .service-title {
@@ -762,9 +776,9 @@
 }
 
 .btn-contact {
-  background: linear-gradient(135deg, var(--ck-highlight), var(--ck-pop-orange));
-  border: none;
-  color: #1a1a1a;
+  background: linear-gradient(135deg, #0b0b0f, #FF2D7A);
+  border: 2px solid #FF2D7A;
+  color: #ffffff;
   font-weight: 600;
   letter-spacing: 0.05em;
   padding: 1rem 3rem;
@@ -772,14 +786,14 @@
   transition: all 0.4s ease;
   text-transform: none;
   font-size: 1.1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(255, 45, 122, 0.3);
 }
 
 .btn-contact:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 48px rgba(255, 204, 0, 0.4);
-  background: linear-gradient(135deg, var(--ck-pop-orange), var(--ck-highlight));
-  color: #1a1a1a;
+  box-shadow: 0 12px 48px rgba(255, 45, 122, 0.5);
+  background: linear-gradient(135deg, #FF2D7A, #6c6c6c);
+  color: #ffffff;
 }
 
 .btn-contact i {
