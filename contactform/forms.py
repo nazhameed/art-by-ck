@@ -93,3 +93,6 @@ class ContactSubmissionForm(forms.ModelForm):
             'artwork_reference': 'Artwork Reference',
             'preferred_contact_method': 'Preferred Contact Method *',
         }
+        help_texts = {
+            'name': '',  # Hide the 'Full name' helper text
+        }
