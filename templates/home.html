@@ -35,8 +35,8 @@
           <div class="col-lg-6">
             <div class="gallery-cta-highlight">
               <div class="home-hero-buttons d-flex flex-wrap gap-3 mb-4">
-                <a class="btn home-hero-primary btn-lg" href="{% url 'gallery' %}">Enter the Gallery</a>
-                <a class="btn home-hero-shop btn-lg" href="{% url 'available_art' %}">
+                <a class="btn home-hero-primary btn-lg" href="{% url 'gallery' %}" style="font-size: 1.8rem; padding: 1rem 2rem;">Enter the Gallery</a>
+                <a class="btn home-hero-shop btn-lg" href="{% url 'available_art' %}" style="font-size: 1.8rem; padding: 1rem 2rem;">
                   Available Works
                 </a>
               </div>
@@ -64,7 +64,7 @@
           When the world feels loud with distortion, I return to the canvas. Layer by layer, I build spiritual filters that reveal feminine stories.
         </blockquote>
         <div class="mt-4">
-          <a class="btn btn-outline-dark px-4" href="{% url 'about' %}">Meet Cecilia</a>
+          <a class="btn home-story-btn px-4" href="{% url 'about' %}">Read More</a>
         </div>
       </div>
       <div class="col-lg-5 offset-lg-1">
@@ -94,7 +94,7 @@
         </p>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-2 g-4">
       <div class="col">
         <article class="home-preview-card h-100">
           <div class="home-preview-media ratio ratio-1x1">
@@ -147,7 +147,9 @@
           </div>
         </article>
       </div>
-      <div class="col">
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6 col-lg-4">
         <article class="home-preview-card h-100">
           <div class="home-preview-media ratio ratio-1x1">
             <img src="{% static 'images/alone.jpg' %}" alt="Cecilia with an artwork" loading="lazy">
@@ -160,19 +162,6 @@
           </div>
         </article>
       </div>
-      <div class="col">
-        <article class="home-preview-card h-100">
-          <div class="home-preview-media ratio ratio-1x1">
-            <img src="{% static 'images/the_birth_of_venus.jpg' %}" alt="The Birth of Venus painting" loading="lazy">
-          </div>
-          <div class="home-preview-body">
-            <span class="eyebrow">Contact</span>
-            <h3>Curate a conversation</h3>
-            <p>Plan an exhibition or artist talk tailored to your space and audience.</p>
-            <a class="home-preview-link" href="{% url 'contact' %}">Get in touch</a>
-          </div>
-        </article>
-      </div>
     </div>
   </div>
 </section>
@@ -182,42 +171,33 @@
     <div class="row justify-content-center">
       <div class="col-lg-8 text-center">
         <div class="contact-intro mb-5">
-          <span class="home-section-title text-white">Get in touch</span>
-          <h2 class="display-5 fw-light mt-3 text-white mb-4">
-            Start a conversation about art and exhibitions
+          <span class="home-section-title text-dark">Get in touch</span>
+          <h2 class="display-5 fw-light mt-3 text-dark mb-4 cedarville-cursive-regular" style="font-size: 2.8rem;">
+            Let's create something beautiful together
           </h2>
-          <p class="lead text-white-85 mb-0 mx-auto" style="max-width: 600px;">
-            Whether you're interested in a specific piece, planning an exhibition, or exploring a private viewing.
+          <p class="lead text-dark-85 mb-0 mx-auto" style="max-width: 650px; font-style: italic; line-height: 1.6;">
+            Whether you're drawn to a particular piece, dreaming of a personal exhibition, or curious about the stories behind the canvases — I'd love to hear from you.
           </p>
         </div>
         
-        <div class="contact-services mb-5">
+        <div class="artistic-contact-options mb-5">
           <div class="row g-4 justify-content-center">
             <div class="col-md-4">
-              <div class="service-item">
-                <div class="service-icon">
-                  <i class="fas fa-palette"></i>
+              <div class="artistic-option">
+                <div class="artistic-icon">
+                  <i class="fas fa-heart"></i>
                 </div>
-                <h6 class="service-title">Original Artwork</h6>
-                <p class="service-description">Discover pieces available for collection</p>
+                <h6 class="artistic-title">Fall in love with a piece</h6>
+                <p class="artistic-description">Original paintings seeking their forever homes</p>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="service-item">
-                <div class="service-icon">
-                  <i class="fas fa-eye"></i>
+              <div class="artistic-option">
+                <div class="artistic-icon">
+                  <i class="fas fa-magic"></i>
                 </div>
-                <h6 class="service-title">Private Viewings</h6>
-                <p class="service-description">Schedule intimate studio visits</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="service-item">
-                <div class="service-icon">
-                  <i class="fas fa-users"></i>
-                </div>
-                <h6 class="service-title">Exhibition Planning</h6>
-                <p class="service-description">Curate meaningful installations</p>
+                <h6 class="artistic-title">Dream an exhibition</h6>
+                <p class="artistic-description">Co-create meaningful experiences together</p>
               </div>
             </div>
           </div>
@@ -225,7 +205,7 @@
         
         <div class="contact-action">
           <a class="btn btn-contact btn-lg" href="{% url 'contact' %}">
-            Begin the conversation
+            Start our conversation
             <i class="fas fa-arrow-right ms-2"></i>
           </a>
         </div>
