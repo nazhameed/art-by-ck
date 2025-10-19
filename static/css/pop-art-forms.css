@@ -42,10 +42,10 @@ Custom CSS only for:
 .artistic-contact {
   /* Use Bootstrap: rounded-4 p-4 position-relative overflow-hidden shadow-lg */
   background: linear-gradient(135deg, 
-    var(--artist-cream) 0%, 
-    rgba(255, 20, 147, 0.12) 30%,
-    rgba(168, 164, 206, 0.1) 70%, 
-    var(--artist-cream) 100%);
+    #f8f7f4 0%, 
+    rgba(255, 45, 122, 0.08) 30%,
+    rgba(11, 11, 15, 0.05) 70%, 
+    #f8f7f4 100%);
 }
 
 .artistic-contact::before {
@@ -57,8 +57,8 @@ Custom CSS only for:
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(45deg, transparent 49%, rgba(168, 164, 206, 0.03) 50%, transparent 51%),
-    linear-gradient(-45deg, transparent 49%, rgba(129, 178, 154, 0.02) 50%, transparent 51%);
+    linear-gradient(45deg, transparent 49%, rgba(255, 45, 122, 0.03) 50%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, rgba(11, 11, 15, 0.02) 50%, transparent 51%);
   background-size: 30px 30px;
   pointer-events: none;
   border-radius: inherit;
@@ -72,8 +72,8 @@ Custom CSS only for:
 
 /* Bootstrap-First Header - Use text-white position-relative overflow-hidden with custom background */
 .artistic-header {
-  background: linear-gradient(135deg, var(--artist-deep-teal), var(--artist-soft-pink), var(--artist-soft-lavender));
-  border-bottom: 3px solid var(--artist-pink-accent) !important;
+  background: #0b0b0f;
+  border-bottom: 4px solid #FF2D7A !important;
 }
 
 
@@ -85,8 +85,8 @@ Custom CSS only for:
 /* Form Field Enhancements - Bootstrap form-control with artistic touches */
 .artistic-form .form-control:focus,
 .artistic-form .form-select:focus {
-  border-color: var(--artist-deep-teal);
-  box-shadow: 0 0 0 0.25rem rgba(45, 125, 125, 0.25);
+  border-color: #FF2D7A;
+  box-shadow: 0 0 0 0.25rem rgba(255, 45, 122, 0.25);
 }
 
 .artistic-form .form-control:valid:not(:placeholder-shown) {
@@ -108,8 +108,8 @@ Custom CSS only for:
 /* Submit Button - Bootstrap btn with custom gradient and effects */
 .artistic-submit {
   /* Use Bootstrap: btn btn-lg px-4 py-3 fw-semibold position-relative overflow-hidden shadow */
-  background: linear-gradient(135deg, var(--artist-deep-teal), var(--artist-soft-pink), var(--artist-sage));
-  border: 2px solid var(--artist-pink-accent);
+  background: linear-gradient(135deg, #0b0b0f, #FF2D7A, #6c6c6c);
+  border: 2px solid #FF2D7A;
   color: white;
   transition: all 0.4s ease;
 }
@@ -127,9 +127,9 @@ Custom CSS only for:
 
 .artistic-submit:hover {
   transform: translateY(-2px);
-  border-color: var(--artist-soft-pink);
-  background: linear-gradient(135deg, var(--artist-sage), var(--artist-pink-accent), var(--artist-deep-teal));
-  box-shadow: 0 8px 32px rgba(255, 20, 147, 0.4);
+  border-color: #FF2D7A;
+  background: linear-gradient(135deg, #6c6c6c, #FF2D7A, #0b0b0f);
+  box-shadow: 0 8px 32px rgba(255, 45, 122, 0.4);
 }
 
 .artistic-submit:hover::before {
@@ -173,16 +173,35 @@ Custom CSS only for:
 }
 
 .qr-card:hover {
-  border-color: var(--artist-soft-pink) !important;
-  box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+  border-color: #FF2D7A !important;
+  box-shadow: 0 8px 25px rgba(255, 45, 122, 0.3);
   transform: translateY(-2px);
+}
+
+/* Quick Connect Section Centering Fix */
+.quick-connect-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.quick-connect-section .row {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.quick-connect-section .row > * {
+  display: flex;
+  justify-content: center;
 }
 
 /* Pink accent for form focus states */
 .artistic-form .form-control:focus,
 .artistic-form .form-select:focus {
-  border-color: var(--artist-pink-accent);
-  box-shadow: 0 0 0 0.25rem rgba(194, 30, 86, 0.25);
+  border-color: #FF2D7A;
+  box-shadow: 0 0 0 0.25rem rgba(255, 45, 122, 0.25);
 }
 
 /* Modal - Bootstrap modal with custom styling */
