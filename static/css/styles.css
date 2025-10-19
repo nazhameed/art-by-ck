@@ -51,22 +51,8 @@ body {
    Elegant Footer
    ========================================================================== */
 .elegant-footer {
-  background: linear-gradient(135deg, 
-    rgba(218, 165, 32, 0.08) 0%,     /* golden rod - African gold */
-    rgba(222, 184, 135, 0.06) 20%,   /* burlywood with pink undertones */
-    rgba(139, 69, 19, 0.06) 40%,    /* saddle brown - earth clay */
-    rgba(255, 140, 0, 0.05) 60%,    /* dark orange - African sunset */
-    rgba(219, 112, 147, 0.04) 80%,  /* pale violet red - subtle pink */
-    rgba(250, 235, 215, 0.95) 100%  /* antique white - warm base */
-  );
-  border-top: 3px solid;
-  border-image: linear-gradient(90deg, 
-    #DAA520,  /* golden rod */
-    #FF8C00,  /* dark orange */
-    #DB7093,  /* pale violet red - pink accent */
-    #8B4513,  /* saddle brown */
-    #CD853F   /* peru */
-  ) 1;
+  background: #0b0b0f; /* Match navbar black background */
+  border-top: 4px solid var(--ck-accent); /* Match navbar border style */
   margin-top: 4rem;
   position: relative;
   overflow: hidden;
@@ -128,25 +114,24 @@ body {
 }
 
 .footer-brand .footer-title {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 800;
   letter-spacing: 0.25rem;
   text-transform: uppercase;
   background: linear-gradient(135deg, 
     #DAA520 0%,   /* golden rod - African gold */
-    #DB7093 25%,  /* pale violet red - pink accent */
-    #FF8C00 50%,  /* dark orange - sunset */
-    #8B4513 75%,  /* saddle brown - earth */
-    #CD853F 100%  /* peru - terracotta */
+    #ffffff 30%,  /* white */
+    #DB7093 60%,  /* pale violet red - pink accent */
+    #CD853F 100%  /* peru */
   );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #8B4513; /* Fallback - saddle brown */
+  color: #ffffff; /* Fallback - white for black background */
   margin: 0;
   line-height: 1.2;
   transition: all 0.3s ease;
-  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .footer-brand:hover .footer-title {
@@ -163,7 +148,7 @@ body {
 }
 
 .footer-social a {
-  color: #8B4513; /* saddle brown */
+  color: rgba(255, 255, 255, 0.8); /* Light color for black background */
   font-size: 1.2rem;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -173,26 +158,23 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, 
-    rgba(218, 165, 32, 0.08),   /* golden rod */
-    rgba(219, 112, 147, 0.05),  /* pale violet red - subtle pink */
-    rgba(160, 82, 45, 0.06)     /* sienna */
-  );
-  border: 1px solid rgba(218, 165, 32, 0.2);
-  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+  background: rgba(255, 255, 255, 0.1); /* Subtle white background */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .footer-social a:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 20px rgba(218, 165, 32, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .footer-social a:nth-child(1):hover {
-  color: #DAA520; /* golden rod - African gold */
+  color: #DB7093; /* pale violet red - pink accent */
   background: linear-gradient(135deg, 
-    rgba(218, 165, 32, 0.2), 
-    rgba(219, 112, 147, 0.08),  /* subtle pink blend */
-    rgba(255, 140, 0, 0.15)
+    rgba(219, 112, 147, 0.2),   /* pink primary */
+    rgba(255, 140, 0, 0.1),     /* orange accent */
+    rgba(205, 133, 63, 0.15)
   );
 }
 
@@ -206,11 +188,11 @@ body {
 }
 
 .footer-social a:nth-child(3):hover {
-  color: #8B4513; /* saddle brown - earth clay */
+  color: #DB7093; /* pale violet red - pink accent */
   background: linear-gradient(135deg, 
-    rgba(139, 69, 19, 0.2), 
-    rgba(219, 112, 147, 0.06),  /* pink undertone */
-    rgba(160, 82, 45, 0.15)
+    rgba(219, 112, 147, 0.2),   /* pink primary */
+    rgba(255, 140, 0, 0.1),     /* orange accent */
+    rgba(205, 133, 63, 0.15)
   );
 }
 
@@ -224,7 +206,7 @@ body {
 .footer-credits .footer-text {
   font-size: 0.8rem;
   background: linear-gradient(135deg, 
-    #8B4513 0%,   /* saddle brown */
+    #ffffff 0%,   /* white */
     #DB7093 40%,  /* pale violet red - pink accent */
     #DAA520 70%,  /* golden rod */
     #CD853F 100%  /* peru */
@@ -232,12 +214,12 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #8B4513; /* Fallback - saddle brown */
+  color: rgba(255, 255, 255, 0.9); /* Fallback - white for black background */
   font-style: italic;
   margin: 0;
   line-height: 1.2;
   transition: all 0.3s ease;
-  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .footer-credits:hover .footer-text {
@@ -539,8 +521,8 @@ body.available-art-background .lead.cedarville-cursive-regular:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px; /* Set minimum height for consistency */
-  max-height: 350px; /* Limit maximum height */
+  min-height: 300px; /* Increased minimum height */
+  max-height: 500px; /* Increased maximum height */
   background: transparent !important; /* Remove any figure background */
   border-radius: 0 !important; /* Remove border radius */
 }
