@@ -43,7 +43,7 @@ Custom CSS only for:
   /* Use Bootstrap: rounded-4 p-4 position-relative overflow-hidden shadow-lg */
   background: linear-gradient(135deg, 
     #f8f7f4 0%, 
-    rgba(255, 45, 122, 0.08) 30%,
+    rgba(200, 200, 200, 0.08) 30%,
     rgba(11, 11, 15, 0.05) 70%, 
     #f8f7f4 100%);
 }
@@ -57,7 +57,7 @@ Custom CSS only for:
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(45deg, transparent 49%, rgba(255, 45, 122, 0.03) 50%, transparent 51%),
+    linear-gradient(45deg, transparent 49%, rgba(150, 150, 150, 0.03) 50%, transparent 51%),
     linear-gradient(-45deg, transparent 49%, rgba(11, 11, 15, 0.02) 50%, transparent 51%);
   background-size: 30px 30px;
   pointer-events: none;
@@ -66,8 +66,9 @@ Custom CSS only for:
 
 /* Custom card styling - minimal overrides to Bootstrap card */
 .artistic-contact .card {
-  /* Use Bootstrap: bg-white bg-opacity-75 border-light rounded-4 position-relative shadow */
+  /* Use Bootstrap: border-light rounded-4 position-relative shadow */
   backdrop-filter: blur(10px);
+  background: transparent !important;
 }
 
 /* Bootstrap-First Header - Use text-white position-relative overflow-hidden with custom background */
@@ -211,29 +212,12 @@ Custom CSS only for:
 }
 
 .artistic-modal .modal-header {
-  background: linear-gradient(135deg, var(--artist-sage), var(--artist-deep-teal));
-  border-bottom: 2px solid var(--artist-gold-accent);
+  background: #0b0b0f !important; /* Match navbar background */
+  border-bottom: 4px solid var(--ck-accent) !important; /* Match navbar border */
   position: relative;
 }
 
-.artistic-modal .modal-header::after {
-  content: "✓";
-  position: absolute;
-  top: -8px;
-  right: 20px;
-  background: var(--artist-gold-accent);
-  border: 2px solid white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: white;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
+/* Removed checkmark for cleaner modal design */
 
 .artistic-modal .modal-body::before {
   content: "";
