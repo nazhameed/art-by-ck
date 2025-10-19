@@ -132,8 +132,14 @@ database_url = os.environ.get("PRODUCTION_DB") or os.environ.get("DEVELOPMENT_DB
 if not database_url:
     raise ImproperlyConfigured("Set either PRODUCTION_DB or DEVELOPMENT_DB environment variable with your database URL.")
 
+
 DATABASES = {
-    'default': dj_database_url.parse(database_url, conn_max_age=600),
+    "default": dj_database_url.config(
+        default=database_url,
+        conn_max_age=600,
+        conn_health_checks=True,
+        ssl_require=True,
+    ),
 }
 
 
