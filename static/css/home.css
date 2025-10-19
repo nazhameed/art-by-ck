@@ -1,6 +1,6 @@
 .home-hero {
   position: relative;
-  min-height: 75vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,6 +76,11 @@
 .home-intro {
   background: #ffffff;
   color: #1a1a1a;
+  margin-top: -5vh;
+  position: relative;
+  z-index: 3;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .home-intro h1 {
@@ -160,7 +165,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../images/001_73a7851e045fcb414e226334091591c5.jpg") top/cover no-repeat;
+  background: url("../images/001_73a7851e045fcb414e226334091591c5.jpg") center/cover no-repeat;
   animation: homeHeroDrift 12s ease-in-out infinite alternate;
   transform-origin: center;
   will-change: transform;
@@ -445,6 +450,11 @@
 }
 
 @media (min-width: 992px) {
+  .home-hero::before {
+    background-position: center center;
+    background-size: cover;
+  }
+
   .home-hero-col-title {
     align-items: flex-start;
   }
@@ -664,21 +674,57 @@
 .home-previews {
   background-image: 
     linear-gradient(135deg, 
-      rgba(11, 11, 15, 0.85) 0%,
-      rgba(106, 190, 48, 0.12) 25%,    /* green with more transparency */
-      rgba(26, 10, 26, 0.8) 50%,
-      rgba(144, 169, 85, 0.08) 75%,     /* olive green with more transparency */
-      rgba(16, 8, 20, 0.9) 100%
+      rgba(8, 8, 12, 0.95) 0%,
+      rgba(20, 18, 25, 0.92) 25%,
+      rgba(16, 10, 20, 0.94) 50%,
+      rgba(22, 20, 28, 0.91) 75%,
+      rgba(12, 8, 16, 0.96) 100%
     ),
     url('../images/new_bg.png');
   background-size: cover, cover;
   background-position: center center, center center;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
-  color: #f9f7f2;
+  color: #ffffff;
   position: relative;
   overflow: hidden;
   padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+/* Enhanced text contrast for previews section */
+.home-previews .display-5,
+.home-previews h2 {
+  color: #ffffff !important;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.9),
+    0 4px 20px rgba(0, 0, 0, 0.8),
+    0 8px 32px rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+}
+
+.home-previews .home-section-title {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9), 
+    rgba(106, 190, 48, 0.8),
+    rgba(144, 169, 85, 0.8),
+    rgba(180, 140, 120, 0.7),
+    rgba(255, 255, 255, 0.8)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.home-previews .lead,
+.home-previews p {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    0 2px 12px rgba(0, 0, 0, 0.6);
+  font-weight: 400;
 }
 
 .home-previews::before,
@@ -689,7 +735,7 @@
   height: 360px;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.6;
+  opacity: 0.25;
 }
 
 .home-previews::before {
@@ -855,13 +901,13 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Contact preview card styling to match golden theme */
+/* Contact preview card styling to match pink theme */
 .contact-preview .home-preview-body .eyebrow {
-  background: linear-gradient(135deg, #FFD700, #DAA520);
+  background: linear-gradient(135deg, #B89FB0, #C4A2BD);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #FFD700; /* Fallback */
+  color: #B89FB0; /* Fallback */
 }
 
 .contact-preview .home-preview-link {
@@ -929,18 +975,18 @@
   background: 
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.92) 0%,
-      rgba(250, 235, 215, 0.88) 25%,
-      rgba(254, 249, 243, 0.90) 50%,
-      rgba(255, 255, 255, 0.85) 75%,
-      rgba(250, 235, 215, 0.92) 100%
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(250, 235, 215, 0.94) 25%,
+      rgba(254, 249, 243, 0.95) 50%,
+      rgba(255, 255, 255, 0.93) 75%,
+      rgba(250, 235, 215, 0.96) 100%
     ),
     url("../images/the_three_graces.jpg") center/cover no-repeat;
-  color: #1a1a1a;
+  color: #0a0a0a;
   border-radius: 32px;
   overflow: hidden;
-  border: 1px solid rgba(219, 112, 147, 0.2);
-  backdrop-filter: blur(2px);
+  border: 1px solid rgba(219, 112, 147, 0.3);
+  backdrop-filter: blur(3px);
 }
 
 .home-contact-cta::before {
@@ -975,7 +1021,43 @@
 
 .home-contact-cta > .row {
   position: relative;
-  z-index: 1;
+  z-index: 3;
+}
+
+/* Enhanced text contrast for all contact section content */
+.home-contact-cta h1,
+.home-contact-cta h2,
+.home-contact-cta .display-5 {
+  color: #0a0a0a !important;
+  text-shadow: 
+    0 1px 2px rgba(255, 255, 255, 0.8),
+    0 2px 4px rgba(255, 255, 255, 0.6),
+    1px 1px 0 rgba(255, 255, 255, 0.7),
+    -1px -1px 0 rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.home-contact-cta p,
+.home-contact-cta .lead {
+  color: #1a1a1a !important;
+  text-shadow: 
+    0 1px 2px rgba(255, 255, 255, 0.9),
+    1px 1px 0 rgba(255, 255, 255, 0.8),
+    -1px -1px 0 rgba(255, 255, 255, 0.8);
+  font-weight: 450;
+}
+
+.home-contact-cta .eyebrow,
+.home-contact-cta .home-section-title,
+.home-contact-cta .text-uppercase {
+  color: #6ABE30 !important;
+  text-shadow: 
+    0 1px 3px rgba(255, 255, 255, 0.95),
+    0 2px 6px rgba(255, 255, 255, 0.8),
+    1px 1px 0 rgba(255, 255, 255, 0.9),
+    -1px -1px 0 rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.2em;
 }
 
 /* Improve readability of cursive text over artwork background */
@@ -996,17 +1078,30 @@
 
 .contact-intro .display-5 {
   font-family: 'Georgia', serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.3;
   letter-spacing: -0.02em;
+  color: #0a0a0a !important;
+  text-shadow: 
+    0 1px 2px rgba(255, 255, 255, 0.8),
+    0 2px 4px rgba(255, 255, 255, 0.6),
+    1px 1px 0 rgba(255, 255, 255, 0.7),
+    -1px -1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .text-white-85 {
-  color: rgba(26, 26, 26, 0.85) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6);
 }
 
 .text-dark-85 {
   color: rgba(26, 26, 26, 0.85) !important;
+}
+
+.text-light-contrast {
+  color: rgba(255, 255, 255, 0.98) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 4px 20px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
 }
 
 .contact-services {
@@ -1199,7 +1294,11 @@
 
 @media (max-width: 991.98px) {
   .home-hero {
-    min-height: 70vh;
+    min-height: 55vh;
+  }
+
+  .home-intro {
+    margin-top: -3vh;
   }
 
   .hero-brand {
@@ -1285,7 +1384,12 @@
 
 @media (max-width: 575.98px) {
   .home-hero {
-    min-height: 65vh;
+    min-height: 50vh;
+  }
+
+  .home-intro {
+    margin-top: -2vh;
+    border-radius: 15px 15px 0 0;
   }
 
   .hero-brand {
@@ -1362,5 +1466,25 @@
 
   .home-preview-body {
     padding: 1.5rem;
+  }
+
+  /* Enhanced mobile text contrast for home-previews */
+  .home-previews {
+    background-attachment: scroll, scroll; /* Better mobile performance */
+  }
+
+  .home-previews .display-5,
+  .home-previews h2 {
+    text-shadow: 
+      0 3px 12px rgba(0, 0, 0, 0.95),
+      0 6px 24px rgba(0, 0, 0, 0.85);
+  }
+
+  .home-previews .lead,
+  .home-previews p {
+    text-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.9),
+      0 4px 16px rgba(0, 0, 0, 0.7);
+    font-weight: 500;
   }
 }
