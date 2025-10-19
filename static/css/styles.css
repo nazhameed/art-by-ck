@@ -774,3 +774,255 @@ footer .social-icons a:focus {
   z-index: -1;
 }
 
+/* ==========================================================================
+   Featured Work Section (Artist-focused styling)
+   ========================================================================== */
+.press-publications {
+  background: none;
+  margin: 3rem 0;
+}
+
+.press-item {
+  transition: all 0.4s ease;
+  position: relative;
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, var(--ck-pop-blue), rgba(199, 123, 138, 0.7), var(--ck-pop-blue)) border-box;
+}
+
+.press-item:hover {
+  transform: translateY(-5px) rotate(0.5deg);
+  box-shadow: 
+    0 1rem 3rem rgba(199, 123, 138, 0.3),
+    0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.artistic-bg-element {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, var(--ck-pop-blue), transparent);
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.artistic-badge {
+  background: linear-gradient(135deg, var(--ck-pop-blue), rgba(199, 123, 138, 0.8)) !important;
+  box-shadow: 0 0.5rem 1rem rgba(199, 123, 138, 0.5);
+  transform: rotate(-5deg);
+  transition: transform 0.3s ease;
+}
+
+.press-item:hover .artistic-badge {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.btn-artistic {
+  background: linear-gradient(135deg, var(--ck-pop-blue), rgba(199, 123, 138, 0.9));
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.25rem 0.5rem rgba(199, 123, 138, 0.5);
+}
+
+.btn-artistic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(199, 123, 138, 0.6);
+  color: white;
+  background: linear-gradient(135deg, rgba(199, 123, 138, 0.9), var(--ck-pop-blue));
+}
+
+.artistic-tag {
+  background: linear-gradient(135deg, rgba(199, 123, 138, 0.2), rgba(199, 123, 138, 0.1));
+  color: var(--ck-pop-blue);
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(199, 123, 138, 0.4);
+  display: inline-block;
+}
+
+.press-publications blockquote {
+  background: linear-gradient(135deg, rgba(199, 123, 138, 0.15), transparent);
+  padding: 1.5rem;
+  border-left: 4px solid var(--ck-pop-blue);
+  border-radius: 0 1rem 1rem 0;
+  position: relative;
+}
+
+.press-publications blockquote::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--ck-pop-blue);
+  opacity: 0.5;
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-family: serif;
+}
+
+@media (max-width: 767.98px) {
+  .press-item .row {
+    text-align: center;
+  }
+  
+  .artistic-badge {
+    margin-bottom: 1rem;
+    transform: rotate(-3deg);
+  }
+  
+  .press-item .d-flex {
+    justify-content: center;
+  }
+  
+  .artistic-bg-element {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Inline Journal CTA Section
+   ========================================================================== */
+.journal-cta-inline {
+  background: linear-gradient(135deg, rgba(199, 123, 138, 0.03), transparent);
+  border-top: 1px solid rgba(199, 123, 138, 0.1);
+  margin-top: 2rem;
+}
+
+.inline-cta-content {
+  padding: 1rem 0;
+}
+
+.inline-cta-content h3 {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.inline-cta-content p {
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-journal-inline {
+  background: linear-gradient(135deg, var(--ck-pop-blue), rgba(199, 123, 138, 0.8));
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.25rem 0.75rem rgba(199, 123, 138, 0.3);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.btn-journal-inline:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.25rem rgba(199, 123, 138, 0.4);
+  color: white;
+  background: linear-gradient(135deg, rgba(199, 123, 138, 0.9), var(--ck-pop-blue));
+  text-decoration: none;
+}
+
+.btn-journal-inline i {
+  transition: transform 0.3s ease;
+}
+
+.btn-journal-inline:hover i {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Journal Read More Feature
+   ========================================================================== */
+.journal-content-wrapper {
+  position: relative;
+}
+
+.expandable-text {
+  position: relative;
+}
+
+.text-preview {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(transparent, rgba(250, 214, 230, 0.9));
+  pointer-events: none;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.read-more-btn:hover {
+  color: var(--ck-pop-blue) !important;
+  transform: translateY(-1px);
+}
+
+.read-more-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(199, 123, 138, 0.3);
+  border-radius: 0.25rem;
+}
+
+.read-more-btn i {
+  transition: transform 0.3s ease;
+}
+
+.read-more-btn:hover i {
+  transform: scale(1.1);
+}
+
+@media (max-width: 767.98px) {
+  .text-fade {
+    height: 25px;
+  }
+  
+  .read-more-btn {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .journal-cta-card {
+    padding: 2.5rem 1.5rem !important;
+  }
+  
+  .journal-cta-card h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  .journal-cta-card .lead {
+    font-size: 1rem !important;
+  }
+  
+  .btn-journal-cta {
+    padding: 0.75rem 2rem !important;
+    font-size: 1rem !important;
+  }
+}
+
