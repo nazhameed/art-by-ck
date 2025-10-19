@@ -12,7 +12,28 @@
         <div class="col-12 {% if entry.image %}col-md-6{% endif %} {% if entry.image and is_even %}order-md-2{% endif %}">
           <div class="journal-card h-100 shadow-sm d-flex flex-column justify-content-center p-4 p-md-5">
             <h3 class="mb-3">{{ entry.title }}</h3>
-            <div class="mb-3">{{ entry.content|linebreaks }}</div>
+            
+            <div class="journal-content-wrapper mb-3">
+              {% with content_words=entry.content|wordcount %}
+                {% if content_words > 50 %}
+                  <div class="expandable-text">
+                    <div class="text-preview">
+                      {{ entry.content|truncatewords:50|linebreaks }}
+                      <span class="text-fade"></span>
+                    </div>
+                    <div class="text-full" style="display: none;">
+                      {{ entry.content|linebreaks }}
+                    </div>
+                    <button class="read-more-btn btn btn-link p-0 mt-2 text-decoration-none" style="color: var(--ck-pop-blue); font-weight: 600;">
+                      <i class="fas fa-plus me-1"></i> Read More
+                    </button>
+                  </div>
+                {% else %}
+                  {{ entry.content|linebreaks }}
+                {% endif %}
+              {% endwith %}
+            </div>
+            
             <p class="text-muted small mb-0">Posted on {{ entry.created_at|date:"F j, Y" }}</p>
           </div>
         </div>
@@ -34,4 +55,42 @@
     <p class="text-center">No journal entries yet.</p>
   {% endfor %}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Read More functionality for journal entries
+  const readMoreBtns = document.querySelectorAll('.read-more-btn');
+  
+  readMoreBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const expandableText = this.closest('.expandable-text');
+      const preview = expandableText.querySelector('.text-preview');
+      const full = expandableText.querySelector('.text-full');
+      const icon = this.querySelector('i');
+      
+      if (full.style.display === 'none') {
+        // Show full text
+        preview.style.display = 'none';
+        full.style.display = 'block';
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        this.innerHTML = '<i class="fas fa-minus me-1"></i> Read Less';
+        this.style.color = 'var(--ck-pop-blue)';
+      } else {
+        // Show preview text
+        preview.style.display = 'block';
+        full.style.display = 'none';
+        icon.classList.remove('fa-minus');
+        icon.classList.add('fa-plus');
+        this.innerHTML = '<i class="fas fa-plus me-1"></i> Read More';
+        this.style.color = 'var(--ck-pop-blue)';
+        
+        // Scroll back to the entry title for better UX
+        const entryTitle = expandableText.closest('.journal-card').querySelector('h3');
+        entryTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
 {% endblock %}
