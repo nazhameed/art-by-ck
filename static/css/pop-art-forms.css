@@ -26,26 +26,26 @@ Custom CSS only for:
 
 /* Artistic Contact Form - Bootstrap-First Approach */
 :root {
-  /* Essential Artist Color Palette (only custom colors not available in Bootstrap) */
-  --artist-deep-teal: #2d7d7d;
-  --artist-warm-coral: #9c8471;
-  --artist-soft-lavender: #a8a4ce;
-  --artist-cream: #f4f1de;
-  --artist-gold-accent: #d4a574;
-  --artist-sage: #81b29a;
-  --artist-soft-pink: #ff1493;
-  --artist-blush-pink: #ff69b4;
-  --artist-pink-accent: #c21e56;
+  /* Essential Artist Color Palette mapped to global brand variables */
+  --artist-deep-teal: var(--ck-pop);
+  --artist-warm-coral: var(--ck-pop-blue);
+  --artist-soft-lavender: var(--ck-blush-soft);
+  --artist-cream: var(--ck-background);
+  --artist-gold-accent: var(--ck-accent-soft);
+  --artist-sage: var(--ck-pop);
+  --artist-soft-pink: var(--ck-accent);
+  --artist-blush-pink: var(--ck-accent-soft);
+  --artist-pink-accent: var(--ck-accent-dark);
 }
 
 /* Bootstrap-First Contact Form Container */
 .artistic-contact {
   /* Use Bootstrap: rounded-4 p-4 position-relative overflow-hidden shadow-lg */
   background: linear-gradient(135deg, 
-    #f8f7f4 0%, 
-    rgba(200, 200, 200, 0.08) 30%,
-    rgba(11, 11, 15, 0.05) 70%, 
-    #f8f7f4 100%);
+    var(--ck-background) 0%, 
+    rgba(var(--ck-border-soft-rgb), 0.18) 30%,
+    rgba(var(--ck-dark-rgb), 0.05) 70%, 
+    var(--ck-background) 100%);
 }
 
 .artistic-contact::before {
@@ -57,8 +57,8 @@ Custom CSS only for:
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(45deg, transparent 49%, rgba(150, 150, 150, 0.03) 50%, transparent 51%),
-    linear-gradient(-45deg, transparent 49%, rgba(11, 11, 15, 0.02) 50%, transparent 51%);
+    linear-gradient(45deg, transparent 49%, rgba(var(--ck-muted-rgb), 0.03) 50%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, rgba(var(--ck-dark-rgb), 0.02) 50%, transparent 51%);
   background-size: 30px 30px;
   pointer-events: none;
   border-radius: inherit;
@@ -73,8 +73,8 @@ Custom CSS only for:
 
 /* Bootstrap-First Header - Use text-white position-relative overflow-hidden with custom background */
 .artistic-header {
-  background: #0b0b0f;
-  border-bottom: 4px solid #FF2D7A !important;
+  background: var(--ck-dark);
+  border-bottom: 4px solid var(--ck-accent) !important;
 }
 
 
@@ -86,8 +86,8 @@ Custom CSS only for:
 /* Form Field Enhancements - Bootstrap form-control with artistic touches */
 .artistic-form .form-control:focus,
 .artistic-form .form-select:focus {
-  border-color: #FF2D7A;
-  box-shadow: 0 0 0 0.25rem rgba(255, 45, 122, 0.25);
+  border-color: var(--ck-accent);
+  box-shadow: 0 0 0 0.25rem rgba(var(--ck-accent-rgb), 0.25);
 }
 
 .artistic-form .form-control:valid:not(:placeholder-shown) {
@@ -109,9 +109,9 @@ Custom CSS only for:
 /* Submit Button - Bootstrap btn with custom gradient and effects */
 .artistic-submit {
   /* Use Bootstrap: btn btn-lg px-4 py-3 fw-semibold position-relative overflow-hidden shadow */
-  background: linear-gradient(135deg, #0b0b0f, #FF2D7A, #6c6c6c);
-  border: 2px solid #FF2D7A;
-  color: white;
+  background: linear-gradient(135deg, var(--ck-dark), var(--ck-accent), var(--ck-muted-soft));
+  border: 2px solid var(--ck-accent);
+  color: var(--ck-surface);
   transition: all 0.4s ease;
 }
 
@@ -122,15 +122,15 @@ Custom CSS only for:
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--ck-surface-rgb), 0.2), transparent);
   transition: left 0.5s;
 }
 
 .artistic-submit:hover {
   transform: translateY(-2px);
-  border-color: #FF2D7A;
-  background: linear-gradient(135deg, #6c6c6c, #FF2D7A, #0b0b0f);
-  box-shadow: 0 8px 32px rgba(255, 45, 122, 0.4);
+  border-color: var(--ck-accent);
+  background: linear-gradient(135deg, var(--ck-muted-soft), var(--ck-accent), var(--ck-dark));
+  box-shadow: 0 8px 32px rgba(var(--ck-accent-rgb), 0.4);
 }
 
 .artistic-submit:hover::before {
@@ -140,8 +140,8 @@ Custom CSS only for:
 /* Info Box - Bootstrap classes with custom background pattern */
 .artistic-info {
   /* Use Bootstrap: rounded-4 position-relative overflow-hidden shadow */
-  background: linear-gradient(135deg, var(--artist-cream), rgba(129, 178, 154, 0.1));
-  border: 2px solid rgba(212, 165, 116, 0.3);
+  background: linear-gradient(135deg, var(--artist-cream), rgba(var(--ck-pop-rgb), 0.12));
+  border: 2px solid rgba(var(--ck-accent-rgb), 0.25);
 }
 
 .artistic-info::before {
@@ -152,8 +152,8 @@ Custom CSS only for:
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(168, 164, 206, 0.08) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(129, 178, 154, 0.06) 2px, transparent 2px);
+    radial-gradient(circle at 25% 25%, rgba(var(--ck-pop-blue-rgb), 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(var(--ck-pop-rgb), 0.06) 2px, transparent 2px);
   background-size: 50px 50px, 70px 70px;
   pointer-events: none;
 }
@@ -174,8 +174,8 @@ Custom CSS only for:
 }
 
 .qr-card:hover {
-  border-color: #FF2D7A !important;
-  box-shadow: 0 8px 25px rgba(255, 45, 122, 0.3);
+  border-color: var(--ck-accent) !important;
+  box-shadow: 0 8px 25px rgba(var(--ck-accent-rgb), 0.3);
   transform: translateY(-2px);
 }
 
@@ -201,18 +201,18 @@ Custom CSS only for:
 /* Pink accent for form focus states */
 .artistic-form .form-control:focus,
 .artistic-form .form-select:focus {
-  border-color: #FF2D7A;
-  box-shadow: 0 0 0 0.25rem rgba(255, 45, 122, 0.25);
+  border-color: var(--ck-accent);
+  box-shadow: 0 0 0 0.25rem rgba(var(--ck-accent-rgb), 0.25);
 }
 
 /* Modal - Bootstrap modal with custom styling */
 .artistic-modal .modal-content {
   /* Use Bootstrap: border-light rounded-4 overflow-hidden shadow-lg */
-  border: 2px solid rgba(168, 164, 206, 0.3);
+  border: 2px solid rgba(var(--ck-pop-blue-rgb), 0.3);
 }
 
 .artistic-modal .modal-header {
-  background: #0b0b0f !important; /* Match navbar background */
+  background: var(--ck-dark) !important; /* Match navbar background */
   border-bottom: 4px solid var(--ck-accent) !important; /* Match navbar border */
   position: relative;
 }
@@ -227,8 +227,8 @@ Custom CSS only for:
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle at 20% 20%, rgba(168, 164, 206, 0.05) 3px, transparent 3px),
-    radial-gradient(circle at 80% 80%, rgba(129, 178, 154, 0.04) 2px, transparent 2px);
+    radial-gradient(circle at 20% 20%, rgba(var(--ck-pop-blue-rgb), 0.05) 3px, transparent 3px),
+    radial-gradient(circle at 80% 80%, rgba(var(--ck-pop-rgb), 0.04) 2px, transparent 2px);
   background-size: 80px 80px, 60px 60px;
   opacity: 0.6;
   pointer-events: none;
@@ -247,8 +247,8 @@ Custom CSS only for:
 /* Message Bubble - Bootstrap utility classes with custom speech bubble */
 .artistic-message {
   /* Use Bootstrap: rounded-4 p-4 position-relative my-4 shadow-sm */
-  background: linear-gradient(135deg, rgba(244, 241, 222, 0.8), rgba(168, 164, 206, 0.1));
-  border: 2px solid rgba(212, 165, 116, 0.4);
+  background: linear-gradient(135deg, rgba(var(--ck-background-rgb), 0.8), rgba(var(--ck-pop-blue-rgb), 0.1));
+  border: 2px solid rgba(var(--ck-accent-rgb), 0.35);
   backdrop-filter: blur(5px);
 }
 
@@ -261,7 +261,7 @@ Custom CSS only for:
   height: 0;
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
-  border-top: 12px solid rgba(244, 241, 222, 0.9);
+  border-top: 12px solid rgba(var(--ck-background-rgb), 0.9);
 }
 
 .artistic-message::after {
@@ -273,7 +273,7 @@ Custom CSS only for:
   height: 0;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-top: 14px solid rgba(212, 165, 116, 0.4);
+  border-top: 14px solid rgba(var(--ck-accent-rgb), 0.35);
 }
 
 /* Contact Form Toggle Button Styling */
@@ -287,7 +287,7 @@ Custom CSS only for:
 }
 
 .contact-toggle-btn:focus {
-  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 0 0 0.25rem rgba(var(--ck-surface-rgb), 0.25) !important;
   outline: none;
 }
 
@@ -297,7 +297,7 @@ Custom CSS only for:
 
 /* Toggle icon wrapper with visual emphasis */
 .toggle-icon-wrapper {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(var(--ck-surface-rgb), 0.2);
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -305,12 +305,12 @@ Custom CSS only for:
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(var(--ck-surface-rgb), 0.3);
 }
 
 .contact-toggle-btn:hover .toggle-icon-wrapper {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(var(--ck-surface-rgb), 0.3);
+  border-color: rgba(var(--ck-surface-rgb), 0.5);
   transform: scale(1.1);
 }
 
@@ -331,14 +331,14 @@ Custom CSS only for:
 #toggleLabel {
   font-size: 0.75rem !important;
   border-radius: 12px !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  color: #333 !important;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(var(--ck-surface-rgb), 0.9) !important;
+  color: var(--ck-ink) !important;
+  border: 1px solid rgba(var(--ck-surface-rgb), 0.5);
   transition: all 0.3s ease;
 }
 
 .contact-toggle-btn:hover #toggleLabel {
-  background: rgba(255, 255, 255, 1) !important;
+  background: rgba(var(--ck-surface-rgb), 1) !important;
   transform: scale(1.05);
 }
 
@@ -350,11 +350,11 @@ Custom CSS only for:
 @keyframes subtlePulse {
   0%, 100% { 
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(var(--ck-surface-rgb), 0.4);
   }
   50% { 
     transform: scale(1.02);
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(var(--ck-surface-rgb), 0.1);
   }
 }
 
