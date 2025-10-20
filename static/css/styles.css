@@ -786,6 +786,7 @@ body.journal-background footer {
    ========================================================================== */
 .featured-exhibition {
   background: var(--ck-dark);
+  padding-bottom: 2rem;
 }
 
 .featured-exhibition .featured-media {
@@ -804,11 +805,13 @@ body.journal-background footer {
 .featured-exhibition .featured-media-frame .ratio {
   border-radius: 1.25rem;
   overflow: hidden;
-  box-shadow: 0 1.75rem 3.5rem -2.5rem rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 1.5rem 0.5rem rgb(45 255 245 / 39%)
 }
 
 .featured-exhibition .featured-media-frame video {
   border-radius: 0;
+  box-shadow: 0 1.5rem 3rem -2rem rgba(var(--ck-accent-rgb), 0.45),
+    0 0 0 1px rgba(226, 226, 226, 0.08);
 }
 
 .featured-exhibition .featured-media-image {
@@ -825,7 +828,7 @@ body.journal-background footer {
   flex-direction: column;
   gap: 0.75rem;
   width: min(92%, 960px);
-  margin: clamp(1.5rem, 5vw, 3rem) auto 0;
+  margin: clamp(1.5rem, 5vw, 3rem) auto clamp(2.5rem, 6vw, 4rem);
   padding: clamp(2rem, 5vw, 3rem);
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
