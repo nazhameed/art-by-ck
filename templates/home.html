@@ -8,12 +8,21 @@
 {% endblock %}
 
 {% block content %}
-<section class="home-hero">
+<section class="home-hero home-hero-bg">
   <div class="container-xxl">
-    <div class="home-hero-content">
-      <p class="home-hero-script cedarville-cursive-regular">
+    <div class="home-hero-content" style="padding-top: 3.5rem;">
+      <p class="home-hero-script cedarville-cursive-regular text-white" style="text-shadow: 0 2px 16px rgba(0,0,0,0.45); font-size:2.6rem;">
         I am a mother artist.
       </p>
+      <h1 class="display-4 fw-semibold mb-4 text-white" style="margin-top:2.2rem; text-shadow: 0 2px 16px rgba(0,0,0,0.45);">
+        Art as a quiet revolution for mothers, daughters, and the worlds between.
+      </h1>
+      <div class="gallery-cta-highlight">
+        <div class="home-hero-buttons d-flex flex-wrap gap-3 mb-4">
+          <a class="btn btn-journal-inline" href="{% url 'gallery' %}">Enter the Gallery</a>
+          <a class="btn btn-journal-inline" href="{% url 'available_art' %}">Available Works</a>
+        </div>
+      </div>
       <div class="hero-arrow">
         <i class="fas fa-chevron-down"></i>
       </div>
@@ -28,19 +37,8 @@
       <div class="col-lg-10">
         <div class="row g-5 align-items-center">
           <div class="col-lg-6">
-            <h1 class="display-4 fw-semibold mb-4">
-              Art as a quiet revolution for mothers, daughters, and the worlds between.
-            </h1>
           </div>
           <div class="col-lg-6">
-            <div class="gallery-cta-highlight">
-              <div class="home-hero-buttons d-flex flex-wrap gap-3 mb-4">
-                <a class="btn home-hero-primary btn-lg" href="{% url 'gallery' %}" style="font-size: 1.8rem; padding: 1rem 2rem;">Enter the Gallery</a>
-                <a class="btn home-hero-shop btn-lg" href="{% url 'available_art' %}" style="font-size: 1.8rem; padding: 1rem 2rem;">
-                  Available Works
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
