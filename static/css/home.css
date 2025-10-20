@@ -714,20 +714,20 @@
 }
 
 .home-previews {
-  background-image: linear-gradient(
-      135deg,
+  background-image: 
+    linear-gradient(135deg, 
       rgba(8, 8, 12, 0.95) 0%,
       rgba(20, 18, 25, 0.92) 25%,
       rgba(16, 10, 20, 0.94) 50%,
       rgba(22, 20, 28, 0.91) 75%,
       rgba(12, 8, 16, 0.96) 100%
     ),
-    url("../images/new_bg.png");
+    url('../images/new_bg.png');
   background-size: cover, cover;
   background-position: center center, center center;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
-  color: var(--ck-surface);
+  color: #ffffff;
   position: relative;
   overflow: hidden;
   padding: clamp(4rem, 8vw, 6rem) 0;
@@ -736,33 +736,36 @@
 /* Enhanced text contrast for previews section */
 .home-previews .display-5,
 .home-previews h2 {
-  color: var(--ck-surface) !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 4px 20px rgba(0, 0, 0, 0.8),
+  color: #ffffff !important;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.9),
+    0 4px 20px rgba(0, 0, 0, 0.8),
     0 8px 32px rgba(0, 0, 0, 0.6);
   font-weight: 600;
 }
 
 .home-previews .home-section-title {
-  background: linear-gradient(
-    135deg,
-    rgba(var(--ck-surface-rgb), 0.9),
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9), 
     rgba(106, 190, 48, 0.8),
     rgba(144, 169, 85, 0.8),
     rgba(180, 140, 120, 0.7),
-    rgba(var(--ck-surface-rgb), 0.8)
+    rgba(255, 255, 255, 0.8)
   );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: rgba(var(--ck-surface-rgb), 0.9);
+  color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
 }
 
 .home-previews .lead,
 .home-previews p {
-  color: rgba(var(--ck-surface-rgb), 0.95) !important;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 2px 12px rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    0 2px 12px rgba(0, 0, 0, 0.6);
   font-weight: 400;
 }
 
@@ -780,42 +783,37 @@
 .home-previews::before {
   top: -120px;
   right: -80px;
-  background: radial-gradient(
-    circle,
-    rgba(106, 190, 48, 0.4),
-    /* green */ rgba(144, 169, 85, 0.3),
-    /* olive green */ transparent
+  background: radial-gradient(circle, 
+    rgba(106, 190, 48, 0.4),    /* green */
+    rgba(144, 169, 85, 0.3),    /* olive green */
+    transparent
   );
 }
 
 .home-previews::after {
   bottom: -150px;
   left: -70px;
-  background: radial-gradient(
-    circle,
-    rgba(180, 140, 120, 0.4),
-    /* brown-pink */ rgba(160, 120, 100, 0.3),
-    /* darker brown */ transparent
+  background: radial-gradient(circle, 
+    rgba(180, 140, 120, 0.4),   /* brown-pink */
+    rgba(160, 120, 100, 0.3),   /* darker brown */
+    transparent
   );
 }
 
 .home-preview-card {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    rgba(var(--ck-surface-rgb), 0.08),
-    rgba(106, 190, 48, 0.03),
-    /* green */ rgba(180, 140, 120, 0.04),
-    /* brown-pink */ rgba(var(--ck-surface-rgb), 0.06)
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08),
+    rgba(106, 190, 48, 0.03),      /* green */
+    rgba(180, 140, 120, 0.04),     /* brown-pink */
+    rgba(255, 255, 255, 0.06)
   );
   border: 1px solid;
-  border-image: linear-gradient(
-      135deg,
-      rgba(106, 190, 48, 0.2),
-      rgba(var(--ck-surface-rgb), 0.1),
-      rgba(180, 140, 120, 0.15)
-    )
-    1;
+  border-image: linear-gradient(135deg, 
+    rgba(106, 190, 48, 0.2),
+    rgba(255, 255, 255, 0.1),
+    rgba(180, 140, 120, 0.15)
+  ) 1;
   border-radius: 28px;
   overflow: hidden;
   transition: all 0.4s ease;
@@ -827,19 +825,18 @@
 }
 
 .home-preview-card::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(
-    90deg,
+  background: linear-gradient(90deg, 
     transparent,
-    rgba(106, 190, 48, 0.6),
-    /* green */ rgba(144, 169, 85, 0.6),
-    /* olive green */ rgba(180, 140, 120, 0.6),
-    /* brown-pink */ transparent
+    rgba(106, 190, 48, 0.6),    /* green */
+    rgba(144, 169, 85, 0.6),    /* olive green */
+    rgba(180, 140, 120, 0.6),   /* brown-pink */
+    transparent
   );
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -848,14 +845,15 @@
 .home-preview-card:hover,
 .home-preview-card:focus-within {
   transform: translateY(-12px) scale(1.02);
-  background: linear-gradient(
-    135deg,
-    rgba(var(--ck-surface-rgb), 0.12),
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12),
     rgba(106, 190, 48, 0.06),
     rgba(180, 140, 120, 0.08),
-    rgba(var(--ck-surface-rgb), 0.1)
+    rgba(255, 255, 255, 0.1)
   );
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4), 0 0 40px rgba(106, 190, 48, 0.2),
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(106, 190, 48, 0.2),
     0 0 20px rgba(180, 140, 120, 0.15);
 }
 
@@ -896,56 +894,50 @@
   margin-bottom: 0.5rem;
   display: block;
   font-weight: 700;
-  background: linear-gradient(
-    135deg,
-    var(--ck-blush-soft),
-    /* muted pink */ var(--ck-blush),
-    /* dusty pink */ var(--ck-pop-blue) /* deeper muted pink */
+  background: linear-gradient(135deg, 
+    #D8A7CA,              /* muted pink */
+    #C4A2BD,              /* dusty pink */
+    #B89FB0               /* deeper muted pink */
   );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: var(--ck-blush-soft); /* Fallback */
+  color: #D8A7CA; /* Fallback */
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
 }
 
 /* Category-specific eyebrow colors for better organization - muted pink palette */
-.home-preview-card:nth-child(1) .eyebrow {
-  /* Gallery */
-  background: linear-gradient(135deg, var(--ck-blush-soft), var(--ck-blush));
+.home-preview-card:nth-child(1) .eyebrow { /* Gallery */
+  background: linear-gradient(135deg, #D8A7CA, #C4A2BD);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.home-preview-card:nth-child(2) .eyebrow {
-  /* Available art */
-  background: linear-gradient(135deg, var(--ck-blush), var(--ck-pop-blue));
+.home-preview-card:nth-child(2) .eyebrow { /* Available art */
+  background: linear-gradient(135deg, #C4A2BD, #B89FB0);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.home-preview-card:nth-child(3) .eyebrow {
-  /* Exhibitions */
-  background: linear-gradient(135deg, var(--ck-pop-blue), var(--ck-blush-soft));
+.home-preview-card:nth-child(3) .eyebrow { /* Exhibitions */
+  background: linear-gradient(135deg, #B89FB0, #D8A7CA);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.home-preview-card:nth-child(4) .eyebrow {
-  /* Journal */
-  background: linear-gradient(135deg, var(--ck-blush), var(--ck-blush-soft));
+.home-preview-card:nth-child(4) .eyebrow { /* Journal */
+  background: linear-gradient(135deg, #C4A2BD, #D8A7CA);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.home-preview-card:nth-child(5) .eyebrow {
-  /* About */
-  background: linear-gradient(135deg, var(--ck-pop-blue), var(--ck-blush));
+.home-preview-card:nth-child(5) .eyebrow { /* About */
+  background: linear-gradient(135deg, #B89FB0, #C4A2BD);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -953,11 +945,11 @@
 
 /* Contact preview card styling to match pink theme */
 .contact-preview .home-preview-body .eyebrow {
-  background: linear-gradient(135deg, var(--ck-pop-blue), var(--ck-blush));
+  background: linear-gradient(135deg, #B89FB0, #C4A2BD);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: var(--ck-pop-blue); /* Fallback */
+  color: #B89FB0; /* Fallback */
 }
 
 .contact-preview .home-preview-link {
@@ -966,13 +958,13 @@
 
 .contact-preview:hover .home-preview-link,
 .contact-preview:focus-within .home-preview-link {
-  color: var(--ck-surface);
+  color: #ffffff;
 }
 
 .home-preview-body h3 {
   font-weight: 700;
   font-size: 1.8rem;
-  color: var(--ck-surface);
+  color: #ffffff;
   margin: 0 0 1rem 0;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -981,7 +973,7 @@
 
 .home-preview-body p {
   margin: 0;
-  color: rgba(var(--ck-surface-rgb), 0.95);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 1rem;
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -1012,7 +1004,7 @@
 
 .home-preview-card:hover .home-preview-link,
 .home-preview-card:focus-within .home-preview-link {
-  color: var(--ck-surface);
+  color: #ffffff;
 }
 
 .home-preview-card:hover .home-preview-link::after,
@@ -1558,12 +1550,16 @@
 
   .home-previews .display-5,
   .home-previews h2 {
-    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95), 0 6px 24px rgba(0, 0, 0, 0.85);
+    text-shadow: 
+      0 3px 12px rgba(0, 0, 0, 0.95),
+      0 6px 24px rgba(0, 0, 0, 0.85);
   }
 
   .home-previews .lead,
   .home-previews p {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 4px 16px rgba(0, 0, 0, 0.7);
+    text-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.9),
+      0 4px 16px rgba(0, 0, 0, 0.7);
     font-weight: 500;
   }
 }
