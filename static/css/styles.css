@@ -10,7 +10,6 @@
   --ck-background: #f8f7f4;
   --ck-background-rgb: 248, 247, 244;
   --ck-surface: #ffffff;
-  --ck-surface-rgb: 255, 255, 255;
   --ck-surface-muted: rgba(255, 255, 255, 0.86);
 
   /* Ink + neutrals */
@@ -152,7 +151,7 @@ body {
   background: linear-gradient(
     135deg,
     rgba(var(--ck-accent-rgb), 1) 0%,
-    rgba(var(--ck-pop-rgb), 0.85) 50%,
+    rgba(var(--ck-accent-rgb), 0.85) 50%,
     rgba(var(--ck-pop-blue-rgb), 0.85) 100%
   );
   background-clip: text;
