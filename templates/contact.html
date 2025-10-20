@@ -1,38 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Contact | Art by CK{% endblock %}
+{% block body_class %}contact-background{% endblock %}
 
 {% block extra_styles %}
 <style>
-/* Apply background to body for full coverage */
-body {
-  background-image: url('{% static "images/new_bg.png" %}') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-}
-
-/* Apply overlay to body for full coverage */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.85) 0%,
-    rgba(248, 249, 250, 0.9) 30%,
-    rgba(240, 243, 246, 0.88) 60%,
-    rgba(255, 255, 255, 0.82) 100%
-  );
-  backdrop-filter: blur(2px);
-  z-index: -1;
-  pointer-events: none;
-}
-
 .contact-page-body {
   background: transparent;
   position: relative;
@@ -318,7 +290,7 @@ body::before {
 }
 
 /* Ensure no horizontal scrollbar issues */
-body {
+body.contact-background {
     overflow-x: hidden;
 }
 
