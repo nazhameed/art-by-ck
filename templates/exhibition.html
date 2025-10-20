@@ -4,33 +4,34 @@ Art by CK{% endblock %} {% block body_class %}exhibition-background{% endblock %
 {% if featured_exhibition %}
 <section class="featured-exhibition mb-5">
   <div class="container-fluid px-0">
-    <div class="featured-media">
+    <div class="featured-media d-flex justify-content-center">
       {% if featured_exhibition.video and featured_exhibition.video.public_id %}
-      <div class="w-100 d-flex flex-column justify-content-center">
+      <div class="featured-media-frame">
         {% include "inserts/custom_video.html" with poster=featured_exhibition.video_poster_url hls=featured_exhibition.video_hls_url mp4=featured_exhibition.video_mp4_url %}
       </div>
       {% elif featured_exhibition.image %}
-      <img
-        src="{{ featured_exhibition.image.url }}"
-        class="w-100"
-        style="max-height: 75vh; object-fit: cover;"
-        alt="{{ featured_exhibition.display_title|default:featured_exhibition.title }}"
-      />
+      <div class="featured-media-frame">
+        <img
+          src="{{ featured_exhibition.image.url }}"
+          class="featured-media-image w-100"
+          alt="{{ featured_exhibition.display_title|default:featured_exhibition.title }}"
+        />
+      </div>
       {% endif %}
     </div>
-    <div class="featured-details bg-dark text-white py-1 px-2 px-lg-3 text-center">
-      <span class="text-uppercase text-white-50 small fw-semibold mb-1 d-inline-block">Featured Exhibition</span>
-      <h3 class="fw-bold mb-1">{{ featured_exhibition.display_title|default:featured_exhibition.title }}</h3>
-      <p class="text-white-50 mb-1">
+    <div class="featured-details text-white text-center text-md-start">
+      <span class="text-uppercase text-white-50 small fw-semibold mb-2 d-inline-block">Featured Exhibition</span>
+      <h3 class="fw-bold mb-3">{{ featured_exhibition.display_title|default:featured_exhibition.title }}</h3>
+      <p class="featured-details-description text-white-50 mb-4">
         {{ featured_exhibition.description }}
       </p>
-      <div class="d-flex flex-column flex-md-row justify-content-center gap-2 text-white mb-1">
-        <div>
-          <span class="d-block text-uppercase text-white-50 small fw-semibold mb-1">Date</span>
+      <div class="featured-details-meta d-flex flex-column flex-md-row justify-content-center justify-content-md-start gap-3 gap-md-5 text-white">
+        <div class="featured-meta-item">
+          <span class="d-block text-uppercase text-white-50 small fw-semibold mb-2">Date</span>
           <span class="fs-6">{{ featured_exhibition.date|date:"F Y"|default:"TBA" }}</span>
         </div>
-        <div>
-          <span class="d-block text-uppercase text-white-50 small fw-semibold mb-1">Location</span>
+        <div class="featured-meta-item">
+          <span class="d-block text-uppercase text-white-50 small fw-semibold mb-2">Location</span>
           <span class="fs-6">{{ featured_exhibition.location }}</span>
         </div>
       </div>

@@ -319,7 +319,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--ck-pop-blue), var(--ck-highlight));
+  background: linear-gradient(90deg, #fff, var(--ck-highlight), #fff);
   border-radius: 24px 24px 0 0;
 }
 

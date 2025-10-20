@@ -781,6 +781,101 @@ body.journal-background footer {
   z-index: 0;
 }
 
+/* ==========================================================================
+   Exhibition Page
+   ========================================================================== */
+.featured-exhibition {
+  background: var(--ck-dark);
+}
+
+.featured-exhibition .featured-media {
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 65%);
+}
+
+.featured-exhibition .featured-media-frame {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.featured-exhibition .featured-media-frame .ratio {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 1.75rem 3.5rem -2.5rem rgba(0, 0, 0, 0.85);
+}
+
+.featured-exhibition .featured-media-frame video {
+  border-radius: 0;
+}
+
+.featured-exhibition .featured-media-image {
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  box-shadow: 0 1.75rem 3.5rem -2.5rem rgba(0, 0, 0, 0.85);
+}
+
+.featured-exhibition .featured-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: min(92%, 960px);
+  margin: clamp(1.5rem, 5vw, 3rem) auto 0;
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(10, 10, 10, 0.9);
+  box-shadow: 0 2rem 3.5rem -2.5rem rgba(0, 0, 0, 0.7);
+  align-items: center;
+}
+
+.featured-exhibition .featured-details-description {
+  line-height: 1.7;
+}
+
+.featured-exhibition .featured-details-meta {
+  margin-top: 0.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.featured-exhibition .featured-meta-item > span:first-child {
+  letter-spacing: 0.2em;
+}
+
+.featured-exhibition .featured-meta-item .fs-6 {
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+}
+
+@media (min-width: 768px) {
+  .featured-exhibition .featured-media-frame {
+    width: 80%;
+    max-width: 1080px;
+  }
+
+  .featured-exhibition .featured-details {
+    width: min(80%, 960px);
+    padding: clamp(2.25rem, 3vw + 1rem, 3.25rem);
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 1200px) {
+  .featured-exhibition .featured-media-frame {
+    max-width: 960px;
+  }
+
+  .featured-exhibition .featured-details {
+    width: min(72%, 820px);
+  }
+}
+
 @media (max-width: 767.98px) {
   /* Hide column toggles when layout collapses to a single column */
   .gallery-controls {
