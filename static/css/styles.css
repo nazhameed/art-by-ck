@@ -729,7 +729,8 @@ body.gallery-background,
 body.about-background,
 body.available-art-background,
 body.exhibition-background,
-body.journal-background {
+body.journal-background,
+body.contact-background {
   position: relative;
   background-color: var(--ck-dark-slate);
 }
@@ -738,7 +739,8 @@ body.gallery-background::before,
 body.about-background::before,
 body.available-art-background::before,
 body.exhibition-background::before,
-body.journal-background::before {
+body.journal-background::before,
+body.contact-background::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -752,7 +754,8 @@ body.gallery-background::after,
 body.about-background::after,
 body.available-art-background::after,
 body.exhibition-background::after,
-body.journal-background::after {
+body.journal-background::after,
+body.contact-background::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -776,7 +779,10 @@ body.exhibition-background main,
 body.exhibition-background footer,
 body.journal-background header,
 body.journal-background main,
-body.journal-background footer {
+body.journal-background footer,
+body.contact-background header,
+body.contact-background main,
+body.contact-background footer {
   position: relative;
   z-index: 0;
 }
